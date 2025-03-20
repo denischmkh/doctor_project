@@ -1354,7 +1354,13 @@
                                                                 <a href="{% url 'doctor_profile' doctor.id %}">{{doctor.name}}</a>
                                                                 <i class="isax isax-tick-circle5 text-success ms-2"></i>
                                                             </h6>
-                                                            <p class="mb-2">{% for education in  doctor.educations.all %} {{education.info}} {% endfor %}</p>
+                                                            <p class="mb-2">
+                                                                {% for education in doctor.educations.all %}
+                                                                    {% if forloop.first %}
+                                                                        {{ education.info }}
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </p>
                                                             <p class="d-flex align-items-center mb-0 fs-14"><i
                                                                     class="isax isax-location me-2"></i>{{doctor.clinic}}
                                                                 <a href="{{doctor.profile_url}}"
