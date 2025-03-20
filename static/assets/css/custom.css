@@ -57182,20 +57182,20 @@ ul li {
   color: #E3E6EC;
 }
 
+.card-img-hover {
+  transition: 0.5s all;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+  height: 250px; /* Фиксированная высота */
+  width: 300px;  /* Фиксированная ширина */
+}
+
 .card-img-hover img {
   transition: 0.5s all;
   border-radius: 10px 10px 0 0;
   width: 300px;  /* Устанавливаем точную ширину */
   height: 250px; /* Устанавливаем точную высоту */
   object-fit: cover; /* Изображение будет растягиваться или сжиматься, чтобы заполнить контейнер */
-}
-
-.card-img-hover img {
-  transition: 0.5s all;
-  border-radius: 10px 10px 0 0;
-  width: 100%;  /* Растягиваем изображение по ширине контейнера */
-  height: 100%; /* Растягиваем изображение по высоте контейнера */
-  object-fit: cover;  /* Изображение будет растягиваться или сжиматься, чтобы заполнить контейнер */
 }
 
 .card-img-hover:hover img {
