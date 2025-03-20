@@ -1377,8 +1377,7 @@
                                                             </p>
                                                             <p class="d-flex align-items-center mb-0 fs-14">
                                                                 {% if doctor.work_experience.all %}
-                                                            <p>{{ doctor.work_experience.all.0.info }} - {{
-                                                                doctor.work_experience.all.0.year }}</p>
+                                                            <p>{{ doctor.work_experience.all.0.info }} - {{ doctor.work_experience.all.0.year }}</p>
                                                             {% else %}
                                                             <p>No work experience available.</p>
                                                             {% endif %}
