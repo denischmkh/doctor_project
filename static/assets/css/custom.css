@@ -57200,6 +57200,7 @@ ul li {
 .card-img-hover:hover img {
   transform: scale(1.14); /* Увеличение изображения при наведении */
   transition: 0.5s all;
+  object-fit: none;
 }
 
 
