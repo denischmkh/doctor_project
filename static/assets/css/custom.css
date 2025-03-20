@@ -57186,7 +57186,7 @@ ul li {
   overflow: hidden;
   border-radius: 10px 10px 0 0;
   height: 250px; /* Фиксированная высота */
-  width: 300px;  /* Фиксированная ширина */
+  width: 160px;  /* Фиксированная ширина */
 }
 
 .card-img-hover img {
@@ -57203,11 +57203,7 @@ ul li {
   object-fit: none;
 }
 
-#doctor_image {
-  width: 300px;  /* Ширина изображения */
-  height: 250px; /* Высота изображения */
-  object-fit: cover;  /* Изображение будет обрезано, чтобы заполнить контейнер, сохраняя пропорции */
-}
+
 
 
 #filter_inputs {
