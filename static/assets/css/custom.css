@@ -57305,9 +57305,11 @@ ul li {
 }
 
 .doctor-list-card .card-img {
-  width: 300px;
-  border-radius: 10px 0 0 10px;
-  position: relative;
+    width: 300px;           /* Ширина блока */
+    height: 250px;          /* Высота блока */
+    border-radius: 10px 0 0 10px;
+    position: relative;
+    overflow: hidden;       /* Прячет часть изображения, если оно выходит за пределы блока */
 }
 @media (max-width: 767.98px) {
   .doctor-list-card .card-img {
