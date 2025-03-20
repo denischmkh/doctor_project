@@ -18,6 +18,8 @@ def doctor_list(request, page=1):
     else:
         next_page = page + 1
 
+    doctors_count = len(Doctor.objects.all())
+
     for doctor in doctors:
         specializations = doctor.specialisations.all()
         for specialization in specializations:
@@ -40,7 +42,7 @@ def doctor_list(request, page=1):
 
 
     return render(request, 'search-2.html', {'doctors': doctors,
-                                             'doctors_count': len(doctors),
+                                             'doctors_count': doctors_count,
                                              'urology_count': urology_count,
                                              'psychiatry_count': psychiatry_count,
                                              'cardiology_count': cardiology_count,
