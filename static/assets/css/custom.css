@@ -57889,7 +57889,8 @@ ul li {
 }
 
 .list-card .card-body {
-  padding: 40px;
+    padding: 40px;
+    box-sizing: border-box;
 }
 @media (max-width: 991.98px) {
   .list-card .card-body {
