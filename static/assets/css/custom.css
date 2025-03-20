@@ -57203,6 +57203,12 @@ ul li {
   object-fit: none;
 }
 
+#doctor_image {
+  width: 300px;  /* Ширина изображения */
+  height: 250px; /* Высота изображения */
+  object-fit: cover;  /* Изображение будет обрезано, чтобы заполнить контейнер, сохраняя пропорции */
+}
+
 
 #filter_inputs {
   display: none;
