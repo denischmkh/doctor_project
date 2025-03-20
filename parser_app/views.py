@@ -13,7 +13,7 @@ def doctor_list(request, page=1):
     else:
         previous_page = page - 1
     doctors = Doctor.objects.all()[start:end]
-    if len(doctors) < per_page:
+    if len(doctors) < per_page - 1:
         next_page = None
     else:
         next_page = page + 1

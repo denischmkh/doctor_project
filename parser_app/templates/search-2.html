@@ -1409,22 +1409,23 @@
                         <div class="col-md-12">
                             <div class="pagination dashboard-pagination mt-md-3 mt-0 mb-4">
                                 <ul>
-                                    <li>
-                                        <a class="page-link prev {% if not doctors.has_previous %} disabled{% endif %}"
-                                           href="{% if previous_page %}{% url 'doctor_list_paginator' page=previous_page %}{% else %}# {% endif %}">
+                                    <!-- Prev button -->
+                                    <li class="page-item {% if not previous_page %}disabled{% endif %}">
+                                        <a class="page-link" href="{% if previous_page %}{% url 'doctor_list_paginator' page=previous_page %}{% else %}# {% endif %}">
                                             Prev
                                         </a>
                                     </li>
-                                        <li>
-                                            <a class="page-link active" href="{% url 'doctor_list_paginator' page=page %}">{{ page }}
-                                            </a>
-                                        </li>
-                                    <li>
-                                        <a class="page-link next {% if not doctors.has_next %} disabled {% endif %}"
-                                           href="{% if next_page %}{% url 'doctor_list_paginator' page=next_page %}{% else %}# {% endif %}">
+
+                                    <!-- Current page -->
+                                    <li class="page-item active">
+                                        <a class="page-link" href="{% url 'doctor_list_paginator' page=page %}">{{ page }}</a>
+                                    </li>
+
+                                    <!-- Next button -->
+                                    <li class="page-item {% if not next_page %}disabled{% endif %}">
+                                        <a class="page-link" href="{% if next_page %}{% url 'doctor_list_paginator' page=next_page %}{% else %}# {% endif %}">
                                             Next
                                         </a>
-                                    </li>
                                     </li>
                                 </ul>
                             </div>
