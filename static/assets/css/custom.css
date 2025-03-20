@@ -57186,7 +57186,7 @@ ul li {
   overflow: hidden;
   border-radius: 10px 10px 0 0;
   height: 250px; /* Фиксированная высота */
-  width: 160px;  /* Фиксированная ширина */
+  width: 300px;  /* Фиксированная ширина */
 }
 
 .card-img-hover img {
