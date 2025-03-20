@@ -57182,12 +57182,12 @@ ul li {
   color: #E3E6EC;
 }
 
-.card-img-hover {
+.card-img-hover img {
   transition: 0.5s all;
-  overflow: hidden;
   border-radius: 10px 10px 0 0;
-  height: 250px; /* Фиксированная высота */
-  width: 300px;  /* Фиксированная ширина */
+  width: 300px;  /* Устанавливаем точную ширину */
+  height: 250px; /* Устанавливаем точную высоту */
+  object-fit: cover; /* Изображение будет растягиваться или сжиматься, чтобы заполнить контейнер */
 }
 
 .card-img-hover img {
