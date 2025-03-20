@@ -17,8 +17,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from doctor_project.doctor_project import settings
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('parser_app.urls')),
