@@ -18,7 +18,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 sys.path.append(str(BASE_DIR))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -29,9 +28,6 @@ SECRET_KEY = 'django-insecure-t2f#hx%b)d_n++m^$0e0u88z@9g0+b_lmw^m-q7te30$cf1add
 DEBUG = True
 
 ALLOWED_HOSTS = ['95.216.216.195', 'localhost', '127.0.0.1']
-
-
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -74,7 +70,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'doctor_project.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -119,7 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -131,18 +125,14 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Папка для собранной статики
 
-# Папка для собранных статических файлов (для использования с Nginx)
-STATIC_ROOT = '/root/doctor_project/static/'
-
-# Дополнительные папки для статики (если они есть)
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Путь к папке статики в проекте
+MEDIA_URL = '/media/'
+MEDIA_ROOT = [os.path.join(BASE_DIR, 'media')
 ]
 
 # Default primary key field type
