@@ -5,15 +5,27 @@ from .utils import get_specialists_count
 
 
 def doctor_list(request, page=1):
-    doctors = Doctor.objects.all()[:100]
+    per_page = 7
+    end = page * per_page
+    start = end - per_page
+    if start == 0:
+        previous_page = None
+    else:
+        previous_page = page - 1
+    doctors = Doctor.objects.all()[start:end]
+    if len(doctors) < per_page:
+        next_page = None
+    else:
+        next_page = page + 1
+
     for doctor in doctors:
         specializations = doctor.specialisations.all()
         for specialization in specializations:
             if specialization.name.startswith('{') and specialization.name.endswith('}'):
                 specialization.name = specialization.name[1:-1].split(', ')[0]
                 specialization.save()
-    paginator = Paginator(object_list=doctors, per_page=7)
-    doctors_paginator = paginator.page(page)
+
+
 
 
     urology_count = get_specialists_count(doctors=doctors, specialization_name='Urology')
@@ -27,7 +39,7 @@ def doctor_list(request, page=1):
 
 
 
-    return render(request, 'search-2.html', {'doctors': doctors_paginator,
+    return render(request, 'search-2.html', {'doctors': doctors,
                                              'doctors_count': len(doctors),
                                              'urology_count': urology_count,
                                              'psychiatry_count': psychiatry_count,
@@ -36,7 +48,10 @@ def doctor_list(request, page=1):
                                              'neurology_count': neurology_count,
                                              'pulmonology_count': pulmonology_count,
                                              'orthopedics_count': orthopedics_count,
-                                             'endocrinology_count': endocrinology_count})
+                                             'endocrinology_count': endocrinology_count,
+                                             'previous_page': previous_page,
+                                             'next_page': next_page,
+                                             'page': page})
 
 
 def doctor_profile(request, id: int):

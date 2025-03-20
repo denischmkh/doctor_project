@@ -1411,22 +1411,18 @@
                                 <ul>
                                     <li>
                                         <a class="page-link prev {% if not doctors.has_previous %} disabled{% endif %}"
-                                           href="{% if doctors.has_previous %}{% url 'doctor_list_paginator' page=doctors.previous_page_number %}{% else %}# {% endif %}">
+                                           href="{% if previous_page %}{% url 'doctor_list_paginator' page=previous_page %}{% else %}# {% endif %}">
                                             Prev
                                         </a>
                                     </li>
-                                    {% for page in doctors.paginator.page_range %}
-                                        {% if page >= doctors.number|add:'-2' and page <= doctors.number|add:'2' %}
                                             <li>
-                                                <a class="page-link {% if doctors.number == page %}active{% endif %}" href="{% url 'doctor_list_paginator' page=page %}">
+                                                <a class="page-link active" href="{% url 'doctor_list_paginator' page=page %}">
                                                     {{ page }}
                                                 </a>
                                             </li>
-                                        {% endif %}
-                                    {% endfor %}
                                     <li>
                                         <a class="page-link next {% if not doctors.has_next %} disabled {% endif %}"
-                                           href="{% if doctors.has_next %}{% url 'doctor_list_paginator' page=doctors.next_page_number %}{% else %}# {% endif %}">
+                                           href="{% if next_page %}{% url 'doctor_list_paginator' page=next_page %}{% else %}# {% endif %}">
                                             Next
                                         </a>
                                     </li>
