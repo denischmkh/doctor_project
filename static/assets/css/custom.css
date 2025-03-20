@@ -57181,7 +57181,6 @@ ul li {
 .grid-overlay-item .fav-icon i {
   color: #E3E6EC;
 }
-
 .card-img-hover {
   transition: 0.5s all;
   overflow: hidden;
@@ -57193,9 +57192,9 @@ ul li {
 .card-img-hover img {
   transition: 0.5s all;
   border-radius: 10px 10px 0 0;
-  width: 300px;  /* Устанавливаем точную ширину */
-  height: 250px; /* Устанавливаем точную высоту */
-  object-fit: cover; /* Изображение будет растягиваться или сжиматься, чтобы заполнить контейнер */
+  width: 100%;  /* Растягиваем изображение по ширине контейнера */
+  height: 100%; /* Растягиваем изображение по высоте контейнера */
+  object-fit: fill; /* Изображение будет растягиваться по ширине и высоте, заполняя контейнер */
 }
 
 .card-img-hover:hover img {
