@@ -640,9 +640,11 @@
 											<i class="fas fa-star"></i>
 											<span class="d-inline-block average-rating">(35)</span>
 										</div>
+										{% if doctor.clinic %}
 										<div class="clinic-details">
 											<p class="doc-location"><i class="fas fa-map-marker-alt"></i>{{doctor.clinic}}<a href="javascript:void(0);">Get Directions</a></p>
 										</div>
+										{% endif %}
 										<div class="clinic-services">
 											{% for specialisation in doctor.specialisations.all %}
 											<span>{{specialisation.name}}</span>
