@@ -10,6 +10,7 @@ def doctor_list(request, page=1):
     all_specializations = Specialisation.objects.all()
     for specialization in all_specializations:
         unique_specializations.add(specialization.name)
+        print(specialization.name)
     print(unique_specializations)
     print(len(unique_specializations))
 
