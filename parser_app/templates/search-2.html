@@ -1420,7 +1420,7 @@
                                 <ul>
                                     <!-- Prev button -->
                                     <li class="page-item {% if not previous_page %}disabled{% endif %}">
-                                        <a class="page-link" href="{% if previous_page %}{% url 'doctor_list_paginator' page=previous_page %}{% else %}# {% endif %}">
+                                        <a class="page-link prev" href="{% if previous_page %}{% url 'doctor_list_paginator' page=previous_page %}{% else %}# {% endif %}">
                                             Prev
                                         </a>
                                     </li>
@@ -1445,7 +1445,7 @@
 
                                     <!-- Next button -->
                                     <li class="page-item {% if not next_page %}disabled{% endif %}">
-                                        <a class="page-link" href="{% if next_page %}{% url 'doctor_list_paginator' page=next_page %}{% else %}# {% endif %}">
+                                        <a class="page-link next" href="{% if next_page %}{% url 'doctor_list_paginator' page=next_page %}{% else %}# {% endif %}">
                                             Next
                                         </a>
                                     </li>
