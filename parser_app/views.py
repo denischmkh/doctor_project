@@ -1,10 +1,17 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
-from .models import Doctor
+from .models import Doctor, Specialisation
 from .utils import get_specialists_count
 
 
 def doctor_list(request, page=1):
+
+    unique_specializations = set()
+    all_specializations = Specialisation.objects.all()
+    for specialization in all_specializations:
+        unique_specializations.add(specialization.name)
+    print(unique_specializations)
+
     per_page = 7
     end = page * per_page
     start = end - per_page
