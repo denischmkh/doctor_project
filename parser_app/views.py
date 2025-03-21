@@ -12,7 +12,7 @@ def doctor_list(request, page=1):
         previous_page = None
     else:
         previous_page = page - 1
-    doctors = Doctor.objects.filter(photo__isnull=False)[start:end]
+    doctors = Doctor.objects.filter(photo_url__isnull=False)[start:end]
 
     if len(doctors) < per_page - 1:
         next_page = None
