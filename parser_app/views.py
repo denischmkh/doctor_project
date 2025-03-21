@@ -20,14 +20,6 @@ def doctor_list(request, page=1):
 
     doctors_count = len(Doctor.objects.all())
 
-    for doctor in doctors:
-        specializations = doctor.specialisations.all()
-        for specialization in specializations:
-            if specialization.name.startswith('{') and specialization.name.endswith('}'):
-                specialization.name = specialization.name[1:-1].split(', ')[0]
-                specialization.save()
-
-
 
 
     urology_count = get_specialists_count(doctors=doctors, specialization_name='Urology')
@@ -58,9 +50,4 @@ def doctor_list(request, page=1):
 
 def doctor_profile(request, id: int):
     doctor = get_object_or_404(Doctor, id=id)
-    specializations = doctor.specialisations.all()
-    for specialization in specializations:
-        if specialization.name.startswith('{') and specialization.name.endswith('}'):
-            specialization.name = specialization.name[1:-1].split(', ')[0]
-            specialization.save()
     return render(request, 'doctor-profile-2.html', {'doctor': doctor})
