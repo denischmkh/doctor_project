@@ -36,6 +36,7 @@ for file in files:
             except DataError:
                 "Неподходящее значение"
                 continue
+            print(f'Doctor {new_doctor.name} has been added to db')
 
             # Обработка specialties
             specialties = []
