@@ -1361,12 +1361,15 @@
                                                                     {% endif %}
                                                                 {% endfor %}
                                                             </p>
+                                                            {% if doctor.clinic %}
                                                             <p class="d-flex align-items-center mb-0 fs-14"><i
                                                                     class="isax isax-location me-2"></i>{{doctor.clinic}}
+
                                                                 <a href="{{doctor.profile_url}}"
                                                                    class="text-primary text-decoration-underline ms-2">Get
                                                                     Direction</a>
                                                             </p>
+                                                            {% endif %}
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
