@@ -622,7 +622,7 @@
 							<div class="doctor-widget">
 								<div class="doc-info-left">
 									<div class="doctor-img">
-										<img src="{{doctor.photo_url}}" class="img-fluid" alt="User Image">
+										<img src="{% if doctor.photo_url %}{{doctor.photo_url}} {% else %} https://www.swissmedical.net/site/templates/public/img/fallback-doctor.png {% endif %}" class="img-fluid" alt="User Image">
 									</div>
 									<div class="doc-info-cont">
 										<h4 class="doc-name">{{doctor.name}}</h4>
@@ -641,7 +641,7 @@
 											<span class="d-inline-block average-rating">(35)</span>
 										</div>
 										<div class="clinic-details">
-											<p class="doc-location"><i class="fas fa-map-marker-alt"></i>{{doctor.address}}<a href="javascript:void(0);">Get Directions</a></p>
+											<p class="doc-location"><i class="fas fa-map-marker-alt"></i>{{doctor.clinic}}<a href="javascript:void(0);">Get Directions</a></p>
 										</div>
 										<div class="clinic-services">
 											{% for specialisation in doctor.specialisations.all %}
