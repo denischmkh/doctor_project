@@ -655,26 +655,47 @@
 								<div class="doc-info-right">
 									<div class="clini-infos">
 										<ul>
-											<li><i class="far fa-thumbs-up"></i> 99%</li>
-											<li><i class="far fa-comment"></i> 35 Feedback</li>
-											<li><i class="fas fa-map-marker-alt"></i> {% if doctor.address %} {{doctor.address}} {% elif doctor.clinic %} {{doctor.clinic}} {% else %} Empty location {% endif %}</li>
-											<li><i class="far fa-money-bill-alt"></i> $100 per hour </li>
+											{% if doctor.email %}
+											<li><i class="fa-solid fa-envelope"></i> {{doctor.email}}</li>
+											{% endif %}
+
+											{% if doctor.phone %}
+											<li><i class="fa-solid fa-phone-volume"></i> {{doctor.phone}}</li>
+											{% endif %}
+
+											{% if doctor.address %}
+												<li><i class="fas fa-map-marker-alt"></i> {{ doctor.address }}</li>
+											{% elif doctor.clinic %}
+												<li>{{ doctor.clic }}</li>
+											{% endif %}
+
+											{% if doctor.fax %}
+											<li><i class="fa-solid fa-fax"></i> {{doctor.fax}}</li>
+											{% endif %}
+
+											{% if doctor.instagram %}
+											<li><i class="fa-brands fa-instagram"></i> {{doctor.instagram}}</li>
+											{% endif %}
+
+											{% if doctor.facebook %}
+											<li><i class="fa-brands fa-facebook"></i> {{doctor.facebook}}</li>
+											{% endif %}
+
+											{% if doctor.twitter %}
+											<li><i class="fa-brands fa-twitter"></i> {{doctor.twitter}}</li>
+											{% endif %}
+
+											{% if doctor.linkedin %}
+											<li><i class="fa-brands fa-linkedin"></i> {{doctor.linkedin}}</li>
+											{% endif %}
+
+											{% if doctor.youtube %}
+											<li><i class="fa-brands fa-youtube"></i> {{doctor.youtube}}</li>
+											{% endif %}
+
 										</ul>
 									</div>
-									<div class="doctor-action">
-										<a href="javascript:void(0)" class="btn btn-white fav-btn">
-											<i class="far fa-bookmark"></i>
-										</a>
-										<a href="chat.html" class="btn btn-white msg-btn">
-											<i class="far fa-comment-alt"></i>
-										</a>
-										<a href="voice-call.html" class="btn btn-white call-btn">
-											<i class="fas fa-phone"></i>
-										</a>
-										<a href="video-call.html" class="btn btn-white call-btn">
-											<i class="fas fa-video"></i>
-										</a>
-									</div>
+
 									<div class="clinic-booking">
 										<a class="apt-btn" href="booking.html">Book Appointment</a>
 									</div>
