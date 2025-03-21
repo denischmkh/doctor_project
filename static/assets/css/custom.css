@@ -57204,7 +57204,12 @@ ul li {
   object-fit: none;
 }
 
-
+.youtube-item {
+    white-space: nowrap;         /* Запрещаем перенос строки */
+    overflow: hidden;            /* Обрезаем текст, который выходит за пределы контейнера */
+    text-overflow: ellipsis;     /* Добавляем многоточие для обрезанного текста */
+    max-width: 200px;            /* Устанавливаем максимальную ширину для элемента */
+}
 
 
 #filter_inputs {

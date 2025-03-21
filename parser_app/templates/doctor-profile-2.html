@@ -656,41 +656,41 @@
 									<div class="clini-infos">
 										<ul>
 											{% if doctor.email %}
-											<li><i class="fa-solid fa-envelope"></i> {{doctor.email}}</li>
+											<li class="youtube-item"><i class="fa-solid fa-envelope"></i> {{doctor.email}}</li>
 											{% endif %}
 
 											{% if doctor.phone %}
-											<li><i class="fa-solid fa-phone-volume"></i> {{doctor.phone}}</li>
+											<li class="youtube-item"><i class="fa-solid fa-phone-volume"></i> {{doctor.phone}}</li>
 											{% endif %}
 
 											{% if doctor.address %}
-												<li><i class="fas fa-map-marker-alt"></i> {{ doctor.address }}</li>
+												<li class="youtube-item"><i class="fas fa-map-marker-alt"></i> {{ doctor.address }}</li>
 											{% elif doctor.clinic %}
-												<li>{{ doctor.clic }}</li>
+												<li class="youtube-item">{{ doctor.clic }}</li>
 											{% endif %}
 
 											{% if doctor.fax %}
-											<li><i class="fa-solid fa-fax"></i> {{doctor.fax}}</li>
+											<li class="youtube-item"><i class="fa-solid fa-fax"></i> {{doctor.fax}}</li>
 											{% endif %}
 
 											{% if doctor.instagram %}
-											<li><i class="fa-brands fa-instagram"></i> {{doctor.instagram}}</li>
+											<li class="youtube-item"><i class="fa-brands fa-instagram"></i> {{doctor.instagram}}</li>
 											{% endif %}
 
 											{% if doctor.facebook %}
-											<li><i class="fa-brands fa-facebook"></i> {{doctor.facebook}}</li>
+											<li class="youtube-item"><i class="fa-brands fa-facebook"></i> {{doctor.facebook}}</li>
 											{% endif %}
 
 											{% if doctor.twitter %}
-											<li><i class="fa-brands fa-twitter"></i> {{doctor.twitter}}</li>
+											<li class="youtube-item"><i class="fa-brands fa-twitter"></i> {{doctor.twitter}}</li>
 											{% endif %}
 
 											{% if doctor.linkedin %}
-											<li><i class="fa-brands fa-linkedin"></i> {{doctor.linkedin}}</li>
+											<li class="youtube-item"><i class="fa-brands fa-linkedin"></i> {{doctor.linkedin}}</li>
 											{% endif %}
 
 											{% if doctor.youtube %}
-											<li><i class="fa-brands fa-youtube"></i> {{doctor.youtube}}</li>
+											<li class="youtube-item"><i class="fa-brands fa-youtube"></i> {{doctor.youtube}}</li>
 											{% endif %}
 
 										</ul>
