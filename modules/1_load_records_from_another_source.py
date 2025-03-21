@@ -33,7 +33,7 @@ for file in files:
             # Обработка specialties
             specialties = []
             try:
-                for specialty in row.get('specialty')[3:-2].split(',') if row.get('specialty') != "NULL" else None:
+                for specialty in row.get('specialty')[2:-2].split(',') if row.get('specialty') != "NULL" else None:
                     try:
                         spec = Specialisation(name=specialty)
                     except AttributeError:
