@@ -9,7 +9,12 @@ def doctor_list(request, page=1):
     unique_specializations = set()
     all_specializations = Specialisation.objects.all()
     for specialization in all_specializations:
-        unique_specializations.add(specialization.name)
+        spec = specialization.name
+        if '"' in spec:
+            spec.replace('"', '')
+        specialization.name = spec
+        specialization.save()
+        unique_specializations.add(spec)
     print(unique_specializations)
     print(len(unique_specializations))
 
