@@ -11,6 +11,7 @@ def doctor_list(request, page=1):
     for specialization in all_specializations:
         unique_specializations.add(specialization.name)
     print(unique_specializations)
+    print(len(unique_specializations))
 
     per_page = 7
     end = page * per_page
