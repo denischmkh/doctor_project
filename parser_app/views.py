@@ -1,5 +1,6 @@
 import json
 import urllib
+from urllib.parse import urlencode
 
 from django.db.models import Q
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
@@ -58,6 +59,9 @@ def doctor_list(request: HttpRequest, page=1) :
 
         languages = [el.name for el in Language.objects.all()]
 
+        query_params = [('filter', value) for value in selected_filters]
+        query_string = urlencode(query_params, doseq=True)
+
         return render(request, 'search-2.html', {'doctors': doctors[start:end],
                                                  'doctors_count': doctors_count,
                                                  'previous_page': previous_page,
@@ -66,7 +70,8 @@ def doctor_list(request: HttpRequest, page=1) :
                                                  'selected_filters': selected_filters,
                                                  'specializations': necessary_specializations,
                                                  'languages': languages,
-                                                 'genders': genders})
+                                                 'genders': genders,
+                                                 'query_string': query_string})
 
 
 def doctor_profile(request, id: int):
@@ -89,7 +94,7 @@ def select_filters(request: HttpRequest):
         query_params = [('filter', value) for value in params]
 
         # Преобразуем их в строку query параметров
-        query_string = urllib.parse.urlencode(query_params, doseq=True)
+        query_string = urlencode(query_params, doseq=True)
 
         # Формируем URL с добавлением query строки
         url = f"{reverse('doctor_list')}?{query_string}"
