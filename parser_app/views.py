@@ -23,7 +23,6 @@ genders = ['M', 'F']
 def doctor_list(request: HttpRequest, page=1) :
     if request.method == 'GET':
         selected_filters = request.GET.getlist('filter')
-        print(selected_filters)
         per_page = 10
         end = page * per_page
         start = end - per_page
@@ -83,8 +82,6 @@ def select_filters(request: HttpRequest):
     if request.method == 'POST':
         # Получаем все значения из POST-запроса
         params = list(request.POST.values())
-        print(params)
-
         # Если только одно значение, просто редиректим
         if len(params) == 1:
             response = HttpResponseRedirect(reverse('doctor_list'))
