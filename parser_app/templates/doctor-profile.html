@@ -21,35 +21,38 @@
 		<meta name="twitter:image" content="assets/img/preview-banner.jpg">	
 		
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="/static/assets/img/favicon.png" type="image/x-icon">
+		{% load static %}
 
-		<!-- Apple Touch Icon -->
-		<link rel="apple-touch-icon" sizes="180x180" href="/static/assets/img/apple-touch-icon.png">
+<!-- Favicon -->
+<link rel="shortcut icon" href="{% static 'assets/img/favicon.png' %}" type="image/x-icon">
 
-		<!-- Theme Settings Js -->
-		<script src="/static/assets/js/theme-script.js"></script>
-		
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
-		
-		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="/static/assets/plugins/fontawesome/css/fontawesome.min.css">
-		<link rel="stylesheet" href="/static/assets/plugins/fontawesome/css/all.min.css">
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/img/apple-touch-icon.png' %}">
 
-		<!-- Iconsax CSS-->
-		<link rel="stylesheet" href="/static/assets/css/iconsax.css">
+<!-- Theme Settings JS -->
+<script src="{% static 'assets/js/theme-script.js' %}"></script>
 
-		<!-- Feathericon CSS -->
-    	<link rel="stylesheet" href="/static/assets/css/feather.css">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
 
-		<!-- Owl Carousel CSS -->
-		<link rel="stylesheet" href="/static/assets/css/owl.carousel.min.css">
-		
-		<!-- Fancybox CSS -->
-		<link rel="stylesheet" href="/static/assets/plugins/fancybox/jquery.fancybox.min.css">
-		
-		<!-- Main CSS -->
-		<link rel="stylesheet" href="/static/assets/css/custom.css">
+<!-- Fontawesome CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+<!-- Iconsax CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/iconsax.css' %}">
+
+<!-- Feathericon CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+
+<!-- Fancybox CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/fancybox/jquery.fancybox.min.css' %}">
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
 	
 	</head>
 	<body>
@@ -70,14 +73,16 @@
 								</span>
 							</a>
 							<a href="index.html" class="navbar-brand logo">
-								<img src="/static/assets/img/logo.svg" class="img-fluid" alt="Logo">
+								<img src="{% static 'assets/img/logo.svg' %}" class="img-fluid" alt="Logo">
+
 							</a>
 						</div>
 						<div class="header-menu">
 							<div class="main-menu-wrapper">
 								<div class="menu-header">
 									<a href="index.html" class="menu-logo">
-										<img src="/static/assets/img/logo.svg" class="img-fluid" alt="Logo">
+										<img src="{% static 'assets/img/logo.svg' %}" class="img-fluid" alt="Logo">
+
 									</a>
 									<a id="menu_close" class="menu-close" href="javascript:void(0);">
 										<i class="fas fa-times"></i>
@@ -624,13 +629,20 @@
 							<div class="doctor-widget doctor-profile-two">
 								<div class="doc-info-left">
 									<div class="doctor-img">
-										<img src="assets/img/doctors/doc-profile-02.jpg" class="img-fluid" alt="User Image">
+										<img src="{{doctor.photo_url}}" class="img-fluid" alt="User Image">
 									</div>
 									<div class="doc-info-cont">
 										<span class="badge doc-avail-badge"><i class="fa-solid fa-circle"></i>Available </span>
-										<h4 class="doc-name">Dr.Martin Adian <img src="assets/img/icons/badge-check.svg" alt="Img"><span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>Dentist</span></h4>
-										<p>BDS, MDS - Oral & Maxillofacial Surgery</p>
-										<p>Speaks : English, French, German</p>
+										<h4 class="doc-name">{{doctor.name}} <img src="{% static 'assets/img/icons/badge-check.svg' %}" alt="Img">
+												<span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>Dentist</span></h4>
+										<p>{{ doctor.specializations.first.name }}</p>
+										<p>Speaks:
+											{% for language in doctor.languages.all %}
+												{{ language.name }}{% if not forloop.last %}, {% endif %}
+											{% empty %}
+												No languages listed.
+											{% endfor %}
+										</p>
 										<p class="address-detail"><span class="loc-icon"><i class="feather-map-pin"></i></span>No 14, 15th Cross, Old Trafford, UK <span class="view-text">( View Location )</span></p>
 									</div>
 								</div>
