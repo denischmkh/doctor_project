@@ -56,6 +56,7 @@ def doctor_list(request: HttpRequest, page=1) :
                                                  'next_page': next_page,
                                                  'page': page,
                                                  'selected_filters': selected_filters,
+                                                 'specializations': necessary_specializations,
                                                  'languages': languages,
                                                  'genders': genders})
 
@@ -68,7 +69,7 @@ def doctor_profile(request, id: int):
 def select_filters(request: HttpRequest):
     if request.method == 'POST':
         # Получаем все значения из POST-запроса
-        params = request.POST.values()
+        params = list(request.POST.values())
 
         # Если только одно значение, просто редиректим
         if len(params) == 1:
