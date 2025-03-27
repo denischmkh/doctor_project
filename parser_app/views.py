@@ -1,4 +1,5 @@
 import json
+import urllib
 
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -19,27 +20,8 @@ genders = ['M', 'F']
 
 def doctor_list(request: HttpRequest, page=1) :
     if request.method == 'GET':
-        if request.COOKIES.get('selected_specializations'):
-            selected_specializations = json.loads(request.COOKIES.get('selected_specializations'))
-        else:
-            selected_specializations = []
-        if request.COOKIES.get('selected_languages'):
-            selected_languages = json.loads(request.COOKIES.get('selected_languages'))
-        else:
-            selected_languages = []
-
-        if request.COOKIES.get('selected_genders'):
-            selected_genders = json.loads(request.COOKIES.get('selected_languages'))
-        else:
-            selected_genders = []
-
-        unique_specializations = set()
-        all_specializations = Specialisation.objects.all()
-        for specialization in all_specializations:
-            unique_specializations.add(specialization.name)
-
-
-
+        selected_filters = request.GET.getlist('filter')
+        print(selected_filters)
         per_page = 10
         end = page * per_page
         start = end - per_page
@@ -50,17 +32,6 @@ def doctor_list(request: HttpRequest, page=1) :
 
         doctors = []
 
-        if selected_specializations:
-            for specialization in selected_specializations:
-                spec = Specialisation.objects.filter(name=specialization).first()
-                if spec:
-                    doctors.extend(Doctor.objects.filter(specialisations=spec))
-
-        if selected_genders:
-            doctors = [doctor for doctor in doctors if doctor.gender in selected_genders]
-
-        if selected_languages:
-            doctors = [doctor for doctor in doctors if doctor.languages.filter(name__in=selected_languages).exists()]
 
 
 
@@ -84,10 +55,7 @@ def doctor_list(request: HttpRequest, page=1) :
                                                  'previous_page': previous_page,
                                                  'next_page': next_page,
                                                  'page': page,
-                                                 'specializations': necessary_specializations,
-                                                 'selected_specializations': selected_specializations,
-                                                 'selected_languages': selected_languages,
-                                                 'selected_genders': selected_genders,
+                                                 'selected_filters': selected_filters,
                                                  'languages': languages,
                                                  'genders': genders})
 
@@ -97,26 +65,29 @@ def doctor_profile(request, id: int):
     return render(request, 'doctor-profile-2.html', {'doctor': doctor})
 
 
-def select_specializations(request: HttpRequest):
+def select_filters(request: HttpRequest):
     if request.method == 'POST':
+        # Получаем все значения из POST-запроса
         params = request.POST.values()
-        response = HttpResponseRedirect(reverse('doctor_list'))
-        specializations = json.dumps(params)
-        response.set_cookie('selected_specializations', specializations, max_age=3600)
-        return response
 
-def select_languages(request: HttpRequest):
-    if request.method == 'POST':
-        params = request.POST.values()
-        response = HttpResponseRedirect(reverse('doctor_list'))
-        languages = json.dumps(params)
-        response.set_cookie('selected_languages', languages, max_age=3600)
-        return response
+        # Если только одно значение, просто редиректим
+        if len(params) == 1:
+            response = HttpResponseRedirect(reverse('doctor_list'))
+            return response
 
-def select_gender(request: HttpRequest):
-    if request.method == 'POST':
-        params = request.POST.values()
-        response = HttpResponseRedirect(reverse('doctor_list'))
-        languages = json.dumps(params)
-        response.set_cookie('selected_genders', languages, max_age=3600)
-        return response
+        # Формируем список фильтров с одинаковым именем "filter"
+        try:
+            query_params = [('filter', value) for value in params[1:]]
+        except IndexError:
+            response = HttpResponseRedirect(reverse('doctor_list'))
+            return response
+
+        # Преобразуем их в строку query параметров
+        query_string = urllib.parse.urlencode(query_params, doseq=True)
+
+        # Формируем URL с добавлением query строки
+        url = f"{reverse('doctor_list')}?{query_string}"
+
+        # Переадресовываем на новый URL с query параметрами
+        return HttpResponseRedirect(url)
+
