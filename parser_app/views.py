@@ -1,6 +1,7 @@
 import json
 import urllib
 
+from django.db.models import Q
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
@@ -30,14 +31,21 @@ def doctor_list(request: HttpRequest, page=1) :
         else:
             previous_page = page - 1
 
-        doctors = []
+        query = Q()
 
+        # Если выбран хотя бы один фильтр, формируем условия для фильтрации
+        if selected_filters:
+            # Добавляем фильтры для специализаций
+            query |= Q(specialisations__name__in=selected_filters)
 
+            # Добавляем фильтры для языков
+            query |= Q(languages__name__in=selected_filters)
 
+            # Добавляем фильтры для гендера
+            query |= Q(gender__in=selected_filters)
 
-
-        if not doctors:
-            doctors = Doctor.objects.all()[start:end]
+        # Применяем фильтрацию с комбинированными условиями
+        doctors = Doctor.objects.filter(query).distinct()
 
 
 
