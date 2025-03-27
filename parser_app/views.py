@@ -78,6 +78,7 @@ def select_filters(request: HttpRequest):
     if request.method == 'POST':
         # Получаем все значения из POST-запроса
         params = list(request.POST.values())
+        print(params)
 
         # Если только одно значение, просто редиректим
         if len(params) == 1:
