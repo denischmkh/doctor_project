@@ -75,7 +75,7 @@ def doctor_list(request: HttpRequest, page=1) :
 
 def doctor_profile(request, id: int):
     doctor = get_object_or_404(Doctor, id=id)
-    return render(request, 'doctor-profile-2.html', {'doctor': doctor})
+    return render(request, 'doctor-profile.html', {'doctor': doctor})
 
 
 def select_filters(request: HttpRequest):
