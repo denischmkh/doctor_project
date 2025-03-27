@@ -856,7 +856,12 @@
                             <div class="card doctor-list-card">
                                 <div class="d-md-flex align-items-center">
                                     <div class="card-img card-img-hover">
-                                        <a href="{% url 'doctor_profile' doctor.id %}"><img src="{% if doctor.photo_url %}{{ doctor.photo_url }}{% else %}https://www.swissmedical.net/site/templates/public/img/fallback-doctor.png{% endif %}" width="512" height="606">
+                                        <a href="{% url 'doctor_profile' doctor.id %}">
+                                                <img src="{% if doctor.photo_url %}{{ doctor.photo_url }}{% else %}https://www.swissmedical.net/site/templates/public/img/fallback-doctor.png{% endif %}"
+                                                     width="512"
+                                                     height="606"
+                                                     style="object-fit: cover; width: 512px; height: 606px;">
+                                                        </a>
 
                                         <div class="grid-overlay-item d-flex align-items-center justify-content-between">
                                             <span class="badge bg-orange"><i
