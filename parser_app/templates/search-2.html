@@ -703,8 +703,9 @@
                     <div class="card filter-lists">
                         <div class="card-header">
                             <div class="d-flex align-items-center filter-head justify-content-between">
-                                <h4>Filter</h4>
-                            </div>
+									<h4>Filter</h4>
+									<a href="{% url 'doctor_list' %}" class="text-secondary text-decoration-underline">Clear All</a>
+								</div>
                         </div>
                         <div class="card-body p-0">
                             <form method="POST" action="{% url 'select_filters' %}">
