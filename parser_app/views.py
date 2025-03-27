@@ -85,11 +85,7 @@ def select_filters(request: HttpRequest):
             return response
 
         # Формируем список фильтров с одинаковым именем "filter"
-        try:
-            query_params = [('filter', value) for value in params[1:]]
-        except IndexError:
-            response = HttpResponseRedirect(reverse('doctor_list'))
-            return response
+        query_params = [('filter', value) for value in params]
 
         # Преобразуем их в строку query параметров
         query_string = urllib.parse.urlencode(query_params, doseq=True)
