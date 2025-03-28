@@ -91,12 +91,13 @@ def doctor_profile(request, id: int):
         pass
     specialisations = doctor.specialisations.all()
     memberships = doctor.memberships.all()
-
+    awards = doctor.awards.all()
     return render(request, 'doctor-profile.html', {'doctor': doctor,
-                                                   'awards': awards_count,
+                                                   'awards_count': awards_count,
                                                    'working_from': min(years_experience) if years_experience else None,
                                                    'specialisations': specialisations,
-                                                   'memberships': memberships})
+                                                   'memberships': memberships,
+                                                   'awards': awards})
 
 
 def select_filters(request: HttpRequest):

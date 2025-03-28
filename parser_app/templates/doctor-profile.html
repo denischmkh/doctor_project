@@ -643,7 +643,7 @@
 												No languages listed.
 											{% endfor %}
 										</p>
-										<p class="address-detail"><span class="loc-icon"><i class="feather-map-pin"></i></span>No 14, 15th Cross, Old Trafford, UK <span class="view-text">( View Location )</span></p>
+										<p class="address-detail"><span class="loc-icon"><i class="feather-map-pin"></i></span>{{doctor.clinic}} <span class="view-text">( View Location )</span></p>
 									</div>
 								</div>
 								<div class="doc-info-right">
@@ -705,7 +705,7 @@
 									{% endif %}
 									<li>
 										<span class="bg-green"><img src="{% static 'assets/img/icons/bookmark-star.svg' %}" alt="Img"></span>
-										{{awards}} Awards
+										{{awards_count}} Awards
 									</li>
 
 								</ul>
@@ -1005,41 +1005,14 @@
 									<div class="nav nav-container slide-3"></div>
 								</div>
 								<div class="awards-slider owl-carousel">
+									{% for award in awards %}
 									<div class="award-card">
 										<div class="award-card-info">
 											<span><img src="assets/img/icons/bookmark-star.svg" alt="Img"></span>
-											<h5>Award Name (2021)</h5>
-											<p>evidence based (Dietitians, Physiotherapist, Occupational therapist and Clinical)</p>
+											<h5>{{award.name}} ({{award.year}})</h5>
 										</div>
 									</div>
-									<div class="award-card">
-										<div class="award-card-info">
-											<span><img src="assets/img/icons/bookmark-star.svg" alt="Img"></span>
-											<h5>Award Name (2022)</h5>
-											<p>evidence based (Dietitians, Physiotherapist, Occupational therapist and Clinical)</p>
-										</div>
-									</div>
-									<div class="award-card">
-										<div class="award-card-info">
-											<span><img src="assets/img/icons/bookmark-star.svg" alt="Img"></span>
-											<h5>Award Name (2023)</h5>
-											<p>evidence based (Dietitians, Physiotherapist, Occupational therapist and Clinical)</p>
-										</div>
-									</div>
-									<div class="award-card">
-										<div class="award-card-info">
-											<span><img src="assets/img/icons/bookmark-star.svg" alt="Img"></span>
-											<h5>Award Name (2024)</h5>
-											<p>evidence based (Dietitians, Physiotherapist, Occupational therapist and Clinical)</p>
-										</div>
-									</div>
-									<div class="award-card">
-										<div class="award-card-info">
-											<span><img src="assets/img/icons/bookmark-star.svg" alt="Img"></span>
-											<h5>Award Name (2020)</h5>
-											<p>evidence based (Dietitians, Physiotherapist, Occupational therapist and Clinical)</p>
-										</div>
-									</div>
+									{% endfor %}
 								</div>
 							</div>
 							<div class="doc-information-details" id="bussiness_hour">
