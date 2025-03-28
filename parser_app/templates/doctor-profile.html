@@ -991,20 +991,13 @@
 								<div class="detail-title">
 									<h4>Membership</h4>
 								</div>
+								{% for membership in memberships %}
 								<div class="member-ship-info">
 									<span class="mem-check"><i class="fa-solid fa-check"></i></span>
-									<p>Affiliate members include related allied health professionals- evidence based 
-										(Dietitians, Physiotherapist, Occupational therapist and Clinical Psychologist) who will 
-										team up with allopathic physicians to 
-										support the Lifestyle Medicine movement in India through ISLM.
+									<p>{{membership.name}}
 									</p>
 								</div>
-								<div class="member-ship-info mb-0">
-									<span class="mem-check"><i class="fa-solid fa-check"></i></span>
-									<p>Physician members include the allopathic doctors only (MBBS, MD, MS, DM, MCH, DNB or equivalent degree) 
-										who hold a valid medical license as recognized by the Medical Council of India.
-									</p>
-								</div>
+								{% endfor %}
 							</div>
 							<div class="doc-information-details" id="awards">
 								<div class="detail-title slider-nav d-flex justify-content-between align-items-center">
