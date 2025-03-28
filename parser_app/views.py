@@ -18,7 +18,10 @@ necessary_specializations = ['Oral surgery', 'Physiologi', 'Paediatrics', 'Infec
                              'Ultraschall', 'Endocrinology', 'Eye surgery', 'Orthopädie']
 
 
-genders = ['M', 'F']
+genders = {
+        'M': 'Male',
+        'F': 'Female',
+    }
 
 def doctor_list(request: HttpRequest, page=1) :
     if request.method == 'GET':

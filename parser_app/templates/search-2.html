@@ -758,16 +758,16 @@
                                     </div>
                                     <div id="collapse2" class="accordion-collapse show" aria-labelledby="heading2">
                                         <div class="accordion-body pt-3">
-                                            {% for gender in genders %}
+                                            {% for key, value in genders.items %}
                                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="{{gender}}" value="{{ gender }}" id="checkbox-{{ forloop.counter }}"
-                                                            {% if gender in selected_filters %}
+                                                        <input class="form-check-input" type="checkbox" name="gender" value="{{ key }}" id="checkbox-{{ forloop.counter }}"
+                                                            {% if key in selected_filters %}
                                                                 checked
                                                             {% endif %}
                                                         >
                                                         <label class="form-check-label" for="checkbox-{{ forloop.counter }}">
-                                                            {{ gender }}
+                                                            {{ value }}  <!-- Показываем полное название -->
                                                         </label>
                                                     </div>
                                                 </div>
