@@ -842,12 +842,9 @@
 									<h4>Speciality</h4>
 								</div>
 								<ul class="special-links">
-									<li><a href="#">Orthopedic Consultation</a></li>
-									<li><a href="#">Delivery Blocks</a></li>
-									<li><a href="#">Ultrasound Injection</a></li>
-									<li><a href="#">Tooth Bleaching</a></li>
-									<li><a href="#">Tooth Bleaching</a></li>
-									<li><a href="#">Cosmetic</a></li>
+									{% for specialisation in specialisations %}
+										<li><a href="#">{{ specialisation.name }}</a></li>
+									{% endfor %}
 								</ul>
 							</div>
 							<div class="doc-information-details" id="services">
