@@ -89,10 +89,12 @@ def doctor_profile(request, id: int):
             years_experience.append(int("".join(digits)))
     else:
         pass
+    specialisations = doctor.specialisations.all()
 
     return render(request, 'doctor-profile.html', {'doctor': doctor,
                                                    'awards': awards_count,
-                                                   'working_from': min(years_experience) if years_experience else None})
+                                                   'working_from': min(years_experience) if years_experience else None,
+                                                   'specialisations': specialisations})
 
 
 def select_filters(request: HttpRequest):
