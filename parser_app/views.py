@@ -75,7 +75,20 @@ def doctor_list(request: HttpRequest, page=1) :
 
 def doctor_profile(request, id: int):
     doctor = get_object_or_404(Doctor, id=id)
-    return render(request, 'doctor-profile.html', {'doctor': doctor})
+    awards_count = doctor.awards.count()
+    years_experience = []
+    work_experience = doctor.work_experience.all()
+    for experience in work_experience:
+        year_str = experience.year
+        digits = []
+        for el in year_str:
+            if el.isdigit():
+                digits.append(el)
+        years_experience.append(int("".join(digits)))
+
+    return render(request, 'doctor-profile.html', {'doctor': doctor,
+                                                   'awards': awards_count,
+                                                   'working_from': min(years_experience)})
 
 
 def select_filters(request: HttpRequest):
