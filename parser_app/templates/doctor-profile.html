@@ -634,9 +634,7 @@
 									<div class="doc-info-cont">
 										<span class="badge doc-avail-badge"><i class="fa-solid fa-circle"></i>Available </span>
 										<h4 class="doc-name">{{doctor.name}} <img src="{% static 'assets/img/icons/badge-check.svg' %}" alt="Img">
-												<span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>{% if doctor.specializations.first %}
-																															{{ doctor.specializations.first.name }}
-																														{% endif %}</span></h4>
+												<span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>{{ main_speciality }}</span></h4>
 										<p>{{ doctor.specializations.first.name }}</p>
 										<p>Speaks:
 											{% for language in doctor.languages.all %}
