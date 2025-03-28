@@ -697,10 +697,12 @@
 										<span class="bg-blue"><img src="{% static 'assets/img/icons/calendar3.svg' %}" alt="Img"></span>
 										Nearly 200+ Appointment Booked
 									</li>
+									{% if working_from %}
 									<li>
 										<span class="bg-dark-blue"><img src="{% static 'assets/img/icons/bullseye.svg' %}" alt="Img"></span>
 										In Practice for from {{working_from}} year
 									</li>
+									{% endif %}
 									<li>
 										<span class="bg-green"><img src="{% static 'assets/img/icons/bookmark-star.svg' %}" alt="Img"></span>
 										{{awards}} Awards
