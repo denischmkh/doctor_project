@@ -643,7 +643,7 @@
 												No languages listed.
 											{% endfor %}
 										</p>
-										<p class="address-detail"><span class="loc-icon"><i class="feather-map-pin"></i></span>{{doctor.clinic}} <span class="view-text">( View Location )</span></p>
+										<p class="address-detail"><span class="loc-icon"><i class="feather-map-pin"></i></span>{{doctor.address}} <span class="view-text">( View Location )</span></p>
 									</div>
 								</div>
 								<div class="doc-info-right">
@@ -668,7 +668,7 @@
 										<li>
 											<div class="hospital-info">
 												<span class="list-icon"><img src="{% static 'assets/img/icons/building-icon.svg' %}" alt="Img"></span>
-												<p>Royal Prince Alfred Hospital</p>
+												<p>{{doctor.clinic}}</p>
 											</div>
 											<h5 class="accept-text"><span><i class="feather-check"></i></span>Accepting New Patients</h5>
 										</li>
