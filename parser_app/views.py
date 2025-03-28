@@ -78,6 +78,7 @@ def doctor_profile(request, id: int):
     awards_count = doctor.awards.count()
     years_experience = []
     work_experience = doctor.work_experience.all()
+    print(work_experience)
     if work_experience:
         for experience in work_experience:
             year_str = experience.year
@@ -91,7 +92,7 @@ def doctor_profile(request, id: int):
 
     return render(request, 'doctor-profile.html', {'doctor': doctor,
                                                    'awards': awards_count,
-                                                   'working_from': min(years_experience)})
+                                                   'working_from': min(years_experience) if years_experience else None})
 
 
 def select_filters(request: HttpRequest):
