@@ -78,13 +78,16 @@ def doctor_profile(request, id: int):
     awards_count = doctor.awards.count()
     years_experience = []
     work_experience = doctor.work_experience.all()
-    for experience in work_experience:
-        year_str = experience.year
-        digits = []
-        for el in year_str:
-            if el.isdigit():
-                digits.append(el)
-        years_experience.append(int("".join(digits)))
+    if work_experience:
+        for experience in work_experience:
+            year_str = experience.year
+            digits = []
+            for el in year_str:
+                if el.isdigit():
+                    digits.append(el)
+            years_experience.append(int("".join(digits)))
+    else:
+        pass
 
     return render(request, 'doctor-profile.html', {'doctor': doctor,
                                                    'awards': awards_count,
