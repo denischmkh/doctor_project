@@ -94,8 +94,8 @@ def doctor_profile(request, id: int):
     specialisations = doctor.specialisations.all()
     memberships = doctor.memberships.all()
     awards = doctor.awards.all()
+    print(awards)
     main_speciality = specialisations[0]
-    print(main_speciality)
     return render(request, 'doctor-profile.html', {'doctor': doctor,
                                                    'awards_count': awards_count,
                                                    'working_from': min(years_experience) if years_experience else None,
