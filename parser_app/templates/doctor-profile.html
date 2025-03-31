@@ -905,13 +905,14 @@
 								<div class="detail-title">
 									<h4>Clinics & Locations</h4>
 								</div>
+								{% if doctor.clinic %}
 								<div class="clinic-loc">
 									<div class="row align-items-center">
 										<div class="col-lg-7">
 											<div class="clinic-info">
-												<div class="clinic-img"><img src="assets/img/clinic/clinic-11.jpg" alt="Img"></div>
+												<div class="clinic-img"><img src="{% static 'assets/img/clinic/clinic-11.jpg' %}" alt="Img"></div>
 												<div class="detail-clinic">
-													<h5>Sofi’s Clinic - </h5>
+													<h5>{{doctor.clinic}}</h5>
 													<span>$350 / Apponitment</span>
 													<p>2286 Sundown Lane, Old Trafford 24541, UK</p>
 												</div>
@@ -938,13 +939,15 @@
 										</div>
 									</div>
 								</div>
+								{% endif %}
+								{% for hospital in doctor.hospitals.all %}
 								<div class="clinic-loc mb-0">
 									<div class="row align-items-center">
 										<div class="col-lg-7">
 											<div class="clinic-info">
 												<div class="clinic-img"><img src="assets/img/clinic/clinic-12.jpg" alt="Img"></div>
 												<div class="detail-clinic">
-													<h5>The Family Dentistry Clinic </h5>
+													<h5>{{hospital.name}}</h5>
 													<span>$550 / Apponitment</span>
 													<p>MDS - Periodontology and Oral Implantology, BDS</p>
 												</div>
@@ -971,6 +974,7 @@
 										</div>
 									</div>
 								</div>
+								{% endfor %}
 							</div>
 							<div class="doc-information-details" id="membership">
 								<div class="detail-title">
