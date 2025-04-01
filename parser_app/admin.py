@@ -12,11 +12,16 @@ class DoctorAdmin(admin.ModelAdmin):
     list_per_page = 50
     ordering = ['id']
 
-    autocomplete_fields = ['clinic', 'languages', 'hospitals', 'specialisations']
+    # ✅ Используем autocomplete для ManyToMany
+    autocomplete_fields = ['clinic', 'languages', 'hospitals', 'specialisations',
+                           'educations', 'work_experience', 'apprenticeships',
+                           'publications', 'researches', 'awards', 'competences', 'memberships']
 
+    # ❌ Убираем filter_horizontal (он замедляет админку на больших данных)
     filter_horizontal = []
-    exclude = ['educations', 'work_experience', 'apprenticeships',
-               'publications', 'researches', 'awards', 'competences', 'memberships', 'media_urls']
+
+    # ❌ Убираем поля, которые не нужны в форме редактирования
+    exclude = ['media_urls']
 
 @admin.register(Clinic)
 class ClinicAdmin(admin.ModelAdmin):
