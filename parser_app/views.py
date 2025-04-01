@@ -148,7 +148,7 @@ def get_clinics(request: HttpRequest, page=1):
 
 
         return render(request, 'clinic.html', {
-            "clinics": clinics[start, next_page],
+            "clinics": clinics[start: next_page],
             "clinics_count": len(clinics),
             "previous_page": previous_page,
             "page": page,
