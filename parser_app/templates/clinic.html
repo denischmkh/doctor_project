@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 	<head>
 
 		<meta charset="UTF-8">
@@ -19,7 +20,7 @@
 		<meta name="twitter:description" content="The responsive professional Doccure template offers many features, like scheduling appointments with  top doctors, clinics, and hospitals via voice, video call & chat.">
 		<meta name="twitter:image" content="assets/img/preview-banner.jpg">
 		<title>Doccure</title>
-		{% load static %}
+
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="{% static 'assets/img/favicon.png' %}" type="image/x-icon">
 
@@ -67,14 +68,14 @@
 								</span>
 							</a>
 							<a href="index.html" class="navbar-brand logo">
-								<img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
+								<img src="{% static 'assets/img/logo.svg' %}" class="img-fluid" alt="Logo">
 							</a>
 						</div>
 						<div class="header-menu">
 							<div class="main-menu-wrapper">
 								<div class="menu-header">
 									<a href="index.html" class="menu-logo">
-										<img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
+										<img src="{% static 'assets/img/logo.svg' %}" class="img-fluid" alt="Logo">
 									</a>
 									<a id="menu_close" class="menu-close" href="javascript:void(0);">
 										<i class="fas fa-times"></i>
@@ -525,11 +526,41 @@
 						{% endfor %}
 
 					</div>
-                    <div class="loader-item text-center">
-                        <a href="#" class="btn btn-primary d-inline-flex align-items-center">
-                            <i class="isax isax-d-cube-scan me-2"></i>Load More 150 Clinics
-                        </a>
-                    </div>
+                    <div class="pagination dashboard-pagination mt-md-3 mt-0 mb-4">
+                                <ul>
+                                    <!-- Prev button -->
+                                    <li class="page-item {% if not previous_page %}disabled{% endif %}">
+                                        <a class="page-link prev" href="{% if previous_page %}{% url 'doctor_list_paginator' page=previous_page %}?{{ query_string }}{% else %}# {% endif %}">
+                                            Prev
+                                        </a>
+                                    </li>
+                                    {% if previous_page %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{% url 'doctor_list_paginator' page=previous_page %}?{{ query_string }}">
+                                            {{ previous_page }}
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                    <!-- Current page -->
+                                    <li class="page-item active">
+                                        <a class="page-link" href="{% url 'doctor_list_paginator' page=page %}?{{ query_string }}">{{ page }}</a>
+                                    </li>
+                                    {% if next_page %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{% url 'doctor_list_paginator' page=next_page %}?{{ query_string }}">
+                                            {{ next_page }}
+                                        </a>
+                                    </li>
+                                    {% endif %}
+
+                                    <!-- Next button -->
+                                    <li class="page-item {% if not next_page %}disabled{% endif %}">
+                                        <a class="page-link next" href="{% if next_page %}{% url 'doctor_list_paginator' page=next_page %}?{{ query_string }}{% else %}# {% endif %}">
+                                            Next
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
 				</div>
 			</div>
 			<!-- /Specialties -->			
