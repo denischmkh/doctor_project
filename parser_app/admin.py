@@ -6,14 +6,17 @@ from .models import (
 
 @admin.register(Doctor)
 class DoctorAdmin(admin.ModelAdmin):
-    list_display = ("name", "email", "phone")
-    search_fields = ("name", "email", "phone")
-    list_filter = ("gender", "city")
-    filter_horizontal = (
-        "clinic", "languages", "hospitals", "specialisations", "educations",
-        "work_experience", "apprenticeships", "publications", "researches",
-        "awards", "competences", "memberships"
-    )
+    list_display = ('id', 'name', 'phone', 'email', 'city', 'gender')
+    search_fields = ('name', 'phone', 'email', 'city')
+    list_filter = ('city', 'gender')
+    list_per_page = 50
+    ordering = ['id']
+
+    autocomplete_fields = ['clinic', 'languages', 'hospitals', 'specialisations']
+
+    filter_horizontal = []
+    exclude = ['educations', 'work_experience', 'apprenticeships',
+               'publications', 'researches', 'awards', 'competences', 'memberships', 'media_urls']
 
 @admin.register(Clinic)
 class ClinicAdmin(admin.ModelAdmin):
