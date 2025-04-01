@@ -74,9 +74,19 @@ class Membership(models.Model):
     def __str__(self):
         return self.name
 
+
+class Clinic(models.Model):
+    title = CharField(max_length=255, null=True)
+    location = CharField(max_length=255, null=True)
+    image = URLField(null=True)
+
+    def __str__(self):
+        return self.title
+
+
 class Doctor(models.Model):
     name = models.TextField(null=True)
-    clinic = models.TextField(null=True)
+    clinic = models.ManyToManyField(Clinic, blank=True)
     description = models.TextField(null=True)
     profile_url = models.URLField(null=True)
     phone = models.TextField(null=True)

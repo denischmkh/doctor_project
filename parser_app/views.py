@@ -127,3 +127,7 @@ def select_filters(request: HttpRequest):
         # Переадресовываем на новый URL с query параметрами
         return HttpResponseRedirect(url)
 
+
+def get_clinics(request: HttpRequest):
+    if request.method == 'GET':
+        return render(request, 'clinic.html')
