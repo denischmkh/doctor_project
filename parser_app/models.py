@@ -124,4 +124,4 @@ class Doctor(models.Model):
     media_urls = models.JSONField(null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.name if self.name else "Unnamed Doctor"
