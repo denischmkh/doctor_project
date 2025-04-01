@@ -501,19 +501,19 @@
                     <!-- /Show Result -->
 
 					<div class="row">
-
+						{% for clinic in clinics %}
                         <!-- Clinic Item -->
 						<div class="col-lg-4 col-md-6">
 							<div class="card clinic-item">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <a href="javascript:void(0)" class="clinic-icon">
-                                            <img src="assets/img/clinic/clinic-01.svg" alt="img">
+                                            <img src="{{clinic.image}}" alt="img">
                                         </a>
                                         <div class="ms-3">
-                                            <h6 class="mb-1"><a href="javascript:void(0)">Jamesburg Clincs</a></h6>
+                                            <h6 class="mb-1"><a href="javascript:void(0)">{{clinic.title}}</a></h6>
                                             <div class="d-flex align-items-center flex-wrap clinic-location gap-2">
-                                                <p class="fs-14 mb-0"><i class="isax isax-location me-2"></i>Santa Fe Springs</p>
+                                                <p class="fs-14 mb-0"><i class="isax isax-location me-2"></i>{{clinic.location}}</p>
                                                 <p class="fs-14 mb-0">180 Doctors</p>
                                             </div>
                                         </div>
@@ -522,174 +522,7 @@
                             </div>
 						</div>
                          <!-- /Clinic Item -->                          
-
-                        <!-- Clinic Item -->
-						<div class="col-lg-4 col-md-6">
-							<div class="card clinic-item">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <a href="doctor-grid.html" class="clinic-icon">
-                                            <img src="assets/img/clinic/clinic-02.svg" alt="img">
-                                        </a>
-                                        <div class="ms-3">
-                                            <h6 class="mb-1"><a href="doctor-grid.html">Berkshire Medical Clinic</a></h6>
-                                            <div class="d-flex align-items-center flex-wrap clinic-location gap-2">
-                                                <p class="fs-14 mb-0"><i class="isax isax-location me-2"></i>Indianapolis</p>
-                                                <p class="fs-14 mb-0">60 Doctors</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-						</div>
-                         <!-- /Clinic Item -->
-
-                        <!-- Clinic Item -->
-						<div class="col-lg-4 col-md-6">
-							<div class="card clinic-item">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <a href="doctor-grid.html" class="clinic-icon">
-                                            <img src="assets/img/clinic/clinic-03.svg" alt="img">
-                                        </a>
-                                        <div class="ms-3">
-                                            <h6 class="mb-1"><a href="doctor-grid.html">First Priority Clinics</a></h6>
-                                            <div class="d-flex align-items-center flex-wrap clinic-location gap-2">
-                                                <p class="fs-14 mb-0"><i class="isax isax-location me-2"></i>Saginaw</p>
-                                                <p class="fs-14 mb-0">90 Doctors</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-						</div>
-                         <!-- /Clinic Item -->
-
-                        <!-- Clinic Item -->
-						<div class="col-lg-4 col-md-6">
-							<div class="card clinic-item">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <a href="doctor-grid.html" class="clinic-icon">
-                                            <img src="assets/img/clinic/clinic-04.svg" alt="img">
-                                        </a>
-                                        <div class="ms-3">
-                                            <h6 class="mb-1"><a href="doctor-grid.html">Medical Zone</a></h6>
-                                            <div class="d-flex align-items-center flex-wrap clinic-location gap-2">
-                                                <p class="fs-14 mb-0"><i class="isax isax-location me-2"></i>Saint Louis</p>
-                                                <p class="fs-14 mb-0">78 Doctors</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-						</div>
-                         <!-- /Clinic Item -->
-
-                        <!-- Clinic Item -->
-						<div class="col-lg-4 col-md-6">
-							<div class="card clinic-item">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <a href="doctor-grid.html" class="clinic-icon">
-                                            <img src="assets/img/clinic/clinic-05.svg" alt="img">
-                                        </a>
-                                        <div class="ms-3">
-                                            <h6 class="mb-1"><a href="doctor-grid.html">Healing Helpers Medical</a></h6>
-                                            <div class="d-flex align-items-center flex-wrap clinic-location gap-2">
-                                                <p class="fs-14 mb-0"><i class="isax isax-location me-2"></i>Jamesburg</p>
-                                                <p class="fs-14 mb-0">96 Doctors</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-						</div>
-                         <!-- /Clinic Item -->
-
-                        <!-- Clinic Item -->
-						<div class="col-lg-4 col-md-6">
-							<div class="card clinic-item">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <a href="doctor-grid.html" class="clinic-icon">
-                                            <img src="assets/img/clinic/clinic-06.svg" alt="img">
-                                        </a>
-                                        <div class="ms-3">
-                                            <h6 class="mb-1"><a href="doctor-grid.html">Body Regenerate</a></h6>
-                                            <div class="d-flex align-items-center flex-wrap clinic-location gap-2">
-                                                <p class="fs-14 mb-0"><i class="isax isax-location me-2"></i>Piscataway</p>
-                                                <p class="fs-14 mb-0">180 Doctors</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-						</div>
-                        <!-- /Clinic Item -->
-
-                        <!-- Clinic Item -->
-						<div class="col-lg-4 col-md-6">
-							<div class="card clinic-item">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <a href="doctor-grid.html" class="clinic-icon">
-                                            <img src="assets/img/clinic/clinic-07.svg" alt="img">
-                                        </a>
-                                        <div class="ms-3">
-                                            <h6 class="mb-1"><a href="doctor-grid.html">Union Family Health Center</a></h6>
-                                            <div class="d-flex align-items-center flex-wrap clinic-location gap-2">
-                                                <p class="fs-14 mb-0"><i class="isax isax-location me-2"></i>Moscow Mills</p>
-                                                <p class="fs-14 mb-0">68 Doctors</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-						</div>
-                         <!-- /Clinic Item -->
-
-                        <!-- Clinic Item -->
-						<div class="col-lg-4 col-md-6">
-							<div class="card clinic-item">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <a href="doctor-grid.html" class="clinic-icon">
-                                            <img src="assets/img/clinic/clinic-08.svg" alt="img">
-                                        </a>
-                                        <div class="ms-3">
-                                            <h6 class="mb-1"><a href="doctor-grid.html">Treatment Solutions</a></h6>
-                                            <div class="d-flex align-items-center flex-wrap clinic-location gap-2">
-                                                <p class="fs-14 mb-0"><i class="isax isax-location me-2"></i>Hamburg</p>
-                                                <p class="fs-14 mb-0">64 Doctors</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-						</div>
-                         <!-- /Clinic Item -->
-
-                        <!-- Clinic Item -->
-						<div class="col-lg-4 col-md-6">
-							<div class="card clinic-item">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <a href="doctor-grid.html" class="clinic-icon">
-                                            <img src="assets/img/clinic/clinic-09.svg" alt="img">
-                                        </a>
-                                        <div class="ms-3">
-                                            <h6 class="mb-1"><a href="doctor-grid.html">The Vitality Visit</a></h6>
-                                            <div class="d-flex align-items-center flex-wrap clinic-location gap-2">
-                                                <p class="fs-14 mb-0"><i class="isax isax-location me-2"></i>San Diego</p>
-                                                <p class="fs-14 mb-0">89 Doctors</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-						</div>
-                         <!-- /Clinic Item -->
+						{% endfor %}
 
 					</div>
                     <div class="loader-item text-center">

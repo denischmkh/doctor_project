@@ -7,7 +7,7 @@ from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
-from .models import Doctor, Specialisation, Language
+from .models import Doctor, Specialisation, Language, Clinic
 
 
 necessary_specializations = ['Oral surgery', 'Physiologi', 'Paediatrics', 'Infectiology', 'Neurologie', 'Urologie',
@@ -130,4 +130,7 @@ def select_filters(request: HttpRequest):
 
 def get_clinics(request: HttpRequest):
     if request.method == 'GET':
-        return render(request, 'clinic.html')
+        clinics = Clinic.objects.all()
+        return render(request, 'clinic.html', {
+            "clinics": clinics
+        })
