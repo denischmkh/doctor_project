@@ -135,20 +135,16 @@ def get_clinics(request: HttpRequest, page=1):
         per_page = 9
         end = page * per_page
         start = end - per_page
-        if start == 0:
-            previous_page = None
-        else:
-            previous_page = page - 1
 
-        if len(clinics) < per_page - 1:
-            next_page = None
-        else:
-            next_page = page + 1
+        previous_page = page - 1 if start > 0 else None
+
+        next_page = page + 1 if end < len(clinics) else None
+
 
 
 
         return render(request, 'clinic.html', {
-            "clinics": clinics[start: next_page],
+            "clinics": clinics[start: end],
             "clinics_count": len(clinics),
             "previous_page": previous_page,
             "page": page,
