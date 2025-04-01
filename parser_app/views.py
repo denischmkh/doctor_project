@@ -132,5 +132,6 @@ def get_clinics(request: HttpRequest):
     if request.method == 'GET':
         clinics = Clinic.objects.all()
         return render(request, 'clinic.html', {
-            "clinics": clinics
+            "clinics": clinics,
+            "clinics_count": len(clinics)
         })
