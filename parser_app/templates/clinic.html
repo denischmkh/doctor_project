@@ -19,34 +19,34 @@
 		<meta name="twitter:description" content="The responsive professional Doccure template offers many features, like scheduling appointments with  top doctors, clinics, and hospitals via voice, video call & chat.">
 		<meta name="twitter:image" content="assets/img/preview-banner.jpg">
 		<title>Doccure</title>
-		
+		{% load static %}
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+		<link rel="shortcut icon" href="{% url 'static' 'assets/img/favicon.png' %}" type="image/x-icon">
 
 		<!-- Apple Touch Icon -->
-		<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="{% url 'static' 'assets/img/apple-touch-icon.png' %}">
 
-		<!-- Theme Settings Js -->
-		<script src="assets/js/theme-script.js"></script>
-		
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-				
-		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+		<link rel="stylesheet" href="{% url 'static' 'assets/css/bootstrap.min.css' %}">
 
-		<!-- Iconsax CSS-->
-		<link rel="stylesheet" href="assets/css/iconsax.css">
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% url 'static' 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% url 'static' 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Iconsax CSS -->
+		<link rel="stylesheet" href="{% url 'static' 'assets/css/iconsax.css' %}">
 
 		<!-- Feathericon CSS -->
-    	<link rel="stylesheet" href="assets/css/feather.css">
+		<link rel="stylesheet" href="{% url 'static' 'assets/css/feather.css' %}">
 
-		<!-- select CSS -->
-		<link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+		<!-- Select CSS -->
+		<link rel="stylesheet" href="{% url 'static' 'assets/plugins/select2/css/select2.min.css' %}">
 
 		<!-- Main CSS -->
-		<link rel="stylesheet" href="assets/css/custom.css">
+		<link rel="stylesheet" href="{% url 'static' 'assets/css/custom.css' %}">
+
+		<!-- Theme Settings Js -->
+		<script src="{% url 'static' 'assets/js/theme-script.js' %}"></script>
 
 	</head>		
 	<body>
@@ -840,19 +840,21 @@
 		<!-- /Main Wrapper -->
 	
 		<!-- jQuery -->
-		<script src="assets/js/jquery-3.7.1.min.js"></script>
-		
-		<!-- Bootstrap Bundle JS -->
-		<script src="assets/js/bootstrap.bundle.min.js"></script>
-		
-		<!-- Feather Icon JS -->
-		<script src="assets/js/feather.min.js"></script>
+		<!-- jQuery JS -->
+		<script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
 
-		<!-- select JS -->
-		<script src="assets/plugins/select2/js/select2.min.js"></script>
-				
+		<!-- Bootstrap Bundle JS -->
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+		<!-- Feather Icon JS -->
+		<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+		<!-- Select2 JS -->
+		<script src="{% static 'assets/plugins/select2/js/select2.min.js' %}"></script>
+
 		<!-- Custom JS -->
-		<script src="assets/js/script.js"></script>
+		<script src="{% static 'assets/js/script.js' %}"></script>
+
 	
 	</body>
 </html>
