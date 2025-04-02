@@ -161,6 +161,7 @@ def get_doctor_grid(request: HttpRequest, clinic, page=1):
     previous_page = page - 1 if start > 0 else None
     next_page = page + 1 if end < len(doctors) else None
     return render(request, 'doctor-grid.html', {
+        'doctors_count': len(doctors),
         'doctors': doctors[start:end],
         'clinic': clinic,
         'page': page,
