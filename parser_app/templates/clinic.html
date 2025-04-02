@@ -502,7 +502,7 @@
                     <!-- /Show Result -->
 
 					<div class="row">
-						{% for clinic in clinics %}
+						{% for clinic, doctor_count in doctors_count_with_clinic.items %}
                         <!-- Clinic Item -->
 						<div class="col-lg-4 col-md-6">
 							<div class="card clinic-item">
@@ -515,7 +515,7 @@
                                             <h6 class="mb-1"><a href="{% url 'get_doctor_grid' clinic.title 1 %}">{{clinic.title}}</a></h6>
                                             <div class="d-flex align-items-center flex-wrap clinic-location gap-2">
                                                 <p class="fs-14 mb-0"><i class="isax isax-location me-2"></i>{{clinic.location}}</p>
-                                                <p class="fs-14 mb-0">{{ doctors_count_in_clinic.clinic }} Doctors</p>
+                                                <p class="fs-14 mb-0">{{ doctor_count }} Doctors</p>
                                             </div>
                                         </div>
                                     </div>
