@@ -153,5 +153,5 @@ def get_clinics(request: HttpRequest, page=1):
 
 
 
-def get_doctor_grid(request: HttpRequest, page=1):
+def get_doctor_grid(request: HttpRequest, clinic, page=1):
     return render(request, 'doctor-grid.html')
