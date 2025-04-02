@@ -141,6 +141,7 @@ def get_clinics(request: HttpRequest, page=1):
         next_page = page + 1 if end < len(clinics) else None
 
 
+        doctors_count_in_clinic = {clinic.title: len(Doctor.objects.filter(clinic__title=clinic.title)) for clinic in clinics}
 
 
         return render(request, 'clinic.html', {
@@ -148,7 +149,8 @@ def get_clinics(request: HttpRequest, page=1):
             "clinics_count": len(clinics),
             "previous_page": previous_page,
             "page": page,
-            "next_page": next_page
+            "next_page": next_page,
+            'doctors_count_in_clinic': doctors_count_in_clinic
         })
 
 
