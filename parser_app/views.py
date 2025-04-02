@@ -157,7 +157,7 @@ def get_clinics(request: HttpRequest, page=1):
 
 def get_doctor_grid(request: HttpRequest, clinic, page=1):
     selected_filters = request.GET.getlist('filter')
-    doctors = Doctor.objects.filter(clinic__title=clinic)
+    doctors = Doctor.objects.filter(clinic__title=clinic)  # Получаем врачей только из этой клиники
     per_page = 12
     end = page * per_page
     start = end - per_page
@@ -166,21 +166,17 @@ def get_doctor_grid(request: HttpRequest, clinic, page=1):
 
     languages = [el.name for el in Language.objects.all()]
 
-    query = Q()
-
-    # Если выбран хотя бы один фильтр, формируем условия для фильтрации
     if selected_filters:
-        # Добавляем фильтры для специализаций
+        query = Q()
+
+        # Добавляем фильтры ТОЛЬКО к уже найденным врачам
         query |= Q(specialisations__name__in=selected_filters)
-
-        # Добавляем фильтры для языков
         query |= Q(languages__name__in=selected_filters)
-
-        # Добавляем фильтры для гендера
         query |= Q(gender__in=selected_filters)
 
-    # Применяем фильтрацию с комбинированными условиями
-    doctors = Doctor.objects.filter(query).distinct()
+        # Применяем фильтры к уже выбранным врачам
+        doctors = doctors.filter(query).distinct()
+
     return render(request, 'doctor-grid.html', {
         'doctors_count': len(doctors),
         'doctors': doctors[start:end],
@@ -191,7 +187,6 @@ def get_doctor_grid(request: HttpRequest, clinic, page=1):
         'languages': languages,
         'specializations': necessary_specializations,
         'genders': genders,
-
     })
 
 def select_filters_from_grid(request: HttpRequest):
