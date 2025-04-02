@@ -512,7 +512,7 @@
                                             <img src="{{clinic.image}}" alt="img">
                                         </a>
                                         <div class="ms-3">
-                                            <h6 class="mb-1"><a href="javascript:void(0)">{{clinic.title}}</a></h6>
+                                            <h6 class="mb-1"><a href="{% url 'get_doctor_grid' clinic.title %}">{{clinic.title}}</a></h6>
                                             <div class="d-flex align-items-center flex-wrap clinic-location gap-2">
                                                 <p class="fs-14 mb-0"><i class="isax isax-location me-2"></i>{{clinic.location}}</p>
                                                 <p class="fs-14 mb-0">180 Doctors</p>
