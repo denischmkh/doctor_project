@@ -20,36 +20,38 @@
 		<title>Doccure</title>
 
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+		{% load static %}
+
+		<link rel="shortcut icon" href="{% static 'assets/img/favicon.png' %}" type="image/x-icon">
 
 		<!-- Apple Touch Icon -->
-		<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/img/apple-touch-icon.png' %}">
 
 		<!-- Theme Settings Js -->
-		<script src="assets/js/theme-script.js"></script>
+		<script src="{% static 'assets/js/theme-script.js' %}"></script>
 
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
 
 		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
 
 		<!-- Iconsax CSS-->
-		<link rel="stylesheet" href="assets/css/iconsax.css">
+		<link rel="stylesheet" href="{% static 'assets/css/iconsax.css' %}">
 
 		<!-- Rangeslider CSS -->
-		<link rel="stylesheet" href="assets/plugins/ion-rangeslider/css/ion.rangeSlider.css">
-		<link rel="stylesheet" href="assets/plugins/ion-rangeslider/css/ion.rangeSlider.min.css">
+		<link rel="stylesheet" href="{% static 'assets/plugins/ion-rangeslider/css/ion.rangeSlider.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/ion-rangeslider/css/ion.rangeSlider.min.css' %}">
 
 		<!-- Datepicker CSS -->
-		<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
 
 		<!-- Feathericon CSS -->
-		<link rel="stylesheet" href="assets/css/feather.css">
+		<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
 
 		<!-- Main CSS -->
-		<link rel="stylesheet" href="assets/css/custom.css">
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
 
 	</head>
 
@@ -94,7 +96,7 @@
 												<div class="col-lg-2">
 														<div class="single-demo">
 															<div class="demo-img">
-																<a href="index.html" class="inner-demo-img"><img src="assets/img/home/home.jpg" class="img-fluid " alt="img"></a>
+																<a href="index.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home.jpg' %}" class="img-fluid " alt="img"></a>
 															</div>
 															<div class="demo-info">
 																<a href="index.html" class="inner-demo-img">General Home 1</a>
@@ -104,143 +106,143 @@
 													<div class="col-lg-2">
 														<div class="single-demo ">
 															<div class="demo-img">
-																<a href="index-4.html" class="inner-demo-img"><img src="assets/img/home/home-01.jpg" class="img-fluid " alt="img"></a>
+																<a href="index-4.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home-01.jpg' %}" class="img-fluid " alt="img"></a>
 															</div>
 															<div class="demo-info">
 																<a href="index-4.html" class="inner-demo-img">General Home 2</a>
 															</div>
 														</div>
 													</div>
-												<div class="col-lg-2">
-													<div class="single-demo">
-														<div class="demo-img">
-															<a href="index-2.html" class="inner-demo-img"><img src="assets/img/home/home-02.jpg" class="img-fluid " alt="img"></a>
-														</div>
-														<div class="demo-info">
-															<a href="index-2.html" class="inner-demo-img">General Home 3</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="single-demo">
-														<div class="demo-img">
-															<a href="index-3.html" class="inner-demo-img"><img src="assets/img/home/home-03.jpg" class="img-fluid " alt="img"></a>
-														</div>
-														<div class="demo-info">
-															<a href="index-3.html" class="inner-demo-img">General Home 4</a>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-2.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home-02.jpg' %}" class="img-fluid " alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-2.html" class="inner-demo-img">General Home 3</a>
+															</div>
 														</div>
 													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="single-demo">
-														<div class="demo-img">
-															<a href="index-5.html" class="inner-demo-img"><img src="assets/img/home/home-04.jpg" class="img-fluid " alt="img"></a>
-														</div>
-														<div class="demo-info">
-															<a href="index-5.html" class="inner-demo-img">Cardiology</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="single-demo">
-														<div class="demo-img">
-															<a href="index-6.html" class="inner-demo-img"><img src="assets/img/home/home-05.jpg" class="img-fluid " alt="img"></a>
-														</div>
-														<div class="demo-info">
-															<a href="index-6.html" class="inner-demo-img">Eyecare</a>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-3.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home-03.jpg' %}" class="img-fluid " alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-3.html" class="inner-demo-img">General Home 4</a>
+															</div>
 														</div>
 													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="single-demo ">
-														<div class="demo-img">
-															<a href="index-7.html" class="inner-demo-img"><img src="assets/img/home/home-06.jpg" class="img-fluid " alt="img"></a>
-														</div>
-														<div class="demo-info">
-															<a href="index-7.html" class="inner-demo-img">Veterinary</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="single-demo">
-														<div class="demo-img">
-															<a href="index-8.html" class="inner-demo-img"><img src="assets/img/home/home-07.jpg" class="img-fluid " alt="img"></a>
-														</div>
-														<div class="demo-info">
-															<a href="index-8.html" class="inner-demo-img">Pediatric</a>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-5.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home-04.jpg' %}" class="img-fluid " alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-5.html" class="inner-demo-img">Cardiology</a>
+															</div>
 														</div>
 													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="single-demo">
-														<div class="demo-img">
-															<a href="index-9.html" class="inner-demo-img"><img src="assets/img/home/home-08.jpg" class="img-fluid " alt="img"></a>
-														</div>
-														<div class="demo-info">
-															<a href="index-9.html" class="inner-demo-img">Fertility</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="single-demo">
-														<div class="demo-img">
-															<a href="index-10.html" class="inner-demo-img"><img src="assets/img/home/home-09.jpg" class="img-fluid " alt="img"></a>
-														</div>
-														<div class="demo-info">
-															<a href="index-10.html" class="inner-demo-img">ENT</a>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-6.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home-05.jpg' %}" class="img-fluid " alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-6.html" class="inner-demo-img">Eyecare</a>
+															</div>
 														</div>
 													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="single-demo">
-														<div class="demo-img">
-															<a href="index-11.html" class="inner-demo-img"><img src="assets/img/home/home-10.jpg" class="img-fluid " alt="img"></a>
-														</div>
-														<div class="demo-info">
-															<a href="index-11.html" class="inner-demo-img">Cosmetics</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="single-demo">
-														<div class="demo-img">
-															<a href="index-12.html" class="inner-demo-img"><img src="assets/img/home/home-11.jpg" class="img-fluid " alt="img"></a>
-														</div>
-														<div class="demo-info">
-															<a href="index-12.html" class="inner-demo-img">Lab Test</a>
+													<div class="col-lg-2">
+														<div class="single-demo ">
+															<div class="demo-img">
+																<a href="index-7.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home-06.jpg' %}" class="img-fluid " alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-7.html" class="inner-demo-img">Veterinary</a>
+															</div>
 														</div>
 													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="single-demo">
-														<div class="demo-img">
-															<a href="pharmacy-index.html" class="inner-demo-img"><img src="assets/img/home/home-12.jpg" class="img-fluid" alt="img"></a>
-														</div>
-														<div class="demo-info">
-															<a href="index-12.html" class="inner-demo-img">Pharmacy</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="single-demo">
-														<div class="demo-img">
-															<a href="index-13.html" class="inner-demo-img"><img src="assets/img/home/home-13.jpg" class="img-fluid " alt="img"></a>
-														</div>
-														<div class="demo-info">
-															<a href="index-13.html" class="inner-demo-img">Home Care</a>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-8.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home-07.jpg' %}" class="img-fluid " alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-8.html" class="inner-demo-img">Pediatric</a>
+															</div>
 														</div>
 													</div>
-												</div>
-												<div class="col-lg-2">
-													<div class="single-demo">
-														<div class="demo-img">
-															<a href="index-14.html" class="inner-demo-img"><img src="assets/img/home/home-14.jpg" class="img-fluid " alt="img"></a>
-														</div>
-														<div class="demo-info">
-															<a href="index-14.html" class="inner-demo-img">Dentists</a>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-9.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home-08.jpg' %}" class="img-fluid " alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-9.html" class="inner-demo-img">Fertility</a>
+															</div>
 														</div>
 													</div>
-												</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-10.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home-09.jpg' %}" class="img-fluid " alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-10.html" class="inner-demo-img">ENT</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-11.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home-10.jpg' %}" class="img-fluid " alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-11.html" class="inner-demo-img">Cosmetics</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-12.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home-11.jpg' %}" class="img-fluid " alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-12.html" class="inner-demo-img">Lab Test</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="pharmacy-index.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home-12.jpg' %}" class="img-fluid" alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-12.html" class="inner-demo-img">Pharmacy</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-13.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home-13.jpg' %}" class="img-fluid " alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-13.html" class="inner-demo-img">Home Care</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-14.html" class="inner-demo-img"><img src="{% static 'assets/img/home/home-14.jpg' %}" class="img-fluid " alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-14.html" class="inner-demo-img">Dentists</a>
+															</div>
+														</div>
+													</div>
 											</div>
 										</div>
 									</li>
@@ -626,10 +628,10 @@
 				</div>
 			</div>
 			<div class="breadcrumb-bg">
-				<img src="assets/img/bg/breadcrumb-bg-01.png" alt="img" class="breadcrumb-bg-01">
-				<img src="assets/img/bg/breadcrumb-bg-02.png" alt="img" class="breadcrumb-bg-02">
-				<img src="assets/img/bg/breadcrumb-icon.png" alt="img" class="breadcrumb-bg-03">
-				<img src="assets/img/bg/breadcrumb-icon.png" alt="img" class="breadcrumb-bg-04">
+				<img src="{% static 'assets/img/bg/breadcrumb-bg-01.png' %}" alt="img" class="breadcrumb-bg-01">
+				<img src="{% static 'assets/img/bg/breadcrumb-bg-02.png' %}" alt="img" class="breadcrumb-bg-02">
+				<img src="{% static 'assets/img/bg/breadcrumb-icon.png' %}" alt="img" class="breadcrumb-bg-03">
+				<img src="{% static 'assets/img/bg/breadcrumb-icon.png' %}" alt="img" class="breadcrumb-bg-04">
 			</div>
 		</div>
 		<!-- /Breadcrumb -->
@@ -1810,11 +1812,11 @@
 					</div>
 				</div>
 				<div class="footer-bg">
-					<img src="assets/img/bg/footer-bg-01.png" alt="img" class="footer-bg-01">
-					<img src="assets/img/bg/footer-bg-02.png" alt="img" class="footer-bg-02">
-					<img src="assets/img/bg/footer-bg-03.png" alt="img" class="footer-bg-03">
-					<img src="assets/img/bg/footer-bg-04.png" alt="img" class="footer-bg-04">
-					<img src="assets/img/bg/footer-bg-05.png" alt="img" class="footer-bg-05">
+					<img src="{% static 'assets/img/bg/footer-bg-01.png' %}" alt="img" class="footer-bg-01">
+					<img src="{% static 'assets/img/bg/footer-bg-02.png' %}" alt="img" class="footer-bg-02">
+					<img src="{% static 'assets/img/bg/footer-bg-03.png' %}" alt="img" class="footer-bg-03">
+					<img src="{% static 'assets/img/bg/footer-bg-04.png' %}" alt="img" class="footer-bg-04">
+					<img src="{% static 'assets/img/bg/footer-bg-05.png' %}" alt="img" class="footer-bg-05">
 				</div>
 			</div>
 			<div class="footer-bottom">
@@ -1834,12 +1836,12 @@
 						</div>
 						<!-- /Copyright Menu -->
 						<ul class="payment-method">
-							<li><a href="javascript:void(0);"><img src="assets/img/icons/card-01.svg" alt="Img"></a></li>
-							<li><a href="javascript:void(0);"><img src="assets/img/icons/card-02.svg" alt="Img"></a></li>
-							<li><a href="javascript:void(0);"><img src="assets/img/icons/card-03.svg" alt="Img"></a></li>
-							<li><a href="javascript:void(0);"><img src="assets/img/icons/card-04.svg" alt="Img"></a></li>
-							<li><a href="javascript:void(0);"><img src="assets/img/icons/card-05.svg" alt="Img"></a></li>
-							<li><a href="javascript:void(0);"><img src="assets/img/icons/card-06.svg" alt="Img"></a></li>
+							<li><a href="javascript:void(0);"><img src="{% static 'assets/img/icons/card-01.svg' %}" alt="Img"></a></li>
+							<li><a href="javascript:void(0);"><img src="{% static 'assets/img/icons/card-02.svg' %}" alt="Img"></a></li>
+							<li><a href="javascript:void(0);"><img src="{% static 'assets/img/icons/card-03.svg' %}" alt="Img"></a></li>
+							<li><a href="javascript:void(0);"><img src="{% static 'assets/img/icons/card-04.svg' %}" alt="Img"></a></li>
+							<li><a href="javascript:void(0);"><img src="{% static 'assets/img/icons/card-05.svg' %}" alt="Img"></a></li>
+							<li><a href="javascript:void(0);"><img src="{% static 'assets/img/icons/card-06.svg' %}" alt="Img"></a></li>
 						</ul>
 					</div>
 					<!-- /Copyright -->					
@@ -1857,25 +1859,24 @@
 	<!-- /Main Wrapper -->
 
 	<!-- jQuery -->
-	<script src="assets/js/jquery-3.7.1.min.js"></script>
+	<script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
 
-	<!-- Bootstrap Bundle JS -->
-	<script src="assets/js/bootstrap.bundle.min.js"></script>
+	<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
 
 	<!-- Feather Icon JS -->
-	<script src="assets/js/feather.min.js"></script>
+	<script src="{% static 'assets/js/feather.min.js' %}"></script>
 
 	<!-- Rangeslider JS -->
-	<script src="assets/plugins/ion-rangeslider/js/ion.rangeSlider.js"></script>
-	<script src="assets/plugins/ion-rangeslider/js/custom-rangeslider.js"></script>
-	<script src="assets/plugins/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+	<script src="{% static 'assets/plugins/ion-rangeslider/js/ion.rangeSlider.js' %}"></script>
+	<script src="{% static 'assets/plugins/ion-rangeslider/js/custom-rangeslider.js' %}"></script>
+	<script src="{% static 'assets/plugins/ion-rangeslider/js/ion.rangeSlider.min.js' %}"></script>
 
 	<!-- Datepicker JS -->
-	<script src="assets/js/moment.min.js"></script>
-	<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="{% static 'assets/js/moment.min.js' %}"></script>
+	<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
 
 	<!-- Custom JS -->
-	<script src="assets/js/script.js"></script>
+	<script src="{% static 'assets/js/script.js' %}"></script>
 
 </body>
 
