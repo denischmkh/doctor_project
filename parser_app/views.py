@@ -189,26 +189,25 @@ def get_doctor_grid(request: HttpRequest, clinic, page=1):
         'genders': genders,
     })
 
-def select_filters_from_grid(request: HttpRequest):
+def select_filters_from_grid(request):
     if request.method == 'POST':
-
         params = list(request.POST.values())
-        # Если только одно значение, просто редиректим
+
+        clinic = request.GET.get('clinic', '')  # Получаем название клиники
+        page = request.GET.get('page', '1')  # Получаем номер страницы (по умолчанию 1)
+
+        if not clinic:
+            return HttpResponseRedirect(reverse('get_clinics'))  # Если клиника не указана, редиректим
+
         if len(params) == 1:
-            response = HttpResponseRedirect(reverse('get_doctor_grid'))
-            return response
+            url = reverse('get_doctor_grid', args=[clinic, page])
+            return HttpResponseRedirect(url)
 
-        # Формируем список фильтров с одинаковым именем "filter"
+        # Формируем query параметры
         query_params = [('filter', value) for value in params]
-
-        # Преобразуем их в строку query параметров
         query_string = urlencode(query_params, doseq=True)
 
-        # Формируем URL с добавлением query строки
-        url = f"{reverse('get_doctor_grid')}?{query_string}"
-        clinic = request.POST.get('clinic', 'default_clinic_name')
-        page = request.POST.get('page', 1)
-        print(clinic)
+        # Генерируем URL с аргументами
+        url = f"{reverse('get_doctor_grid', args=[clinic, page])}?{query_string}"
 
-        response = HttpResponseRedirect(reverse('get_doctor_grid', args=[clinic, page]))
         return HttpResponseRedirect(url)
