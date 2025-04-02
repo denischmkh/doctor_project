@@ -1,10 +1,23 @@
 from django import forms
 from django.contrib import admin
-from django.db import models
 from .models import (
     Doctor, Clinic, Language, Hospital, Specialisation, Education, WorkExperience,
     Apprenticeship, Publication, Research, Award, Competence, Membership
 )
+
+
+class DoctorForm(forms.ModelForm):
+    GENDER_CHOICES = [
+        ('M', 'Male'),
+        ('F', 'Female'),
+    ]
+
+    gender = forms.ChoiceField(choices=GENDER_CHOICES, widget=forms.Select)
+
+    class Meta:
+        model = Doctor
+        fields = '__all__'
+
 
 @admin.register(Doctor)
 class DoctorAdmin(admin.ModelAdmin):
@@ -14,16 +27,14 @@ class DoctorAdmin(admin.ModelAdmin):
     list_per_page = 50
     ordering = ['id']
 
+    form = DoctorForm  # Используем кастомную форму для отображения gender как select
+
     autocomplete_fields = ['clinic', 'languages', 'hospitals', 'specialisations',
                            'educations', 'work_experience', 'apprenticeships',
                            'publications', 'researches', 'awards', 'competences', 'memberships']
 
     filter_horizontal = []
     exclude = ['media_urls']
-
-    formfield_overrides = {
-        models.CharField: {'widget': forms.Select(choices=Doctor.GENDER_CHOICES)}
-    }
 
 
 
