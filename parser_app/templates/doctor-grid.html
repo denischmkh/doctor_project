@@ -1707,10 +1707,41 @@
 							</div>
 							<div class="col-md-12">
 								<div class="text-center mb-4">
-									<a href="login.html" class="btn btn-md btn-primary-gradient d-inline-flex align-items-center rounded-pill">
-										<i class="isax isax-d-cube-scan5 me-2"></i>
-										Load More 425 Doctors
-									</a>
+									<div class="pagination dashboard-pagination mt-md-3 mt-0 mb-4">
+                                <ul>
+                                    <!-- Prev button -->
+                                    <li class="page-item {% if not previous_page %}disabled{% endif %}">
+                                        <a class="page-link prev" href="{% if previous_page %}{% url 'get_doctor_grid' clinic=clinic page=previous_page %}?{{ query_string }}{% else %}# {% endif %}">
+                                            Prev
+                                        </a>
+                                    </li>
+                                    {% if previous_page %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{% url 'get_doctor_grid' clinic=clinic page=previous_page %}?{{ query_string }}">
+                                            {{ previous_page }}
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                    <!-- Current page -->
+                                    <li class="page-item active">
+                                        <a class="page-link" href="{% url 'get_doctor_grid' clinic=clinic page=page %}?{{ query_string }}">{{ page }}</a>
+                                    </li>
+                                    {% if next_page %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{% url 'get_doctor_grid' clinic=clinic page=next_page %}?{{ query_string }}">
+                                            {{ next_page }}
+                                        </a>
+                                    </li>
+                                    {% endif %}
+
+                                    <!-- Next button -->
+                                    <li class="page-item {% if not next_page %}disabled{% endif %}">
+                                        <a class="page-link next" href="{% if next_page %}{% url 'get_doctor_grid' clinic=clinic page=next_page %}?{{ query_string }}{% else %}# {% endif %}">
+                                            Next
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
 								</div>
 							</div>
 						</div>

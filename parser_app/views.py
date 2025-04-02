@@ -154,4 +154,16 @@ def get_clinics(request: HttpRequest, page=1):
 
 
 def get_doctor_grid(request: HttpRequest, clinic, page=1):
-    return render(request, 'doctor-grid.html')
+    doctors = Doctor.objects.filter(clinic__title=clinic)
+    per_page = 12
+    end = page * per_page
+    start = end - per_page
+    previous_page = page - 1 if start > 0 else None
+    next_page = page + 1 if end < len(doctors) else None
+    return render(request, 'doctor-grid.html', {
+        'doctors': doctors[start:end],
+        'clinic': clinic,
+        'page': page,
+        'previous_page': previous_page,
+        'next_page': next_page,
+    })
