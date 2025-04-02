@@ -648,7 +648,7 @@
 								</div>
                         </div>
 							<div class="card-body p-0">
-								<form method="POST" action="{% url 'select_filters_from_grid' %}">
+								<form method="POST" action="{% url 'select_filters_from_grid' %}?clinic={{ clinic }}&page={{ page }}">
                                 {% csrf_token %}
 
                                 <div class="accordion-item border-bottom">
