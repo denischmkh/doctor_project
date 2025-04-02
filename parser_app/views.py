@@ -190,6 +190,7 @@ def get_doctor_grid(request: HttpRequest, clinic, page=1):
         'specializations': necessary_specializations,
         'genders': genders,
         'query_string': query_string,
+        'selected_filters': selected_filters,
     })
 
 def select_filters_from_grid(request):
