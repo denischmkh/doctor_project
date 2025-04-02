@@ -9,5 +9,5 @@ urlpatterns = [
     path('pages/clinics/', views.get_clinics, name='get_clinics'),
     path('pages/clinics/<int:page>', views.get_clinics, name='get_clinics_paginator'),
     path('doctor-grid/<str:clinic>/<int:page>/', views.get_doctor_grid, name='get_doctor_grid'),
-    path('select_doctor_grid_filters', views.select_filters_from_grid, name='select_filters_from_grid')
+    path('select_filters_from_grid/', views.select_filters_from_grid, name='select_filters_from_grid')
 ]
