@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib import admin
+from django.db import models
 from .models import (
     Doctor, Clinic, Language, Hospital, Specialisation, Education, WorkExperience,
     Apprenticeship, Publication, Research, Award, Competence, Membership
@@ -20,28 +21,10 @@ class DoctorAdmin(admin.ModelAdmin):
     filter_horizontal = []
     exclude = ['media_urls']
 
-    class Meta:
-        model = Doctor
-        fields = '__all__'
-        widgets = {
-            'name': forms.TextInput(attrs={'size': 40}),
-            'description': forms.Textarea(attrs={'rows': 2, 'cols': 60}),
-            'profile_url': forms.URLInput(attrs={'size': 50}),
-            'phone': forms.TextInput(attrs={'size': 20}),
-            'email': forms.EmailInput(attrs={'size': 40}),
-            'vcard_url': forms.URLInput(attrs={'size': 50}),
-            'cv_url': forms.URLInput(attrs={'size': 50}),
-            'photo_url': forms.URLInput(attrs={'size': 50}),
-            'gender': forms.TextInput(attrs={'size': 10}),
-            'city': forms.TextInput(attrs={'size': 20}),
-            'address': forms.Textarea(attrs={'rows': 2, 'cols': 60}),
-            'fax': forms.TextInput(attrs={'size': 20}),
-            'instagram': forms.URLInput(attrs={'size': 50}),
-            'facebook': forms.URLInput(attrs={'size': 50}),
-            'twitter': forms.URLInput(attrs={'size': 50}),
-            'linkedin': forms.URLInput(attrs={'size': 50}),
-            'youtube': forms.URLInput(attrs={'size': 50}),
-        }
+    formfield_overrides = {
+        models.CharField: {'widget': forms.Select(choices=Doctor.GENDER_CHOICES)}
+    }
+
 
 
 

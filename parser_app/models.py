@@ -95,6 +95,12 @@ class Clinic(models.Model):
 
 
 class Doctor(models.Model):
+    GENDER_CHOICES = [
+        ('M', 'Male'),
+        ('F', 'Female'),
+    ]
+
+
     name = models.TextField(null=True)
     clinic = models.ManyToManyField(Clinic, blank=True)
     description = models.TextField(null=True)
@@ -105,8 +111,8 @@ class Doctor(models.Model):
     cv_url = models.URLField(null=True)
     photo_url = models.URLField(null=True)
 
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True)
 
-    gender = models.CharField(null=True)
     city = models.CharField(null=True)
 
 
