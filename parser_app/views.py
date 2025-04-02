@@ -208,6 +208,7 @@ def select_filters_from_grid(request: HttpRequest):
         url = f"{reverse('get_doctor_grid')}?{query_string}"
         clinic = request.POST.get('clinic', 'default_clinic_name')
         page = request.POST.get('page', 1)
+        print(clinic)
 
         response = HttpResponseRedirect(reverse('get_doctor_grid', args=[clinic, page]))
         return HttpResponseRedirect(url)
