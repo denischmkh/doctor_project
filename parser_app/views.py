@@ -176,6 +176,8 @@ def get_doctor_grid(request: HttpRequest, clinic, page=1):
 
         # Применяем фильтры к уже выбранным врачам
         doctors = doctors.filter(query).distinct()
+    query_params = [('filter', value) for value in selected_filters]
+    query_string = urlencode(query_params, doseq=True)
 
     return render(request, 'doctor-grid.html', {
         'doctors_count': len(doctors),
@@ -187,6 +189,7 @@ def get_doctor_grid(request: HttpRequest, clinic, page=1):
         'languages': languages,
         'specializations': necessary_specializations,
         'genders': genders,
+        'query_string': query_string,
     })
 
 def select_filters_from_grid(request):
