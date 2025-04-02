@@ -156,12 +156,31 @@ def get_clinics(request: HttpRequest, page=1):
 
 
 def get_doctor_grid(request: HttpRequest, clinic, page=1):
+    selected_filters = request.GET.getlist('filter')
     doctors = Doctor.objects.filter(clinic__title=clinic)
     per_page = 12
     end = page * per_page
     start = end - per_page
     previous_page = page - 1 if start > 0 else None
     next_page = page + 1 if end < len(doctors) else None
+
+    languages = [el.name for el in Language.objects.all()]
+
+    query = Q()
+
+    # Если выбран хотя бы один фильтр, формируем условия для фильтрации
+    if selected_filters:
+        # Добавляем фильтры для специализаций
+        query |= Q(specialisations__name__in=selected_filters)
+
+        # Добавляем фильтры для языков
+        query |= Q(languages__name__in=selected_filters)
+
+        # Добавляем фильтры для гендера
+        query |= Q(gender__in=selected_filters)
+
+    # Применяем фильтрацию с комбинированными условиями
+    doctors = Doctor.objects.filter(query).distinct()
     return render(request, 'doctor-grid.html', {
         'doctors_count': len(doctors),
         'doctors': doctors[start:end],
@@ -169,4 +188,29 @@ def get_doctor_grid(request: HttpRequest, clinic, page=1):
         'page': page,
         'previous_page': previous_page,
         'next_page': next_page,
+        'languages': languages,
+        'specializations': necessary_specializations,
+        'genders': genders,
+
     })
+
+def select_filters_from_grid(request: HttpRequest):
+    if request.method == 'POST':
+
+        params = list(request.POST.values())
+        # Если только одно значение, просто редиректим
+        if len(params) == 1:
+            response = HttpResponseRedirect(reverse('get_doctor_grid'))
+            return response
+
+        # Формируем список фильтров с одинаковым именем "filter"
+        query_params = [('filter', value) for value in params]
+
+        # Преобразуем их в строку query параметров
+        query_string = urlencode(query_params, doseq=True)
+
+        # Формируем URL с добавлением query строки
+        url = f"{reverse('get_doctor_grid')}?{query_string}"
+
+        # Переадресовываем на новый URL с query параметрами
+        return HttpResponseRedirect(url)
