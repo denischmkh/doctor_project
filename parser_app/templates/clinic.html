@@ -502,35 +502,28 @@
                     <!-- /Show Result -->
 
 					<div class="row">
-						{% load custom_filters %}
 						{% for clinic in clinics %}
-						<!-- Clinic Item -->
+                        <!-- Clinic Item -->
 						<div class="col-lg-4 col-md-6">
 							<div class="card clinic-item">
-								<div class="card-body">
-									<div class="d-flex align-items-center">
-										<a href="javascript:void(0)" class="clinic-icon">
-											<img src="{{ clinic.image.url }}" alt="img">
-										</a>
-										<div class="ms-3">
-											<h6 class="mb-1">
-												<a href="{% url 'get_doctor_grid' clinic.title 1 %}">{{ clinic.title }}</a>
-											</h6>
-											<div class="d-flex align-items-center flex-wrap clinic-location gap-2">
-												<p class="fs-14 mb-0">
-													<i class="isax isax-location me-2"></i>{{ clinic.location }}
-												</p>
-												<p class="fs-14 mb-0">
-													{{ clinic.title }}: {{ doctors_count_in_clinic|get_item:clinic.title }} Doctors
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <a href="javascript:void(0)" class="clinic-icon">
+                                            <img src="{{clinic.image}}" alt="img">
+                                        </a>
+                                        <div class="ms-3">
+                                            <h6 class="mb-1"><a href="{% url 'get_doctor_grid' clinic.title 1 %}">{{clinic.title}}</a></h6>
+                                            <div class="d-flex align-items-center flex-wrap clinic-location gap-2">
+                                                <p class="fs-14 mb-0"><i class="isax isax-location me-2"></i>{{clinic.location}}</p>
+                                                <p class="fs-14 mb-0">{{ doctors_count_in_clinic.clinic }} Doctors</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 						</div>
-						<!-- /Clinic Item -->
-					{% endfor %}
+                         <!-- /Clinic Item -->
+						{% endfor %}
 
 					</div>
                     <div class="pagination dashboard-pagination mt-md-3 mt-0 mb-4">
