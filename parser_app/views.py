@@ -2,6 +2,7 @@ import json
 import urllib
 from urllib.parse import urlencode
 
+from django import template
 from django.db.models import Q
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -127,7 +128,9 @@ def select_filters(request: HttpRequest):
         # Переадресовываем на новый URL с query параметрами
         return HttpResponseRedirect(url)
 
+register = template.Library()
 
+@register.filter(name='get_item')
 def get_clinics(request: HttpRequest, page=1):
     if request.method == 'GET':
         clinics = Clinic.objects.all()
