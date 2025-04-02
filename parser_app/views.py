@@ -128,9 +128,7 @@ def select_filters(request: HttpRequest):
         # Переадресовываем на новый URL с query параметрами
         return HttpResponseRedirect(url)
 
-register = template.Library()
 
-@register.filter(name='get_item')
 def get_clinics(request: HttpRequest, page=1):
     if request.method == 'GET':
         clinics = Clinic.objects.all()
@@ -146,6 +144,7 @@ def get_clinics(request: HttpRequest, page=1):
 
         doctors_count_in_clinic = {clinic.title: len(Doctor.objects.filter(clinic__title=clinic.title)) for clinic in clinics}
 
+        print(doctors_count_in_clinic)
 
         return render(request, 'clinic.html', {
             "clinics": clinics[start: end],
