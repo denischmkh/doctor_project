@@ -18,7 +18,6 @@ def import_doctors_from_csv(csv_file_path):
         reader = csv.DictReader(file)
 
         for row in reader:
-            # Создание или получение данных для каждой связи
             doctor_data = {
                 'name': f"{row.get('Provider First Name', '')} {row.get('Provider Last Name', '')}".strip(),
                 'gender': row.get('Provider Gender Code'),
@@ -27,15 +26,12 @@ def import_doctors_from_csv(csv_file_path):
                 'phone': row.get('Provider Business Mailing Address Telephone Number'),
                 'email': row.get('Provider Email'),
                 'site_url': row.get('Provider Business Practice Location Address'),
-                # Это можно заменить на другой столбец, если нужно
             }
 
             # Проверяем, существует ли врач в базе
             doctor, created = Doctor.objects.get_or_create(name=doctor_data['name'], defaults=doctor_data)
 
-            # Пример добавления данных в связи ManyToMany
-            # Я предполагаю, что у вас уже есть соответствующие данные в базе, иначе их нужно будет создавать
-            # Пример с языками
+
             languages = row.get('Provider Languages', '').split(',')  # допустим, языки перечислены через запятую
             for lang in languages:
                 language, created = Language.objects.get_or_create(name=lang.strip())
