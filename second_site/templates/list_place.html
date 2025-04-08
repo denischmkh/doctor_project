@@ -841,7 +841,47 @@
         {% endfor %}
     </tbody>
 </table>
+<nav class="d-flex justify-content-center bg-light p-3">
+    <ul class="pagination" id="pagination">
+        {% if doctors.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ doctors.previous_page_number }}">Previous</a>
+            </li>
+            {% if doctors.number > 4 %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1">1</a>
+                </li>
+                {% if doctors.number > 5 %}
+                    <li class="page-item disabled"><span class="page-link">...</span></li>
+                {% endif %}
+            {% endif %}
+        {% endif %}
 
+        {% with start=doctors.number|add:"-3" end=doctors.number|add:"3" %}
+            {% for i in doctors.paginator.page_range %}
+                {% if i >= start and i <= end %}
+                    <li class="page-item {% if doctors.number == i %}active{% endif %}">
+                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        {% endwith %}
+
+        {% if doctors.has_next %}
+            {% if doctors.number < doctors.paginator.num_pages|add:"-3" %}
+                {% if doctors.number < doctors.paginator.num_pages|add:"-4" %}
+                    <li class="page-item disabled"><span class="page-link">...</span></li>
+                {% endif %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ doctors.paginator.num_pages }}">{{ doctors.paginator.num_pages }}</a>
+                </li>
+            {% endif %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ doctors.next_page_number }}">Next</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
 
 
 		</div>

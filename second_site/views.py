@@ -27,4 +27,5 @@ def get_doctors_by_specialisation(request: HttpRequest, specialization, page=1):
     return render(request, 'list_place.html', {
         'doctors': page_obj,
         'specialisation': specialization,
+        'paginator': paginator,
     })
