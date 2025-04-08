@@ -17,36 +17,23 @@
         </tr>
     </thead>
     <tbody>
-        {% for doctor in doctors %}
+        {% for item in places %}
             <tr>
-                <!-- Выводим специализацию (Doctor может иметь несколько специализаций) -->
+                <td>{{ item.category }}</td>
                 <td>
-                    {% for specialization in doctor.specialisations.all %}
-                        {{ specialization.name }}{% if not forloop.last %}, {% endif %}
-                    {% empty %}
-                        -
-                    {% endfor %}
-                </td>
-                <!-- Выводим имя доктора -->
-                <td>
-                    <a href="{{ doctor.profile_url }}" target="_blank">
-                        {{ doctor.name|default:"-" }}
+                    <a href="{% url 'place_full_info' item.slug %}" target="_blank">
+                        {{ item.name|default:"-" }}
                     </a>
                 </td>
-                <!-- Выводим рейтинг (если есть, то через doctor.rating или что-то подобное) -->
-                <td class="text-break">{{ doctor.rating|default:"-" }}</td>
-                <!-- Выводим количество отзывов (если есть) -->
-                <td class="text-break">{{ doctor.num_reviews|default:"-" }}</td>
-                <!-- Выводим город и страну -->
-                <td class="text-break">{{ doctor.city|default:"-" }}</td>
-                <td class="text-break">{{ doctor.city.state|default:"-" }}</td>
-                <td class="text-break">{{ doctor.city|default:"-" }}</td>
-                <!-- Выводим почтовый индекс -->
-                <td class="text-break">{{ doctor.postcode|default:"-" }}</td>
-                <!-- Выводим тип места работы -->
-                <td class="text-wrap">{{ doctor.place_type|default:"-" }}</td>
+                <td class="text-break">{{ item.rating|default:"-" }}</td>
+                <td class="text-break">{{ item.num_reviews|default:"-" }}</td>
+                <td class="text-break">{{ item.city.country }}</td>
+                <td class="text-break">{{ item.city.state }}</td>
+                <td class="text-break">{{ item.city }}</td>
+                <td class="text-break">{{ item.postcode|default:"-" }}</td>
+                <td class="text-wrap">{{ item.place_type|default:"-" }}</td>
                 <td class="text-center">
-                    {% if doctor.phone %}
+                    {% if item.phone %}
                         <div class="text-success bg-success bg-opacity-25">
                             Yes
                         </div>
@@ -57,7 +44,7 @@
                     {% endif %}
                 </td>
                 <td class="text-center">
-                    {% if doctor.email %}
+                    {% if item.email %}
                         <div class="text-success bg-success bg-opacity-25">
                             Yes
                         </div>
@@ -68,8 +55,8 @@
                     {% endif %}
                 </td>
                 <td  class="text-center px-2" style="width: 50px;">
-                    {% if doctor.website %}
-                        <a href="{{ doctor.website }}">
+                    {% if item.website %}
+                        <a href="{{ item.website }}">
                             <i class="ph ph-link"></i>
                         </a>
                     {% else %}
@@ -77,32 +64,32 @@
                     {% endif %}
                 </td>
                 <td class="text-center" style="gap: 5px; flex-wrap: wrap;">
-                    {% if doctor.facebook %}
-                        <a href="{{doctor.facebook}}" target="_blank">
+                    {% if item.facebook %}
+                        <a href="{{item.facebook}}" target="_blank">
                             <i class="ph ph-facebook-logo"></i>
                         </a>
                     {% endif %}
 
-                    {% if doctor.instagram %}
-                        <a href="{{doctor.instagram}}" target="_blank">
+                    {% if item.instagram %}
+                        <a href="{{item.instagram}}" target="_blank">
                             <i class="ph ph-instagram-logo"></i>
                         </a>
                     {% endif %}
 
-                    {% if doctor.youtube %}
-                        <a href="{{doctor.youtube}}" target="_blank">
+                    {% if item.youtube %}
+                        <a href="{{item.youtube}}" target="_blank">
                             <i class="ph ph-youtube-logo"></i>
                         </a>
                     {% endif %}
 
-                    {% if doctor.twitter %}
-                        <a href="{{doctor.twitter}}" target="_blank">
+                    {% if item.twitter %}
+                        <a href="{{item.twitter}}" target="_blank">
                             <i class="ph ph-twitter-logo"></i>
                         </a>
                     {% endif %}
 
-                    {% if doctor.linkedin %}
-                        <a href="{{doctor.linkedin}}" target="_blank">
+                    {% if item.linkedin %}
+                        <a href="{{item.linkedin}}" target="_blank">
                             <i class="ph ph-linkedin-logo"></i>
                         </a>
                     {% endif %}

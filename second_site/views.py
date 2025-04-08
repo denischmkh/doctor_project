@@ -17,14 +17,14 @@ def index(request: HttpRequest):
     })
 
 
-def get_doctors_by_specialisation(request: HttpRequest, specialisation: str, page=1):
-    doctors = Doctor.objects.filter(specialisations__name=specialisation).order_by('name')
+def get_doctors_by_specialisation(request: HttpRequest, specialization, page=1):
+    doctors = Doctor.objects.filter(specialisations__name=specialization).order_by('name')
     paginator = Paginator(doctors, 24)  # 10 докторов на странице
     page_obj = paginator.get_page(page)
-    print(specialisation)
+    print(specialization)
     print(doctors)
 
     return render(request, 'list_place.html', {
         'doctors': page_obj,
-        'specialisation': specialisation,
+        'specialisation': specialization,
     })
