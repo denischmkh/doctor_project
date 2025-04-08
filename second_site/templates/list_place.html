@@ -741,7 +741,7 @@
 			<table class="table tasks-list" style="table-layout: fixed;">
     <thead>
         <tr>
-            <th style="width: 120px;">Category</th>
+            <th style="width: 120px;">Specialisation</th>
             <th style="width: 160px;">Name</th>
             <th style="width: 100px;">Rating</th>
             <th style="width: 120px;">Reviews</th>
@@ -749,7 +749,7 @@
             <th style="width: 120px;">State</th>
             <th style="width: 120px;">City</th>
             <th style="width: 120px;">Postcode</th>
-            <th style="width: 140px;">Place Type</th>
+            <th style="width: 140px;">Gender</th>
             <th style="width: 95px;">Phone</th>
             <th style="width: 90px;">Email</th>
             <th style="width: 110px;">Website</th>
@@ -759,7 +759,7 @@
     <tbody>
         {% for doctor in doctors %}
             <tr>
-                <td>{{ doctor.category }}</td>
+                <td>{{ doctor.specialisations.first }}</td>
                 <td>
                         {{ doctor.name|default:"-" }}
                     </a>
@@ -770,7 +770,7 @@
                 <td class="text-break">{{ doctor.city.state }}</td>
                 <td class="text-break">{{ doctor.city }}</td>
                 <td class="text-break">{{ doctor.postcode|default:"-" }}</td>
-                <td class="text-wrap">{{ doctor.place_type|default:"-" }}</td>
+                <td class="text-wrap">{{ doctor.gender|default:"-" }}</td>
                 <td class="text-center">
                     {% if doctor.phone %}
                         <div class="text-success bg-success bg-opacity-25">
