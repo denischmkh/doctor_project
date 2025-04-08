@@ -845,11 +845,11 @@
     <ul class="pagination" id="pagination">
         {% if doctors.has_previous %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ doctors.previous_page_number }}">Previous</a>
+                <a class="page-link" href="{% url 'get_doctors_by_specialisation' specialisation doctors.previous_page_number %}">Previous</a>
             </li>
             {% if doctors.number > 4 %}
                 <li class="page-item">
-                    <a class="page-link" href="?page=1">1</a>
+                    <a class="page-link" href="{% url 'get_doctors_by_specialisation' specialisation 1 %}">1</a>
                 </li>
                 {% if doctors.number > 5 %}
                     <li class="page-item disabled"><span class="page-link">...</span></li>
@@ -861,7 +861,7 @@
             {% for i in doctors.paginator.page_range %}
                 {% if i >= start and i <= end %}
                     <li class="page-item {% if doctors.number == i %}active{% endif %}">
-                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                        <a class="page-link" href="{% url 'get_doctors_by_specialisation' specialisation i %}">{{ i }}</a>
                     </li>
                 {% endif %}
             {% endfor %}
@@ -873,11 +873,11 @@
                     <li class="page-item disabled"><span class="page-link">...</span></li>
                 {% endif %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ doctors.paginator.num_pages }}">{{ doctors.paginator.num_pages }}</a>
+                    <a class="page-link" href="{% url 'get_doctors_by_specialisation' specialisation doctors.paginator.num_pages %}">{{ doctors.paginator.num_pages }}</a>
                 </li>
             {% endif %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ doctors.next_page_number }}">Next</a>
+                <a class="page-link" href="{% url 'get_doctors_by_specialisation' specialisation doctors.next_page_number %}">Next</a>
             </li>
         {% endif %}
     </ul>
