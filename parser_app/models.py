@@ -96,28 +96,28 @@ class Clinic(models.Model):
 
 class Doctor(models.Model):
 
-    name = models.TextField(null=True)
+    name = models.CharField(max_length=1000,null=True)
     clinic = models.ManyToManyField(Clinic, blank=True)
     description = models.TextField(null=True)
     profile_url = models.URLField(null=True)
-    phone = models.TextField(null=True)
-    email = models.TextField(null=True)
-    vcard_url = models.URLField(null=True)
-    cv_url = models.URLField(null=True)
-    photo_url = models.URLField(null=True)
+    phone = models.CharField(max_length=1000,null=True)
+    email = models.CharField(max_length=1000,null=True)
+    vcard_url = models.URLField(max_length=1000,null=True)
+    cv_url = models.URLField(max_length=1000,null=True)
+    photo_url = models.URLField(max_length=1000,null=True)
 
 
     gender = models.CharField(null=True)
     city = models.CharField(null=True)
 
 
-    address = models.TextField(null=True)
-    fax = models.TextField(null=True)
-    instagram = models.TextField(null=True)
-    facebook = models.TextField(null=True)
-    twitter = models.TextField(null=True)
-    linkedin = models.TextField(null=True)
-    youtube = models.TextField(null=True)
+    address = models.URLField(null=True)
+    fax = models.URLField(max_length=10000,null=True)
+    instagram = models.URLField(max_length=10000,null=True)
+    facebook = models.URLField(max_length=10000,null=True)
+    twitter = models.URLField(max_length=10000,null=True)
+    linkedin = models.URLField(max_length=10000,null=True)
+    youtube = models.URLField(max_length=10000,null=True)
 
     languages = models.ManyToManyField(Language, blank=True)
     hospitals = models.ManyToManyField(Hospital, blank=True)
@@ -131,8 +131,10 @@ class Doctor(models.Model):
     competences = models.ManyToManyField(Competence, blank=True)
     memberships = models.ManyToManyField(Membership, blank=True)
 
-    site_url = models.TextField(null=True)
+    site_url = models.URLField(max_length=10000, null=True)
     media_urls = models.JSONField(null=True, blank=True)
+
+    source = models.CharField(null=True, max_length=10000)
 
     def __str__(self):
         return self.name if self.name else "Unnamed Doctor"

@@ -2,6 +2,7 @@ import ast
 import csv
 import json
 import os
+import sys
 
 from django.db import DataError
 
@@ -22,6 +23,7 @@ for file in files:
     with open(file_path, mode='r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         for row in reader:
+            pprint(row)
             try:
                 new_doctor, created = Doctor.objects.get_or_create(
                     name=row.get('first_name') + row.get('last_name'),

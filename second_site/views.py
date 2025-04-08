@@ -8,7 +8,7 @@ specializations = ['Oral surgery', 'Physiologi', 'Paediatrics', 'Infectiology', 
                              'Diabetology', 'Urogynaecology', 'Hematology', 'Neuropsychology', 'Rheumatology',
                              'Lymphology', 'MRI', 'Cataracts', 'Spinal surgery', 'Hernias',
                              'Sportmedizin', 'arodontologie', 'Neuropathologi', 'Mikrobiologie', 'Cardiology',
-                             'Ultraschall', 'Endocrinology', 'Eye surgery', 'Orthopädie']
+                             'Ultraschall', 'Endocrinology', 'Eye surgery', 'Orthopädie', 'Physician']
 
 def index(request: HttpRequest):
     print(specializations)
