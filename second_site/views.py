@@ -18,16 +18,7 @@ def index(request: HttpRequest):
 
 
 def get_doctors_by_specialisation(request: HttpRequest, specialisation: str, page=1):
-    specialisation_obj = Specialisation.objects.filter(name=specialisation).first()
-    print(specialisation_obj)
-
-    # Если не найдено подходящей специализации, возвращаем пустой список
-    if not specialisation_obj:
-        doctors = Doctor.objects.none()  # Пустой queryset
-    else:
-        # Получаем всех докторов, у которых есть соответствующая специализация
-        doctors = Doctor.objects.filter(specialisations=specialisation_obj)
-
+    doctors = Doctor.objects.filter(specialisations__name=specialisation).order_by('name')
     paginator = Paginator(doctors, 24)  # 10 докторов на странице
     page_obj = paginator.get_page(page)
     print(specialisation)
