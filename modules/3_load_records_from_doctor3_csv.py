@@ -30,10 +30,11 @@ def import_doctors_from_csv(csv_file_path):
 
             # Проверяем, существует ли врач в базе
             doctor, created = Doctor.objects.get_or_create(name=doctor_data['name'], defaults=doctor_data)
+
             if created:
-                print(f'{doctor} already created')
-            else:
                 print(f'{doctor} was created')
+            else:
+                print(f'{doctor} already existed')
 
             languages = row.get('Provider Languages', '').split(',')  # допустим, языки перечислены через запятую
             for lang in languages:
