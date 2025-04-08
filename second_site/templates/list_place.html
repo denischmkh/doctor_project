@@ -765,10 +765,10 @@
                     </a>
                 </td>
                 <td class="text-break">{{ doctor.rating|default:"-" }}</td>
-                <td class="text-break">{{ doctor.num_reviews|default:"-" }}</td>
-                <td class="text-break">{{ doctor.city.country }}</td>
-                <td class="text-break">{{ doctor.city.state }}</td>
-                <td class="text-break">{{ doctor.city }}</td>
+                <td class="text-break">{{ doctor.clinic.first|default:"-" }}</td>
+                <td class="text-break">{{ doctor.city.country|default:"-" }}</td>
+                <td class="text-break">{{ doctor.city.state|default:"-" }}</td>
+                <td class="text-break">{{ doctor.city|default:"-" }}</td>
                 <td class="text-break">{{ doctor.postcode|default:"-" }}</td>
                 <td class="text-wrap">{{ doctor.gender|default:"-" }}</td>
                 <td class="text-center">
