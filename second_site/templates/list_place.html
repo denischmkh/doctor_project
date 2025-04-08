@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content_area %}
 	<div class="card">
 		<div class="card-header pb-0">
 			<div class="search-filters mb-3">
-				<form method="get" action="{% url 'categoty_list_place_tm' %}">
+				<form method="get" action="{% url 'get_doctors_by_specialisation' %}">
 					<div class="row g-5 align-items-stretch">
 						<!--  Поле ввода для категории с чекбоксами -->
 						<div class="col-auto">
@@ -14,17 +13,7 @@
 									Select Category
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
-									{% for category in categories %}
-										<li>
-											<div class="form-check my-1">
-												<input class="form-check-input ms-2" type="checkbox" name="category" value="{{ category.slug }}" id="category-{{ category.id }}"
-													   {% if category.slug in category_filter %}checked{% endif %}>
-												<label class="form-check-label ms-2" for="category-{{ category.id }}">
-													{{ category.name }}
-												</label>
-											</div>
-										</li>
-									{% endfor %}
+
 								</ul>
 							</div>
 						</div>
@@ -37,17 +26,7 @@
 									Select Country
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
-									{% for country in countries %}
-										<li>
-											<div class="form-check  my-1">
-												<input class="form-check-input ms-2" type="checkbox" name="country" value="{{ country.slug }}" id="country-{{ country.id }}"
-													   {% if country.slug in country_filter %}checked{% endif %}>
-												<label class="form-check-label ms-2" for="country-{{ country.id }}">
-													{{ country.full_name }}
-												</label>
-											</div>
-										</li>
-									{% endfor %}
+
 								</ul>
 							</div>
 						</div>
@@ -92,7 +71,7 @@
     <tbody>
     {% for doctor in doctors %}
         <tr>
-            <!-- Выводим специализацию (Doctor может иметь несколько специализаций) -->
+            <!-- Специализация -->
             <td>
                 {% for specialization in doctor.specialisations.all %}
                     {{ specialization.name }}{% if not forloop.last %}, {% endif %}
@@ -101,38 +80,35 @@
                 {% endfor %}
             </td>
 
-            <!-- Выводим имя доктора -->
+            <!-- Имя доктора -->
             <td>
                 <a href="{{ doctor.profile_url }}" target="_blank">
                     {{ doctor.name|default:"-" }}
                 </a>
             </td>
 
-            <!-- Выводим рейтинг (если есть, то через doctor.rating или что-то подобное) -->
+            <!-- Рейтинг доктора -->
             <td class="text-break">{{ doctor.rating|default:"-" }}</td>
 
-            <!-- Выводим количество отзывов (если есть) -->
+            <!-- Количество отзывов (если есть) -->
             <td class="text-break">{{ doctor.num_reviews|default:"-" }}</td>
 
-            <!-- Выводим город -->
+            <!-- Страна -->
             <td class="text-break">{{ doctor.city|default:"-" }}</td>
 
-            <!-- Выводим клинику -->
-            <td class="text-break">
-                {% for clinic in doctor.clinic.all %}
-                    {{ clinic.title }}{% if not forloop.last %}, {% endif %}
-                {% empty %}
-                    -
-                {% endfor %}
-            </td>
+            <!-- Штат/Регион -->
+            <td class="text-break">{{ doctor.city.state|default:"-" }}</td>
 
-            <!-- Выводим почтовый индекс -->
+            <!-- Город -->
+            <td class="text-break">{{ doctor.city|default:"-" }}</td>
+
+            <!-- Почтовый индекс -->
             <td class="text-break">{{ doctor.postcode|default:"-" }}</td>
 
-            <!-- Выводим тип места работы -->
+            <!-- Тип места работы -->
             <td class="text-wrap">{{ doctor.place_type|default:"-" }}</td>
 
-            <!-- Выводим информацию о телефоне -->
+            <!-- Телефон -->
             <td class="text-center">
                 {% if doctor.phone %}
                     <div class="text-success bg-success bg-opacity-25">
@@ -145,7 +121,7 @@
                 {% endif %}
             </td>
 
-            <!-- Выводим информацию об email -->
+            <!-- Email -->
             <td class="text-center">
                 {% if doctor.email %}
                     <div class="text-success bg-success bg-opacity-25">
@@ -158,8 +134,8 @@
                 {% endif %}
             </td>
 
-            <!-- Выводим ссылку на сайт -->
-            <td  class="text-center px-2" style="width: 50px;">
+            <!-- Сайт -->
+            <td class="text-center px-2" style="width: 50px;">
                 {% if doctor.site_url %}
                     <a href="{{ doctor.site_url }}">
                         <i class="ph ph-link"></i>
@@ -169,7 +145,7 @@
                 {% endif %}
             </td>
 
-            <!-- Выводим социальные сети -->
+            <!-- Социальные сети -->
             <td class="text-center" style="gap: 5px; flex-wrap: wrap;">
                 {% if doctor.facebook %}
                     <a href="{{ doctor.facebook }}" target="_blank">
@@ -211,4 +187,3 @@
 </table>
 		</div>
 	</div>
-{% endblock content_area %}
