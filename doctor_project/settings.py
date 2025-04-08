@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-t2f#hx%b)d_n++m^$0e0u88z@9g0+b_lmw^m-q7te30$cf1add
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['128.140.74.206']
+ALLOWED_HOSTS = ['128.140.74.206', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'parser_app',
+    'second_site',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_DIR / 'parser_app/templates',
+            BASE_DIR / 'second_site/templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -75,28 +77,28 @@ WSGI_APPLICATION = 'doctor_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 #
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'doctors_db',
-#         'USER': 'postgres',
-#         'PASSWORD': 'denis2004',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
-#
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'doctors_db',
-        'USER': 'super_user',
-        'PASSWORD': 'gthyfrde',
+        'USER': 'postgres',
+        'PASSWORD': 'denis2004',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'doctors_db',
+#         'USER': 'super_user',
+#         'PASSWORD': 'gthyfrde',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
