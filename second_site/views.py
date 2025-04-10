@@ -53,6 +53,6 @@ def get_doctors_by_specialisation(request, specialization_slug, page=1):
 
     return render(request, 'list_place.html', {
         'doctors': page_obj,
-        'specialisation': specialization,
+        'specialization_slug': specialization_slug,
         'paginator': paginator,
     })

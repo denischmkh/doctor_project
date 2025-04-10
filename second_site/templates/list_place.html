@@ -743,16 +743,16 @@
         <tr>
             <th style="width: 120px;">Specialisation</th>
             <th style="width: 160px;">Name</th>
-            <th style="width: 100px;">Rating</th>
-            <th style="width: 120px;">Reviews</th>
-            <th style="width: 120px;">Country</th>
-            <th style="width: 120px;">State</th>
+            <th style="width: 100px;">Postcode</th>
+            <th style="width: 120px;">Clinic</th>
+            <th style="width: 120px;">Address</th>
+            <th style="width: 120px;">Phone</th>
             <th style="width: 120px;">City</th>
             <th style="width: 120px;">Postcode</th>
             <th style="width: 140px;">Gender</th>
             <th style="width: 95px;">Phone</th>
             <th style="width: 90px;">Email</th>
-            <th style="width: 110px;">Website</th>
+            <th style="width: 110px;">Source</th>
             <th style="width: 160px;">Socials</th>
         </tr>
     </thead>
@@ -764,10 +764,10 @@
                         {{ doctor.name|default:"-" }}
                     </a>
                 </td>
-                <td class="text-break">{{ doctor.rating|default:"-" }}</td>
+                <td class="text-break">{{ doctor.postcode|default:"-" }}</td>
                 <td class="text-break">{{ doctor.clinic.first|default:"-" }}</td>
-                <td class="text-break">{{ doctor.city.country|default:"-" }}</td>
-                <td class="text-break">{{ doctor.city.state|default:"-" }}</td>
+                <td class="text-break">{{ doctor.address|default:"-" }}</td>
+                <td class="text-break">{{ doctor.phone|default:"-" }}</td>
                 <td class="text-break">{{ doctor.city|default:"-" }}</td>
                 <td class="text-break">{{ doctor.postcode|default:"-" }}</td>
                 <td class="text-wrap">{{ doctor.gender|default:"-" }}</td>
@@ -794,8 +794,8 @@
                     {% endif %}
                 </td>
                 <td  class="text-center px-2" style="width: 50px;">
-                    {% if doctor.website %}
-                        <a href="{{ doctor.website }}">
+                    {% if doctor.source %}
+                        <a href="http://{{ doctor.source }}" target="_blank">
                             <i class="ph ph-link"></i>
                         </a>
                     {% else %}
@@ -844,42 +844,42 @@
 <nav class="d-flex justify-content-center bg-light p-3">
     <ul class="pagination" id="pagination">
         {% if doctors.has_previous %}
-            <li class="page-item">
-                <a class="page-link" href="{% url 'get_doctors_by_specialisation' specialisation doctors.previous_page_number %}">Previous</a>
-            </li>
-            {% if doctors.number > 4 %}
-                <li class="page-item">
-                    <a class="page-link" href="{% url 'get_doctors_by_specialisation' specialisation 1 %}">1</a>
-                </li>
-                {% if doctors.number > 5 %}
-                    <li class="page-item disabled"><span class="page-link">...</span></li>
-                {% endif %}
-            {% endif %}
-        {% endif %}
+			<li class="page-item">
+				<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=doctors.previous_page_number %}">Previous</a>
+			</li>
+			{% if doctors.number > 4 %}
+				<li class="page-item">
+					<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=1 %}">1</a>
+				</li>
+				{% if doctors.number > 5 %}
+					<li class="page-item disabled"><span class="page-link">...</span></li>
+				{% endif %}
+			{% endif %}
+		{% endif %}
 
-        {% with start=doctors.number|add:"-3" end=doctors.number|add:"3" %}
-            {% for i in doctors.paginator.page_range %}
-                {% if i >= start and i <= end %}
-                    <li class="page-item {% if doctors.number == i %}active{% endif %}">
-                        <a class="page-link" href="{% url 'get_doctors_by_specialisation' specialisation i %}">{{ i }}</a>
-                    </li>
-                {% endif %}
-            {% endfor %}
-        {% endwith %}
+		{% with start=doctors.number|add:"-3" end=doctors.number|add:"3" %}
+			{% for i in doctors.paginator.page_range %}
+				{% if i >= start and i <= end %}
+					<li class="page-item {% if doctors.number == i %}active{% endif %}">
+						<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=i %}">{{ i }}</a>
+					</li>
+				{% endif %}
+			{% endfor %}
+		{% endwith %}
 
-        {% if doctors.has_next %}
-            {% if doctors.number < doctors.paginator.num_pages|add:"-3" %}
-                {% if doctors.number < doctors.paginator.num_pages|add:"-4" %}
-                    <li class="page-item disabled"><span class="page-link">...</span></li>
-                {% endif %}
-                <li class="page-item">
-                    <a class="page-link" href="{% url 'get_doctors_by_specialisation' specialisation doctors.paginator.num_pages %}">{{ doctors.paginator.num_pages }}</a>
-                </li>
-            {% endif %}
-            <li class="page-item">
-                <a class="page-link" href="{% url 'get_doctors_by_specialisation' specialisation doctors.next_page_number %}">Next</a>
-            </li>
-        {% endif %}
+		{% if doctors.has_next %}
+			{% if doctors.number < doctors.paginator.num_pages|add:"-3" %}
+				{% if doctors.number < doctors.paginator.num_pages|add:"-4" %}
+					<li class="page-item disabled"><span class="page-link">...</span></li>
+				{% endif %}
+				<li class="page-item">
+					<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=doctors.paginator.num_pages %}">{{ doctors.paginator.num_pages }}</a>
+				</li>
+			{% endif %}
+			<li class="page-item">
+				<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=doctors.next_page_number %}">Next</a>
+			</li>
+		{% endif %}
     </ul>
 </nav>
 
