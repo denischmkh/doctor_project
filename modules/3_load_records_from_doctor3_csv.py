@@ -5,6 +5,7 @@ import os
 
 from django.core.management import BaseCommand
 from django.db import DataError
+from taxonomy_keys import taxonomy_keys
 
 from load_django import *
 from parser_app.models import *
@@ -18,43 +19,41 @@ def import_doctors_from_csv(csv_file_path):
         reader = csv.DictReader(file)
 
         for row in reader:
+            print(row.get('Healthcare Provider Taxonomy Group_1'))
+            if not row.get('Provider First Name'):
+                continue
             doctor_data = {
-                'name': f"{row.get('Provider First Name', '')} {row.get('Provider Last Name', '')}".strip(),
+                'name': f"{row.get('Provider First Name', '')} {row.get('Provider Middle Name')} {row.get('Provider Last Name (Legal Name)', '')}".strip(),
+                'city': row.get('Provider Business Practice Location Address City Name'),
+                'postcode': row.get('Provider Business Practice Location Address Postal Code'),
                 'gender': row.get('Provider Gender Code'),
-                'city': row.get('Provider Business Mailing Address City Name'),
-                'address': row.get('Provider Business Mailing Address'),
-                'phone': row.get('Provider Business Mailing Address Telephone Number'),
-                'email': row.get('Provider Email'),
-                'site_url': row.get('Provider Business Practice Location Address'),
+                'address': f"{row.get('Provider Business Practice Location Address State Name')} {row.get('Provider Business Practice Location Address City Name')}",
+                'phone': row.get('Provider Business Practice Location Address Telephone Number'),
+                'fax': row.get('Provider Business Practice Location Address Fax Number'),
+                'description': row.get('Provider Credential Text'),
+                'source': 'nppes.cms.hhs.gov'
             }
 
             # Проверяем, существует ли врач в базе
             doctor, created = Doctor.objects.get_or_create(name=doctor_data['name'], defaults=doctor_data)
-
             if created:
                 print(f'{doctor} was created')
             else:
                 print(f'{doctor} already existed')
 
-            languages = row.get('Provider Languages', '').split(',')  # допустим, языки перечислены через запятую
-            for lang in languages:
-                language, created = Language.objects.get_or_create(name=lang.strip())
-                doctor.languages.add(language)
-
-            # Пример с больницами
-            hospitals = row.get('Provider Hospitals', '').split(',')
-            for hospital_name in hospitals:
-                hospital, created = Hospital.objects.get_or_create(name=hospital_name.strip())
-                doctor.hospitals.add(hospital)
-
-            # Пример с специализациями
-            specialisations = row.get('Provider Specialisation', '').split(',')
-            for specialisation_name in specialisations:
-                specialisation, created = Specialisation.objects.get_or_create(name=specialisation_name.strip())
+            clinic, created = Clinic.objects.get_or_create(title=row.get('Provider Organization Name (Legal Business Name)'))
+            doctor.clinic.add(clinic)
+            try:
+                specialisation, created = Specialisation.objects.get_or_create(name=taxonomy_keys[row.get('Healthcare Provider Taxonomy Group_1').split(' ')[0]])
                 doctor.specialisations.add(specialisation)
-
-            # Сохранить изменения
+            except KeyError:
+                print('Key not found!')
+                pass
             doctor.save()
+            print(f'{doctor.name} has been saved')
+
+
+
 
 
 # 🔹 Запуск скрипта

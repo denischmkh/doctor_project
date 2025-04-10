@@ -111,8 +111,8 @@ class Doctor(models.Model):
     city = models.CharField(null=True)
 
 
-    address = models.URLField(null=True)
-    fax = models.URLField(max_length=10000,null=True)
+    address = models.CharField(null=True)
+    fax = models.CharField(max_length=10000,null=True)
     instagram = models.URLField(max_length=10000,null=True)
     facebook = models.URLField(max_length=10000,null=True)
     twitter = models.URLField(max_length=10000,null=True)
@@ -135,6 +135,7 @@ class Doctor(models.Model):
     media_urls = models.JSONField(null=True, blank=True)
 
     source = models.CharField(null=True, max_length=10000)
+    postcode = models.CharField(null=True, max_length=5000)
 
     def __str__(self):
         return self.name if self.name else "Unnamed Doctor"

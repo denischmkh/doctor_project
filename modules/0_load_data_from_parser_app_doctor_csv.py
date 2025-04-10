@@ -137,30 +137,32 @@ with open(str(path), mode='r', encoding='utf-8') as file:
             if membership:
                 membership_obj, created = Membership.objects.get_or_create(name=membership)
                 membership_objects.append(membership_obj)
-        try:
-            doctor_obj, created = Doctor.objects.get_or_create(
-                name=row.get('name') or row.get('doctor_name'),
-                clinic=row.get('clinic'),
-                description=row.get('description'),
-                profile_url=row.get('profile_url') or row.get('doctor_link'),
-                phone=row.get('phone')[3:-2],
-                email=row.get('email')[2:-1],
-                vcard_url=row.get('vcard_url'),
-                address=row.get('address') if row.get('address') not in ['NULL', None] else None,
-                fax=row.get('fax') if row.get('fax') not in ['NULL', None] else None,
-                cv_url=row.get('cv_url'),
-                photo_url=row.get('photo_url'),
-                site_url=row.get('site_url') if row.get('site_url') not in ['NULL', None] else None,
-                media_urls=row.get('media_urls') if row.get('media_urls') not in ['NULL', None] else None,
-                instagram=row.get('doctor_instagram') if row.get('doctor_instagram') not in ['NULL', None] else None,
-                facebook=row.get('doctor_facebook') if row.get('doctor_facebook') not in ['NULL', None] else None,
-                twitter=row.get('doctor_twitter') if row.get('doctor_twitter') not in ['NULL', None] else None,
-                linkedin=row.get('doctor_linkedin') if row.get('doctor_linkedin') not in ['NULL', None] else None,
-                youtube=row.get('doctor_youtube') if row.get('doctor_youtube') not in ['NULL', None] else None,
-            )
-        except Exception as e:
-            print(e)
-            continue
+
+        clinic, created = Clinic.objects.get_or_create(
+            title=row.get('clinic')
+        )
+
+        doctor_obj, created = Doctor.objects.get_or_create(
+            name=row.get('name') or row.get('doctor_name'),
+            description=row.get('description') if row.get('description') not in ['NULL', None] else None,
+            profile_url=row.get('profile_url') or row.get('doctor_link'),
+            phone=row.get('phone') if row.get('phone') not in ['NULL', None] else None,
+            email=row.get('email') if row.get('email') not in ['NULL', None] else None,
+            vcard_url=row.get('vcard_url'),
+            address=row.get('address') if row.get('address') not in ['NULL', None] else None,
+            fax=row.get('fax') if row.get('fax') not in ['NULL', None] else None,
+            cv_url=row.get('cv_url'),
+            photo_url=row.get('photo_url'),
+            site_url=row.get('site_url') if row.get('site_url') not in ['NULL', None] else None,
+            media_urls=row.get('media_urls') if row.get('media_urls') not in ['NULL', None] else None,
+            instagram=row.get('doctor_instagram') if row.get('doctor_instagram') not in ['NULL', None] else None,
+            facebook=row.get('doctor_facebook') if row.get('doctor_facebook') not in ['NULL', None] else None,
+            twitter=row.get('doctor_twitter') if row.get('doctor_twitter') not in ['NULL', None] else None,
+            linkedin=row.get('doctor_linkedin') if row.get('doctor_linkedin') not in ['NULL', None] else None,
+            youtube=row.get('doctor_youtube') if row.get('doctor_youtube') not in ['NULL', None] else None,
+            source='www.swissmedical.net'
+        )
+
 
         doctor_obj.languages.set(language_objects)
         doctor_obj.hospitals.set(hospital_objects)
@@ -173,6 +175,7 @@ with open(str(path), mode='r', encoding='utf-8') as file:
         doctor_obj.awards.set(award_objects)
         doctor_obj.competences.set(competence_objects)
         doctor_obj.memberships.set(membership_objects)
+        doctor_obj.clinic.add(clinic)
 
         doctor_obj.save()
         rw += 1
