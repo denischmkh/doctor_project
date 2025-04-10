@@ -39,13 +39,16 @@ def index(request: HttpRequest):
     })
 
 
-def get_doctors_by_specialisation(request: HttpRequest, specialization_slug, page=1):
+def get_doctors_by_specialisation(request, specialization_slug, page=1):
     # Преобразуем слаг обратно в название специализации
-    specialization_name = slug_to_string(specialization_slug)
+    try:
+        specialization = Specialisation.objects.get(slug=specialization_slug)
+    except Specialisation.DoesNotExist:
+        return render(request, 'error.html', {'message': 'Специализация не найдена!'})
 
-    if not specialization_name:
-        raise
+    specialization_name = specialization.name
 
+    # Получаем список докторов по найденной специализации
     doctors = Doctor.objects.filter(specialisations__name=specialization_name).order_by('name')
 
     # Настроим пагинацию
