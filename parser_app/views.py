@@ -11,12 +11,6 @@ from django.urls import reverse
 from .models import Doctor, Specialisation, Language, Clinic
 
 
-necessary_specializations = ['Oral surgery', 'Physiologi', 'Paediatrics', 'Infectiology', 'Neurologie', 'Urologie',
-                             'Andrology', 'Neurosurgery', 'Oralchirurgie', 'Proctology', 'Pathology', 'Radiologi',
-                             'Diabetology', 'Urogynaecology', 'Hematology', 'Neuropsychology', 'Rheumatology',
-                             'Lymphology', 'MRI', 'Cataracts', 'Spinal surgery', 'Hernias',
-                             'Sportmedizin', 'arodontologie', 'Neuropathologi', 'Mikrobiologie', 'Cardiology',
-                             'Ultraschall', 'Endocrinology', 'Eye surgery', 'Orthopädie']
 
 
 genders = {
@@ -65,13 +59,15 @@ def doctor_list(request: HttpRequest, page=1) :
         query_params = [('filter', value) for value in selected_filters]
         query_string = urlencode(query_params, doseq=True)
 
+        specializations = Specialisation.objects.all()
+
         return render(request, 'search-2.html', {'doctors': doctors[start:end],
                                                  'doctors_count': doctors_count,
                                                  'previous_page': previous_page,
                                                  'next_page': next_page,
                                                  'page': page,
                                                  'selected_filters': selected_filters,
-                                                 'specializations': necessary_specializations,
+                                                 'specializations': specializations,
                                                  'languages': languages,
                                                  'genders': genders,
                                                  'query_string': query_string})
@@ -178,6 +174,8 @@ def get_doctor_grid(request: HttpRequest, clinic, page=1):
     query_params = [('filter', value) for value in selected_filters]
     query_string = urlencode(query_params, doseq=True)
 
+    specializations = Specialisation.objects.all()
+
     return render(request, 'doctor-grid.html', {
         'doctors_count': len(doctors),
         'doctors': doctors[start:end],
@@ -186,7 +184,7 @@ def get_doctor_grid(request: HttpRequest, clinic, page=1):
         'previous_page': previous_page,
         'next_page': next_page,
         'languages': languages,
-        'specializations': necessary_specializations,
+        'specializations': specializations,
         'genders': genders,
         'query_string': query_string,
         'selected_filters': selected_filters,

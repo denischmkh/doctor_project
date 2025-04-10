@@ -3,15 +3,10 @@ from django.http import HttpRequest
 from django.shortcuts import render
 from parser_app.models import Doctor, Specialisation
 
-specializations = ['Oral surgery', 'Physiologi', 'Paediatrics', 'Infectiology', 'Neurologie', 'Urologie',
-                             'Andrology', 'Neurosurgery', 'Oralchirurgie', 'Proctology', 'Pathology', 'Radiologi',
-                             'Diabetology', 'Urogynaecology', 'Hematology', 'Neuropsychology', 'Rheumatology',
-                             'Lymphology', 'MRI', 'Cataracts', 'Spinal surgery', 'Hernias',
-                             'Sportmedizin', 'arodontologie', 'Neuropathologi', 'Mikrobiologie', 'Cardiology',
-                             'Ultraschall', 'Endocrinology', 'Eye surgery', 'Orthopädie', 'Physician']
+
 
 def index(request: HttpRequest):
-    print(specializations)
+    specializations = Specialisation.objects.all()
     return render(request, 'base.html', context={
         "specializations": specializations,
     })
