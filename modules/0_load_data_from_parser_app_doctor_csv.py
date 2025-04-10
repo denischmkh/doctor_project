@@ -162,7 +162,7 @@ with open(str(path), mode='r', encoding='utf-8') as file:
             youtube=row.get('doctor_youtube') if row.get('doctor_youtube') not in ['NULL', None] else None,
             source='www.swissmedical.net'
         )
-
+        doctor_obj.save()
 
         doctor_obj.languages.set(language_objects)
         doctor_obj.hospitals.set(hospital_objects)
