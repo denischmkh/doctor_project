@@ -39,8 +39,10 @@ def index(request: HttpRequest):
     })
 
 
-def get_doctors_by_specialisation(request, specialization_slug, page=1):
-    # Преобразуем слаг обратно в объект специализации
+def get_doctors_by_specialisation(request: HttpRequest, specialization_slug, page=1):
+
+
+
     try:
         specialization = Specialisation.objects.get(slug=specialization_slug)
     except Specialisation.DoesNotExist:
@@ -48,11 +50,18 @@ def get_doctors_by_specialisation(request, specialization_slug, page=1):
 
     # Получаем список докторов, у которых есть соответствующая специализация с нужным слагом
     doctors = Doctor.objects.filter(specialisations__slug=specialization_slug).order_by('name')
+
+    filters = request.GET.dict()
+    selected_source = filters.get('source')
+    if selected_source:
+        doctors = doctors.filter(source=selected_source)
     paginator = Paginator(doctors, 24)  # Например, 24 доктора на странице
     page_obj = paginator.get_page(page)
+    unique_sources = Doctor.objects.values_list('source', flat=True).distinct().order_by('source')
 
-    return render(request, 'list_place.html', {
+    return render(request, 'list_doctors.html', {
         'doctors': page_obj,
         'specialization_slug': specialization_slug,
         'paginator': paginator,
+        'sources': unique_sources
     })

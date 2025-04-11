@@ -19,7 +19,7 @@ for file in files:
         reader = csv.DictReader(f)
         for row in reader:
             try:
-                new_doctor = Doctor.objects.get_or_create(
+                new_doctor, created = Doctor.objects.get_or_create(
                     name=row.get('doctor_name', None) if row.get('doctor_name') != "NULL" else None,
                     profile_url=row.get('doctor_link', None) if row.get('doctor_link') != "NULL" else None,
                     address=row.get('address', None) if row.get('address') != "NULL" else None,
@@ -39,23 +39,18 @@ for file in files:
                 continue
             print(f'Doctor {row.get("doctor_name")} has been added to db')
 
-            # Обработка specialties
-            specialties = []
+
             try:
-                for specialty in row.get('specialty')[2:-2].split(',') if row.get('specialty') != "NULL" else None:
+                for specialty in row.get('specialty').split(',') if row.get('specialty') != "NULL" else None:
                     try:
-                        if specialty.replace('"', '').split(' ')[0].strip().capitalize() == '':
-                            break
-                        spec, created = Specialisation.objects.get_or_create(name=specialty.replace('"', '').split(' ')[0].strip().capitalize())
+                        if specialty.replace('"', '').replace('{', '').replace('}', '').split(' ')[0].strip().capitalize() == '':
+                            continue
+                        spec, created = Specialisation.objects.get_or_create(name=specialty.replace('"', '').split(' ')[0].strip()[1:].capitalize())
+                        print(spec)
+                        new_doctor.specialisations.add(spec)
+                        new_doctor.save()
                     except AttributeError:
                         break
-                    spec.save()
-                    specialties.append(spec)
-                try:
-                    new_doctor.specialisations.set(specialties)
-                    new_doctor.save()
-                except AttributeError:
-                    continue
                 print(r)
                 r += 1
             except TypeError:

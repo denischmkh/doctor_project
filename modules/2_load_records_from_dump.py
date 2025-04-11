@@ -56,7 +56,7 @@ for row in rows:
         title=row_dict.get('main_organization_name'),
     )
 
-
+    specialisations = []
     specialties_str = row_dict.get('specialties_list')
     if specialties_str != '[]':
         specialties_str = specialties_str.replace("'", '"')  # Заменяем одинарные кавычки на двойные
@@ -67,8 +67,9 @@ for row in rows:
             if 'specialtyName' in el:
                 print(el)
                 specialisation, created = Specialisation.objects.get_or_create(
-                    name=el.split(':')[1]
+                    name=el.split(':')[1].strip()
                 )
+                specialisations.append(specialisation)
 
 
 
@@ -89,10 +90,10 @@ for row in rows:
                     info=el.split(':')[1]
                 )
 
-    # Присваиваем клинику доктору
     doctor.clinic.add(clinic)
 
-    # Присваиваем образование доктору
+    doctor.specialisations.set(specialisations)
+
     doctor.educations.add(education)
 
     doctor.save()

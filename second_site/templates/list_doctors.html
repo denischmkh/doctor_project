@@ -701,18 +701,23 @@
 						<div class="col-auto">
 							<div class="dropdown h-100">
 								<button class="btn btn-outline-secondary dropdown-toggle h-100" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-									Select Country
+									Select Source
 								</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
-									{% for country in countries %}
-										<li>
-											<div class="form-check  my-1">
-												<input class="form-check-input ms-2" type="checkbox" name="country" value="{{ country.slug }}" id="country-{{ country.id }}"
-													   {% if country.slug in country_filter %}checked{% endif %}>
-												<label class="form-check-label ms-2" for="country-{{ country.id }}">
-													{{ country.full_name }}
-												</label>
-											</div>
+									<li class="text-center my-1">
+										<a href="{{ request.path }}"
+										   class="d-inline-block text-decoration-none rounded bg-light text-dark border border-secondary"
+										   style="width: 200px; padding: 10px 15px; text-align: center;">
+											All
+										</a>
+									</li>
+									{% for source in sources %}
+										<li class="text-center my-1">
+											<a href="?source={{ source }}"
+											   class="d-inline-block text-decoration-none rounded bg-light text-dark border border-secondary"
+											   style="width: 200px; padding: 10px 15px; text-align: center;">
+												{{ source }}
+											</a>
 										</li>
 									{% endfor %}
 								</ul>
@@ -836,7 +841,7 @@
             </tr>
         {% empty %}
             <tr>
-                <td colspan="12" class="text-center">No places available</td>
+                <td colspan="12" class="text-center">No Doctors available</td>
             </tr>
         {% endfor %}
     </tbody>
@@ -845,11 +850,11 @@
     <ul class="pagination" id="pagination">
         {% if doctors.has_previous %}
 			<li class="page-item">
-				<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=doctors.previous_page_number %}">Previous</a>
+				<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=doctors.previous_page_number %}?{{ request.GET.urlencode }}">Previous</a>
 			</li>
 			{% if doctors.number > 4 %}
 				<li class="page-item">
-					<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=1 %}">1</a>
+					<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=1 %}?{{ request.GET.urlencode }}">1</a>
 				</li>
 				{% if doctors.number > 5 %}
 					<li class="page-item disabled"><span class="page-link">...</span></li>
@@ -861,7 +866,7 @@
 			{% for i in doctors.paginator.page_range %}
 				{% if i >= start and i <= end %}
 					<li class="page-item {% if doctors.number == i %}active{% endif %}">
-						<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=i %}">{{ i }}</a>
+						<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=i %}?{{ request.GET.urlencode }}">{{ i }}</a>
 					</li>
 				{% endif %}
 			{% endfor %}
@@ -873,11 +878,11 @@
 					<li class="page-item disabled"><span class="page-link">...</span></li>
 				{% endif %}
 				<li class="page-item">
-					<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=doctors.paginator.num_pages %}">{{ doctors.paginator.num_pages }}</a>
+					<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=doctors.paginator.num_pages %}?{{ request.GET.urlencode }}">{{ doctors.paginator.num_pages }}</a>
 				</li>
 			{% endif %}
 			<li class="page-item">
-				<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=doctors.next_page_number %}">Next</a>
+				<a class="page-link" href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization_slug page=doctors.next_page_number %}?{{ request.GET.urlencode }}">Next</a>
 			</li>
 		{% endif %}
     </ul>
