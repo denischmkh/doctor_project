@@ -24,24 +24,13 @@ def index(request: HttpRequest):
     # Получаем все специализации
     specializations = Specialisation.objects.all()
 
-    # Создаем слаги для каждой специализации
-    specializations_with_slugs = []
-    for specialization in specializations:
-        slug = string_to_slug(specialization.name)
-        specializations_with_slugs.append({
-            'name': specialization.name,
-            'slug': slug,
-        })
-
     # Передаем данные в шаблон
     return render(request, 'base.html', context={
-        "specializations": specializations_with_slugs,
+        "specializations": specializations,
     })
 
 
 def get_doctors_by_specialisation(request: HttpRequest, specialization_slug, page=1):
-
-
 
     try:
         specialization = Specialisation.objects.get(slug=specialization_slug)

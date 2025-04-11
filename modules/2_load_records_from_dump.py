@@ -4,6 +4,7 @@ import json
 import os
 import re
 import sys
+import uuid
 
 import psycopg2
 from django.db import DataError
@@ -65,11 +66,12 @@ for row in rows:
         parsed_list = specialties_str[specialties_str.index('{')+1:specialties_str.index('}}')].replace('"', '').replace("'", "").split(',')
         for el in parsed_list:
             if 'specialtyName' in el:
-                print(el)
-                specialisation, created = Specialisation.objects.get_or_create(
-                    name=el.split(':')[1].strip()
-                )
-                specialisations.append(specialisation)
+                specialisation_obj = Specialisation.objects.filter(name=el.split(':')[1].strip()).first()
+                if not specialisation_obj:
+                    specialisation_obj, created = Specialisation.objects.get_or_create(
+                        name=el.split(':')[1].strip(), slug=uuid.uuid4()
+                    )
+                specialisations.append(specialisation_obj)
 
 
 

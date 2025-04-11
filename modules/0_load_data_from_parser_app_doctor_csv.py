@@ -1,6 +1,10 @@
 import csv
 import os
 import ast
+import uuid
+
+from django.utils.text import slugify
+
 from load_django import *
 from parser_app.models import *
 
@@ -53,7 +57,9 @@ with open(str(path), mode='r', encoding='utf-8') as file:
         specialisation_objects = []
         for specialisation in specialisations:
             if specialisation:
-                specialisation_obj, created = Specialisation.objects.get_or_create(name=specialisation)
+                specialisation_obj = Specialisation.objects.filter(name=specialisation).first()
+                if not specialisation_obj:
+                    specialisation_obj, created = Specialisation.objects.get_or_create(name=specialisation, slug=uuid.uuid4())
                 specialisation_objects.append(specialisation_obj)
 
         education_objects = []

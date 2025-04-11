@@ -22,29 +22,8 @@ class Hospital(models.Model):
 
 
 class Specialisation(models.Model):
-    name = models.TextField(null=True, blank=True)
+    name = models.TextField(blank=True, unique=True)
     slug = models.SlugField(max_length=10000, unique=True, blank=True, null=True)
-
-    def save(self, *args, **kwargs):
-        # Проверка и замена всех символов, не являющихся буквами или цифрами, на пробелы
-        if self.name:
-            self.name = re.sub(r'[^a-zA-Z0-9]', ' ', self.name)
-
-        # Генерация слага только при первом сохранении (если слаг не установлен)
-        if not self.pk or not self.slug:
-            # Преобразование имени в слаг
-            slug_base = slugify(unidecode(self.name or ''))  # безопасно, если name пустой
-            slug_candidate = slug_base
-            counter = 1
-
-            # Убедимся в уникальности слага
-            while Specialisation.objects.filter(slug=slug_candidate).exclude(pk=self.pk).exists():
-                slug_candidate = f"{slug_base}-{counter}"
-                counter += 1
-
-            self.slug = slug_candidate
-
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name if self.name else "Unnamed Specialisation"

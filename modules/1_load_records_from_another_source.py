@@ -1,5 +1,6 @@
 import csv
 import os
+import uuid
 
 from django.db import DataError
 
@@ -45,9 +46,10 @@ for file in files:
                     try:
                         if specialty.replace('"', '').replace('{', '').replace('}', '').split(' ')[0].strip().capitalize() == '':
                             continue
-                        spec, created = Specialisation.objects.get_or_create(name=specialty.replace('"', '').split(' ')[0].strip()[1:].capitalize())
-                        print(spec)
-                        new_doctor.specialisations.add(spec)
+                        specialisation_obj = Specialisation.objects.filter(name=specialty.replace('"', '').replace('{', '').replace('}', '').split(' ')[0].strip().capitalize()).first()
+                        if not specialisation_obj:
+                            specialisation_obj, created = Specialisation.objects.get_or_create(name=specialty.replace('"', '').replace('{', '').replace('}', '').split(' ')[0].strip().capitalize(), slug=uuid.uuid4())
+                        new_doctor.specialisations.add(specialisation_obj)
                         new_doctor.save()
                     except AttributeError:
                         break

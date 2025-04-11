@@ -757,7 +757,7 @@
             <th style="width: 140px;">Gender</th>
             <th style="width: 95px;">Phone</th>
             <th style="width: 90px;">Email</th>
-            <th style="width: 110px;">Source</th>
+            <th style="width: 110px;">Country</th>
             <th style="width: 160px;">Socials</th>
         </tr>
     </thead>
@@ -766,6 +766,7 @@
             <tr>
                 <td>{{ doctor.specialisations.first }}</td>
                 <td>
+					<a href="{% url 'parser_app:doctor_profile' doctor.id %}">
                         {{ doctor.name|default:"-" }}
                     </a>
                 </td>
@@ -799,10 +800,16 @@
                     {% endif %}
                 </td>
                 <td  class="text-center px-2" style="width: 50px;">
-                    {% if doctor.source %}
-                        <a href="http://{{ doctor.source }}" target="_blank">
-                            <i class="ph ph-link"></i>
-                        </a>
+                    {% if doctor.country %}
+                        {% if doctor.email %}
+                        <div class="text-success bg-success bg-opacity-25">
+							{{doctor.country}}
+                        </div>
+                    {% else %}
+                        <div class="text-danger bg-danger bg-opacity-25">
+                            -
+                        </div>
+                    {% endif %}
                     {% else %}
                         -
                     {% endif %}
