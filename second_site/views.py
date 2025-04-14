@@ -54,3 +54,7 @@ def get_doctors_by_specialisation(request: HttpRequest, specialization_slug, pag
         'paginator': paginator,
         'sources': unique_sources
     })
+
+
+def get_profile(request: HttpRequest):
+    return render(request, 'doctor_profile.html')

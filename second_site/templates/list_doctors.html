@@ -766,7 +766,7 @@
             <tr>
                 <td>{{ doctor.specialisations.first }}</td>
                 <td>
-					<a href="{% url 'parser_app:doctor_profile' doctor.id %}">
+					<a href="{% url 'get_doctor_profile' %}">
                         {{ doctor.name|default:"-" }}
                     </a>
                 </td>
