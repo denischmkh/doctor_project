@@ -748,7 +748,6 @@
         <tr>
             <th style="width: 120px;">Specialisation</th>
             <th style="width: 160px;">Name</th>
-            <th style="width: 100px;">Postcode</th>
             <th style="width: 120px;">Clinic</th>
             <th style="width: 120px;">Address</th>
             <th style="width: 120px;">Phone</th>
@@ -770,7 +769,6 @@
                         {{ doctor.name|default:"-" }}
                     </a>
                 </td>
-                <td class="text-break">{{ doctor.postcode|default:"-" }}</td>
                 <td class="text-break">{{ doctor.clinic.first|default:"-" }}</td>
                 <td class="text-break">{{ doctor.address|default:"-" }}</td>
                 <td class="text-break">{{ doctor.phone|default:"-" }}</td>
