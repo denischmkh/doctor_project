@@ -8,5 +8,47 @@
 }
 
 .card {
-    margin-bottom: 0 !important;
+    margin: 15px !important;
+}
+
+.profile-cover-img {
+    height: 300px;
+}
+
+.card-doctor {
+    margin-top: 200px;
+}
+.doctor-info {
+    width: 15%;
+    height: 100%;
+    float: right;
+    object-fit: cover;
+}
+
+.doctor-image {
+    height: 300px;
+    width: 500px;
+    float: left;
+    object-fit: cover;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 15px;
+}
+
+
+.custom-profile-thumb img {
+    width: 160px; /* Установи нужную ширину */
+    height: 160px; /* Установи нужную высоту */
+    object-fit: cover; /* Для сохранения пропорций */
+    margin-right: 15px;
+    margin-top: 20px;
+    border: 4px solid #fff; /* Белая обводка */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень для объема */
+}
+
+.sidebar-content {
+    margin: 20px;
 }
