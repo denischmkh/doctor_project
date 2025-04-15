@@ -1,0 +1,12 @@
+.content-inner {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.contacts {
+    border-radius: 8px;
+}
+
+.card {
+    margin-bottom: 0 !important;
+}
