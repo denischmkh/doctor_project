@@ -1,6 +1,6 @@
 .content-inner {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
 }
 
 .contacts {
@@ -9,6 +9,7 @@
 
 .card {
     margin: 15px !important;
+    border-radius: 10px;
 }
 
 .profile-cover-img {
@@ -49,6 +50,35 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень для объема */
 }
 
+
 .sidebar-content {
     margin: 20px;
 }
+
+.limited-width {
+    max-width: 800px; /* можно поставить 100%, 600px, или любое значение */
+    width: 100%;
+    margin: 0 auto; /* по центру */
+}
+
+.specialisation-block {
+    display: flex;
+    flex-direction: row; /* это значение по умолчанию, можно не указывать */
+    width: min-content;
+    height: min-content;
+    border: 1px solid black;
+    text-align: center;
+    padding: 1px 3px;
+    border-radius: 5px;
+}
+
+
+.specialisation {
+  height: 100%;
+  width: 100%;
+  border-left: 3px solid #007bff; /* Синяя полоска слева */
+  padding-left: 10px;             /* Отступ от полоски до текста */
+  background-color: #f9f9f9;      /* Светлый фон, чтобы выглядело аккуратно */
+}
+
+

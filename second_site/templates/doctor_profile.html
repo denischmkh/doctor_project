@@ -86,48 +86,74 @@
 
 
 				<!-- Cover area -->
+				<div class="card">
 				<div class="profile-cover">
-					<div class="media align-items-center text-center text-lg-left flex-column flex-lg-row m-0 mb-3">
+					<div class="media align-items-center text-center text-lg-left flex-column flex-lg-row m-0 mb-3 limited-width">
+
 						<div class="custom-profile-thumb">
 							<img src="https://doccure.dreamstechnologies.com/react/template/assets/img/doctors/doc-profile-02.jpg" class="img-fluid card-img-top" alt="">
 						</div>
 
 						<div class="media-body text-black">
 				    		<h1 class="mb-0">Victoria Anna Davidson</h1>
+							<div class="specialisation-block">
 				    		<span class="d-block">Oncology</span>
+							</div>
+
+
 							<div class="d-flex flex-wrap mb-3">
 										<div class="font-weight-semibold mr-3">
-											<i class="fa-solid fa-language"></i> Languages:
+											<i class="fa-solid fa-language"></i> Speaks:
 										</div>
 										<div class="mt-2 mt-sm-0">Ireland, Spanish, Deuch</div>
 							</div>
 						</div>
 					</div>
 
-					<div class="doctor-info"><div class="card-body border-top-0">
 
-									<div class="d-sm-flex flex-sm-wrap mb-3">
-										<div class="font-weight-semibold"><i class="fa-solid fa-mars"></i> Gender:</div>
-										<div class="ml-sm-auto mt-2 mt-sm-0"> Male </div>
-									</div>
-
-									<div class="d-sm-flex flex-sm-wrap mb-3">
-										<div class="font-weight-semibold"><i class="fa-solid fa-location-dot"></i> City:</div>
-										<div class="ml-sm-auto mt-2 mt-sm-0"> Berlin </div>
-									</div>
-
-									<div class="d-sm-flex flex-sm-wrap mb-3">
-										<div class="font-weight-semibold"><i class="fa-solid fa-phone"></i> Phone:</div>
-										<div class="ml-sm-auto mt-2 mt-sm-0">+3630 8911837 </div>
-									</div>
-
-									<div class="d-sm-flex flex-sm-wrap mb-3">
-										<div class="font-weight-semibold"><i class="fa-solid fa-envelope"></i> Email:</div>
-										<div class="ml-sm-auto mt-2 mt-sm-0">personal@domain.com</div>
-									</div>
-
+						<div class="doctor-info">
+							<div class="card-body border-top-0">
+								<div class="d-sm-flex flex-sm-wrap mb-3">
+									<div class="font-weight-semibold"><i class="fa-solid fa-mars"></i> Gender:</div>
+									<div class="ml-sm-auto mt-2 mt-sm-0"> Male </div>
 								</div>
+
+								<div class="d-sm-flex flex-sm-wrap mb-3">
+									<div class="font-weight-semibold"><i class="fa-solid fa-location-dot"></i> City:</div>
+									<div class="ml-sm-auto mt-2 mt-sm-0"> Berlin </div>
+								</div>
+
+								<div class="d-sm-flex flex-sm-wrap mb-3">
+									<div class="font-weight-semibold"><i class="fa-solid fa-phone"></i> Phone:</div>
+									<div class="ml-sm-auto mt-2 mt-sm-0">+3630 8911837 </div>
+								</div>
+
+								<div class="d-sm-flex flex-sm-wrap mb-3">
+									<div class="font-weight-semibold"><i class="fa-solid fa-envelope"></i> Email:</div>
+									<div class="ml-sm-auto mt-2 mt-sm-0">personal@domain.com</div>
+								</div>
+								<div class="d-sm-flex flex-sm-wrap mb-3">
+								  <div class="font-weight-semibold">
+									<i class="fa-solid fa-envelope"></i> Socials:
+								  </div>
+								  <div class="ml-sm-auto mt-2 mt-sm-0 socials-links">
+									<a href="https://youtube.com" target="_blank" class="mr-2 text-dark">
+									  <i class="fab fa-youtube fa-lg"></i>
+									</a>
+									<a href="https://twitter.com" target="_blank" class="mr-2 text-dark">
+									  <i class="fab fa-twitter fa-lg"></i>
+									</a>
+									<a href="https://linkedin.com" target="_blank" class="mr-2 text-dark">
+									  <i class="fab fa-linkedin fa-lg"></i>
+									</a>
+									<a href="https://instagram.com" target="_blank" class="text-dark">
+									  <i class="fab fa-instagram fa-lg"></i>
+									</a>
+								  </div>
+								</div>
+							</div>
 					</div>
+				</div>
 				</div>
 				<!-- /cover area -->
 
@@ -256,33 +282,41 @@
 						<div class="col-lg-6">
 							<div class="card">
 								<div class="card-header">
-									<h5 class="card-title">
+									<h1 class="card-title">
 										<a href="#" class="text-body">
 											<i class="icon-statistics mr-2"></i>
 											Specialisations
 										</a>
-									</h5>
+									</h1>
 								</div>
 
 								<div class="card-body">
-									<p class="mb-3">The doctor specializes in:</p>
+									<h3 class="mb-3">The doctor specializes in:</h3>
 
 									<ul class="list list-unstyled mb-0">
 										<li>
+											<div class="specialisation">
 											<i class="icon-checkmark-circle text-success mr-2"></i>
-											- Oncology
+											Oncology
+											</div>
 										</li>
 										<li>
+											<div class="specialisation">
 											<i class="icon-checkmark-circle text-success mr-2"></i>
-											- Pediatrie
+											Paediatric
+											</div>
 										</li>
 										<li>
+											<div class="specialisation">
 											<i class="icon-checkmark-circle text-success mr-2"></i>
-											- Pain therapy
+											Pain therapy
+											</div>
 										</li>
 										<li>
+											<div class="specialisation">
 											<i class="icon-checkmark-circle text-success mr-2"></i>
-											- Internal medicine
+											Dentist
+											</div>
 										</li>
 									</ul>
 								</div>
@@ -585,34 +619,6 @@
 
 							<!-- Sidebar content -->
 							<div class="sidebar-content">
-
-
-								<div class="mb-3">
-									<div class="row row-tile no-gutters">
-										<div class="col-6">
-											<button type="button" class="btn btn-light btn-block btn-float m-0">
-												<i class="fab fa-youtube text-danger fa-2x"></i>
-												<span>YouTube</span>
-											</button>
-
-											<button type="button" class="btn btn-light btn-block btn-float m-0">
-												<i class="fab fa-instagram text-pink fa-2x"></i>
-												<span>Instagram</span>
-											</button>
-											<button type="button" class="btn btn-light btn-block btn-float m-0">
-												<i class="fab fa-linkedin text-primary fa-2x"></i>
-												<span>LinkedIn</span>
-											</button>
-
-											<button type="button" class="btn btn-light btn-block btn-float m-0">
-												<i class="fab fa-twitter text-info fa-2x"></i>
-												<span>Twitter</span>
-											</button>
-										</div>
-
-									</div>
-								</div>
-
 
 
 								<!-- /latest connections -->
