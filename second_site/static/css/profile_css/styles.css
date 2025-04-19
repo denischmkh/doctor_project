@@ -4,11 +4,6 @@
     border-radius: 8px;
 }
 
-
-
-
-
-
 .card {
     height: auto;
 }
@@ -61,11 +56,8 @@
 .doctor-info {
   position: absolute;
   right: 0;
-  height: 100%;
+  height: auto;
   width: 25%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .profile-cover-img {
