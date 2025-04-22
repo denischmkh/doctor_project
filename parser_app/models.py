@@ -22,8 +22,8 @@ class Hospital(models.Model):
 
 
 class Specialisation(models.Model):
-    name = models.TextField(blank=True, unique=True)
-    slug = models.SlugField(max_length=10000, unique=True, blank=True, null=True)
+    name = models.TextField(blank=True, unique=False)
+    slug = models.SlugField(max_length=10000, unique=False, blank=True, null=True)
 
     def __str__(self):
         return self.name if self.name else "Unnamed Specialisation"

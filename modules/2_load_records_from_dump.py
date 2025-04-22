@@ -8,6 +8,7 @@ import uuid
 
 import psycopg2
 from django.db import DataError
+from django.utils.text import slugify
 
 from load_django import *
 from parser_app.models import *
@@ -59,18 +60,25 @@ for row in rows:
 
     specialisations = []
     specialties_str = row_dict.get('specialties_list')
+
     if specialties_str != '[]':
-        specialties_str = specialties_str.replace("'", '"')  # Заменяем одинарные кавычки на двойные
-        specialties_str = specialties_str.replace(r'\"', '"')  # Заменяем экранированные кавычки на обычные
+        specialties_str = specialties_str.replace("'", '"')  # одинарные кавычки → двойные
+        specialties_str = specialties_str.replace(r'\"', '"')  # экранированные кавычки → обычные
         specialties_str = specialties_str.strip()
-        parsed_list = specialties_str[specialties_str.index('{')+1:specialties_str.index('}}')].replace('"', '').replace("'", "").split(',')
+        parsed_list = specialties_str[specialties_str.index('{') + 1:specialties_str.index('}}')].replace('"',
+                                                                                                          '').replace(
+            "'", "").split(',')
+
         for el in parsed_list:
             if 'specialtyName' in el:
-                specialisation_obj = Specialisation.objects.filter(name=el.split(':')[1].strip()).first()
+                name = el.split(':')[1].strip()
+                slug = slugify(name)
+
+                specialisation_obj = Specialisation.objects.filter(slug=slug).first()
+
                 if not specialisation_obj:
-                    specialisation_obj, created = Specialisation.objects.get_or_create(
-                        name=el.split(':')[1].strip(), slug=uuid.uuid4()
-                    )
+                    specialisation_obj = Specialisation.objects.create(name=name, slug=slug)
+
                 specialisations.append(specialisation_obj)
 
 

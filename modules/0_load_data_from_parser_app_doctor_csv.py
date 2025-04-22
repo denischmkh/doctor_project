@@ -57,9 +57,10 @@ with open(str(path), mode='r', encoding='utf-8') as file:
         specialisation_objects = []
         for specialisation in specialisations:
             if specialisation:
-                specialisation_obj = Specialisation.objects.filter(name=specialisation).first()
+                slug = slugify(specialisation)
+                specialisation_obj = Specialisation.objects.filter(slug=slug).first()
                 if not specialisation_obj:
-                    specialisation_obj, created = Specialisation.objects.get_or_create(name=specialisation, slug=uuid.uuid4())
+                    specialisation_obj = Specialisation.objects.create(name=specialisation, slug=slug)
                 specialisation_objects.append(specialisation_obj)
 
         education_objects = []

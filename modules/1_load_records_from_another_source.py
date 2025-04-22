@@ -3,6 +3,7 @@ import os
 import uuid
 
 from django.db import DataError
+from django.utils.text import slugify
 
 from load_django import *
 from parser_app.models import *
@@ -42,15 +43,22 @@ for file in files:
 
 
             try:
-                for specialty in row.get('specialty').split(',') if row.get('specialty') != "NULL" else None:
+                for specialty in row.get('specialty').split(',') if row.get('specialty') != "NULL" else []:
                     try:
-                        if specialty.replace('"', '').replace('{', '').replace('}', '').split(' ')[0].strip().capitalize() == '':
+                        clean_name = specialty.replace('"', '').replace('{', '').replace('}', '').split(' ')[
+                            0].strip().capitalize()
+                        if not clean_name:
                             continue
-                        specialisation_obj = Specialisation.objects.filter(name=specialty.replace('"', '').replace('{', '').replace('}', '').split(' ')[0].strip().capitalize()).first()
+
+                        slug = slugify(clean_name)
+                        specialisation_obj = Specialisation.objects.filter(slug=slug).first()
+
                         if not specialisation_obj:
-                            specialisation_obj, created = Specialisation.objects.get_or_create(name=specialty.replace('"', '').replace('{', '').replace('}', '').split(' ')[0].strip().capitalize(), slug=uuid.uuid4())
+                            specialisation_obj = Specialisation.objects.create(name=clean_name, slug=slug)
+
                         new_doctor.specialisations.add(specialisation_obj)
                         new_doctor.save()
+
                     except AttributeError:
                         break
                 print(r)
