@@ -1,66 +1,12 @@
-
+.content-inner {
+    padding-left: 200px;
+    padding-right: 200px;
+}
 
 .contacts {
-    border-radius: 8px;
+    margin-top: 20px;
 }
 
 .card {
-    height: auto;
+    margin: 10px;
 }
-
-
-.custom-profile-thumb {
-    margin-bottom: 30px;
-}
-
-.sidebar-content {
-    margin: 20px;
-}
-
-.limited-width {
-    max-width: 800px; /* можно поставить 100%, 600px, или любое значение */
-    width: 100%;
-    margin: 0 auto; /* по центру */
-}
-
-.specialisation-block {
-    display: flex;
-    flex-direction: row; /* это значение по умолчанию, можно не указывать */
-    width: min-content;
-    height: min-content;
-    border: 1px solid black;
-    text-align: center;
-    padding: 1px 3px;
-    border-radius: 5px;
-}
-
-
-.specialisation {
-  height: 100%;
-  width: 100%;
-  border-left: 3px solid #007bff; /* Синяя полоска слева */
-  padding-left: 10px;             /* Отступ от полоски до текста */
-  background-color: #f9f9f9;      /* Светлый фон, чтобы выглядело аккуратно */
-}
-
-.row {
-    margin-left: 90px;
-    margin-right: 90px;
-}
-
-.margin-block {
-    margin-left: 100px;
-    margin-right: 100px;
-}
-
-.doctor-info {
-  position: absolute;
-  right: 0;
-  height: auto;
-  width: 25%;
-}
-
-.profile-cover-img {
-    height: 300px;
-}
-
