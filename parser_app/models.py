@@ -140,7 +140,7 @@ class Doctor(models.Model):
     site_url = models.URLField(max_length=10000, null=True)
     media_urls = models.JSONField(null=True, blank=True)
 
-    # source = models.CharField(null=True, max_length=10000)
+    source = models.CharField(null=True, max_length=10000)
     postcode = models.CharField(null=True, max_length=5000)
 
     def __str__(self):
