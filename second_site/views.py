@@ -56,5 +56,6 @@ def get_doctors_by_specialisation(request: HttpRequest, specialization_slug, pag
     })
 
 
-def get_profile(request: HttpRequest):
+def get_profile(request: HttpRequest, id: int):
+    print(id)
     return render(request, 'doctor_profile.html')
