@@ -57,5 +57,25 @@ def get_doctors_by_specialisation(request: HttpRequest, specialization_slug, pag
 
 
 def get_profile(request: HttpRequest, id: int):
-    print(id)
-    return render(request, 'doctor_profile.html')
+    doctor = Doctor.objects.filter(id=id).first()
+
+    years_experience = []
+    work_experience = doctor.work_experience.all()
+    if work_experience:
+        for experience in work_experience:
+            year_str = experience.year
+            digits = []
+            for el in year_str:
+                if el.isdigit():
+                    digits.append(el)
+            years_experience.append(int("".join(digits)))
+
+    awards_count = doctor.awards.count()
+
+    context = {
+        'doctor': doctor,
+        'working_from': min(years_experience) if years_experience else None,
+        'awards_count': awards_count,
+        'has_awards': bool(awards_count)
+    }
+    return render(request, 'doctor_profile.html', context=context)
