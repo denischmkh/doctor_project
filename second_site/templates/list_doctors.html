@@ -21,6 +21,7 @@
 
 <body>
 
+
 	<!-- Main navbar -->
 	<div class="navbar navbar-dark navbar-expand-lg navbar-static border-bottom border-1 border-white border-opacity-10">
 		<div class="container-fluid">
@@ -391,6 +392,7 @@
 
 
 		<!-- Main sidebar -->
+		{% block sidebar %}
 		<div class="sidebar sidebar-dark sidebar-main sidebar-expand-lg">
 
 			<!-- Sidebar content -->
@@ -535,6 +537,7 @@
 			<!-- /sidebar content -->
 
 		</div>
+		{% endblock sidebar %}
 		<!-- /main sidebar -->
 
 
@@ -723,7 +726,7 @@
 								</ul>
 							</div>
 						</div>
-					
+
 						<!-- Поля ввода для поиска -->
 						<div class="col-auto">
 							<input type="text" name="state" class="form-control h-100" placeholder="Search by State" value="{{ request.GET.state }}">
@@ -737,9 +740,9 @@
 						<div class="col-auto">
 							<button type="submit" class="btn btn-primary h-100">Search</button>
 						</div>
-					</div>				
+					</div>
 				</form>
-			</div>			
+			</div>
 		</div>
 
 		<div class="card-body">

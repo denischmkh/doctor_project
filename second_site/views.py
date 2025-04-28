@@ -25,7 +25,7 @@ def index(request: HttpRequest):
     specializations = Specialisation.objects.all()
 
     # Передаем данные в шаблон
-    return render(request, 'base.html', context={
+    return render(request, 'index.html', context={
         "specializations": specializations,
     })
 

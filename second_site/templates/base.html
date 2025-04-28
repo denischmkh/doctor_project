@@ -391,150 +391,9 @@
 
 
 		<!-- Main sidebar -->
-		<div class="sidebar sidebar-dark sidebar-main sidebar-expand-lg">
+		{% block sidebar %}
 
-			<!-- Sidebar content -->
-			<div class="sidebar-content">
-				
-				<!-- Sidebar header -->
-				<div class="sidebar-section">
-					<div class="sidebar-section-body d-flex justify-content-center">
-						<h5 class="sidebar-resize-hide flex-grow-1 my-auto">Navigation</h5>
-
-						<div>
-							<button type="button" class="btn btn-flat-white btn-icon btn-sm rounded-pill border-transparent sidebar-control sidebar-main-resize d-none d-lg-inline-flex">
-								<i class="ph-arrows-left-right"></i>
-							</button>
-
-							<button type="button" class="btn btn-flat-white btn-icon btn-sm rounded-pill border-transparent sidebar-mobile-main-toggle d-lg-none">
-								<i class="ph-x"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-				<!-- /sidebar header -->
-
-				<!-- Main navigation -->
-				<div class="sidebar-section">
-					<ul class="nav nav-sidebar" data-nav-type="accordion">
-
-						<!-- Main -->
-						<li class="nav-item-header">
-							<div class="text-uppercase fs-sm lh-sm opacity-50 sidebar-resize-hide">Main</div>
-							<i class="ph-dots-three sidebar-resize-show"></i>
-						</li>
-
-						{% comment %} <li class="nav-item">
-							<a href="{% url 'index' %}" class="nav-link">
-								<i class="ph-house"></i>
-								<span>
-									Dashboard
-								</span>
-							</a>
-						</li> {% endcomment %}
-						
-						{% comment %} <li class="nav-item" onclick="location.href='{% url 'project_list' %}'" style="cursor: pointer;">
-							<a href="{% url 'project_list' %}" class="nav-link">
-								<i class="ph-article"></i>
-								<span>Projects</span>
-							</a>
-							<ul class="nav-group-sub collapse {% if '/projects/' in request.path %}show{% endif %}">
-								<li class="nav-item">
-									<a href="{% url 'project_list' %}" class="nav-link">
-										<i class="ph-person-simple-run"></i>
-										Active
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="{% url 'project_list_closed' %}" class="nav-link">
-										<i class="ph-check-square"></i>
-										Closed
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="{% url 'project_list_archive' %}" class="nav-link">
-										<i class="ph-archive"></i>
-										Archive
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="{% url 'project_list_all' %}" class="nav-link">
-										<i class="ph-text-align-justify"></i>
-										All
-									</a>
-								</li>
-							</ul>
-						</li>
-
-						<li class="nav-item" onclick="location.href='{% url 'folder_list' %}'" style="cursor: pointer;">
-							<a href="{% url 'folder_list' %}" class="nav-link">
-								<i class="ph-folder"></i>
-								<span>Folders</span>
-							</a>
-							<ul class="nav-group-sub collapse {% if '/folders/' in request.path %}show{% endif %}">
-								<li class="nav-item">
-									<a href="{% url 'folder_list' %}" class="nav-link">
-										<i class="ph-folder"></i>
-										All
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="{% url 'folder_list_archive' %}" class="nav-link">
-										<i class="ph-archive"></i>
-										Archive
-									</a>
-								</li>
-							</ul>
-						</li>					
-
-						{% if request.user.is_superuser %}
-							<li class="nav-item" onclick="location.href='{% url 'users_list' %}'" style="cursor: pointer;">
-								<a href="{% url 'users_list' %}" class="nav-link">
-									<i class="ph-users"></i>
-									<span>Users</span>
-								</a>
-								{% block sub_users %}{% endblock sub_users %}
-							</li>
-						{% endif %}
-
-						<li class="nav-item">
-							<a href="{% url 'clients' %}" class="nav-link">
-								<i class="ph-chalkboard-teacher"></i>
-								<span>
-									Clients
-								</span>
-							</a>
-						</li>
-
-						<li class="nav-item">
-							<a href="{% url 'screener' %}" class="nav-link" tabindex="-1" aria-disabled="true">
-								<i class="ph-timer"></i>
-								<span>Tracker</span>
-							</a>
-						</li>
-
-						<li class="nav-item">
-							<a href="{% url 'project_list_reports' %}" class="nav-link">
-								<i class="ph-file-text"></i>
-								Reports
-							</a>
-						</li>
-
-						<li class="nav-item">
-							<a href="{% url 'tag_list' %}" class="nav-link">
-								<i class="ph-tag"></i>
-								Tags
-							</a>
-						</li> {% endcomment %}
-
-					</ul>
-				</div>
-				<!-- /main navigation -->
-
-			</div>
-			<!-- /sidebar content -->
-			 
-		</div>
+		{% endblock sidebar %}
 		<!-- /main sidebar -->
 
 
@@ -542,7 +401,7 @@
 		<div class="content-wrapper">
 
 			<!-- Inner content -->
-			<div class="content-inner">			
+			<div class="content-inner">
 
 				<!-- Page header -->
 				<div class="page-header page-header-light shadow">
@@ -601,32 +460,32 @@
 											const selectedTeamName = document.getElementById('selected-team-name');
 											const selectedTeamImg = document.getElementById('selected-team-img');
 											const activeTeamKey = 'activeTeam'; // Ключ для localStorage
-										
+
 											// Функция для обновления отображаемого выбора
 											const updateSelectedTeam = (teamName, imgSrc) => {
 												selectedTeamName.textContent = teamName;
 												selectedTeamImg.src = imgSrc;
 											};
-										
+
 											// Восстановление выбора из localStorage
 											const savedTeam = localStorage.getItem(activeTeamKey);
 											if (savedTeam) {
 												const [teamName, imgSrc] = savedTeam.split('|'); // Разделитель для хранения данных
 												updateSelectedTeam(teamName, imgSrc);
 											}
-										
+
 											// Обработка клика по элементу списка
 											dropdownItems.forEach(item => {
 												item.addEventListener('click', (e) => {
 													e.preventDefault();
-										
+
 													// Извлекаем имя команды и путь к изображению
 													const teamName = item.querySelector('.fw-semibold').textContent;
 													const imgSrc = item.querySelector('img').src;
-										
+
 													// Обновляем отображение
 													updateSelectedTeam(teamName, imgSrc);
-										
+
 													// Сохраняем выбор в localStorage
 													localStorage.setItem(activeTeamKey, `${teamName}|${imgSrc}`);
 												});
@@ -640,9 +499,9 @@
 								<div class="d-inline-flex mt-3 mt-sm-0">
 									{% block user_in_project %}
 									{% endblock user_in_project %}
-									
+
 									{% block add_some %}
-										
+
 									{% endblock add_some %}
 								</div>
 							</div>
@@ -653,8 +512,8 @@
 						<div class="d-flex">
 							<div class="breadcrumb py-2">
 								<a href="{% url 'index' %}" class="breadcrumb-item"><i class="ph-house"></i></a>
-								{% block breadcrumb %}								
-									
+								{% block breadcrumb %}
+
 								{% endblock breadcrumb %}
 							</div>
 
@@ -670,26 +529,9 @@
 				<!-- Content area -->
 				<div class="content">
 
-                    <div class="card">
-        <div class="card-body d-flex justify-content-center">
-            <div class="container-fluid">
-                <div class="grid-container">
-                    {% for specialization in specializations %}
-						<div class="grid-item">
-							<a href="{% url 'get_doctors_by_specialisation' specialization_slug=specialization.slug page=1 %}" class="d-flex flex-column align-items-center text-decoration-none text-dark text-center">
-								<div class="d-flex justify-content-center align-items-center rounded-circle bg-light shadow-sm p-3">
-									<i class="ph ph-storefront fs-1 text-secondary"></i>
-								</div>
-								<div class="mt-2 fw-semibold text-break">
-									{{ specialization.name }}
-								</div>
-							</a>
-						</div>
-					{% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
+                    {% block content_area %}
+					{% endblock content_area %}
+				</div>
 
     <style>
         .grid-container {
