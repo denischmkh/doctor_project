@@ -214,7 +214,7 @@
 				<div class="card">
     <div class="sidebar-section-body d-flex align-items-start flex-wrap gap-4 pb-0 pl-3 pr-3 pt-3" style="font-size: 120%; padding-bottom: 0">
         <!-- Блок с фото, выровненным по центру по вертикали -->
-        <div class="card-img-actions d-inline-block mb-3 me-3" style="width: 250px; height: 250px; overflow: hidden; margin-right: 0">
+        <div class="card-img-actions d-inline-block mb-3 me-3 ml-3" style="width: 250px; height: 250px; overflow: hidden; margin-right: 0">
 	<img src="{% if doctor.photo_url %}{{doctor.photo_url}} {% else %} https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png {% endif %}"
 	     alt="{{doctor.name}}"
 	     class="img-fluid img-thumbnail shadow"
@@ -226,7 +226,7 @@
         <div style="margin-top: 0">
 	<div style="min-width: 450px">
 	<h1 class="mb-2 d-flex align-items-center" style="font-size: 150%; max-width: 450px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
-    <strong style="display: inline-block; max-width: calc(100% - 70px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ doctor.name }}</strong>
+    <strong style="display: inline-block; max-width: calc(100% - 100px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ doctor.name }}</strong>
     <span class="badge d-inline-flex align-items-center text-dark border bg-transparent fw-semibold" style="padding: 0.4em 0.6em; margin-left: 5px; text-align: left;">
 		<strong style="margin-right: 5px; margin-left: 5px">{{ doctor.specialisations.all.0.name }}</strong>
 	</span>
