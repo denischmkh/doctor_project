@@ -242,7 +242,7 @@
 
 
 				<!-- Content area -->
-						<div class="content" style="padding: 0">
+
 							<div class="card">
 								<div class="card-body">
 									<div class="mb-4">
@@ -259,7 +259,7 @@
 									</div>
 							</div>
 
-							</div>
+
 
 					<!-- Inner container -->
 					<div class="d-flex align-items-stretch align-items-lg-start flex-column flex-lg-row">
@@ -275,11 +275,9 @@
 
 								<!-- Blog posts -->
 								<div class="row">
-									<div class="col-lg-6">
-										<div class="card">
-								<a href="#">
-									<img src="../../../../global_assets/images/placeholders/placeholder.jpg" class="img-fluid" alt="">
-								</a>
+									<div class="col-lg-6" style="padding: 0">
+										<div class="card" style="margin-left: 20px">
+
 
 
 										<div class="card-body">
@@ -313,8 +311,8 @@
 										{% endif %}
 									</div>
 
-						<div class="col-lg-6">
-							<div class="card">
+						<div class="col-lg-6" style="padding: 0">
+							<div class="card card-body">
 								<div class="card-header">
 									<h1 class="card-title">
 										<i class="icon-statistics mr-2"></i>
@@ -337,7 +335,7 @@
 
 
 							</div>
-							<div class="card card-body">
+							<div class="card card-body" style="margin-top: 20px">
 								<h1>Clinics</h1>
 								{% for clinic in doctor.clinic.all %}
 								<div class="media flex-column flex-sm-row">
@@ -605,7 +603,7 @@
 							<div class="sidebar-content">
 
 								<!-- Navigation -->
-								<div class="card contacts">
+								<div class="card contacts" style="margin-left: 0">
 									<div class="card-header bg-transparent">
 										<span class="card-title font-weight-semibold">Contacts</span>
 									</div>
