@@ -1,7 +1,4 @@
-.content-inner2 {
-    padding-left: 200px;
-    padding-right: 200px;
-}
+
 
 .contacts {
     margin-top: 20px;
@@ -13,5 +10,5 @@
 }
 
 .content {
-    
+    padding: 0;
 }
