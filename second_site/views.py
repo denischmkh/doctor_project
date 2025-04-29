@@ -52,7 +52,9 @@ def get_doctors_by_specialisation(request: HttpRequest, specialization_slug, pag
         'doctors': page_obj,
         'specialization_slug': specialization_slug,
         'paginator': paginator,
-        'sources': unique_sources
+        'sources': unique_sources,
+        'selected_category_name': Specialisation.objects.filter(slug=specialization_slug).first().name,
+        'selected_category': specialization_slug,
     })
 
 
@@ -76,6 +78,9 @@ def get_profile(request: HttpRequest, id: int):
         'doctor': doctor,
         'working_from': min(years_experience) if years_experience else None,
         'awards_count': awards_count,
-        'has_awards': bool(awards_count)
+        'has_awards': bool(awards_count),
+        'selected_category_name': doctor.specialisations.first().name,
+        'selected_category': doctor.specialisations.first().slug,
+        'name': doctor.name
     }
     return render(request, 'doctor_profile.html', context=context)

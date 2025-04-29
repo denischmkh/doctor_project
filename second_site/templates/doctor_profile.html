@@ -212,24 +212,25 @@
 				<!-- Cover area -->
 
 				<div class="card">
+					<h1 style="margin-top: 15px; margin-left: 20px;">{{ doctor.name }}</h1>
+					<hr class="mt-0">
     <div class="sidebar-section-body d-flex align-items-start flex-wrap gap-4 pb-0 pl-3 pr-3 pt-3" style="font-size: 120%; padding-bottom: 0">
-        <!-- Блок с фото, выровненным по центру по вертикали -->
-        <div class="card-img-actions d-inline-block mb-3 me-3 ml-3" style="width: 250px; height: 250px; overflow: hidden; margin-right: 0">
-	<img src="{% if doctor.photo_url %}{{doctor.photo_url}} {% else %} https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png {% endif %}"
-     alt="{{doctor.name}}"
-     class="img-fluid img-thumbnail shadow"
-     style="width: 100%; height: 100%; object-fit: cover; margin-right: 0; margin-left: 10px;">
 
-		</div>
+        <!-- Блок с фото, выровненным по центру по вертикали -->
+        <div class="card-img-actions d-inline-block mb-3 me-3"
+     style="width: 260px; height: 250px; overflow: hidden; margin-left: 20px;">
+
+  <img src="{{ doctor.photo_url|default:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' }}"
+       alt="{{ doctor.name }}"
+       class="img-fluid img-thumbnail shadow"
+       style="width: 100%; height: 100%; object-fit: cover;">
+
+</div>
 
         <!-- Блок с информацией справа от фото -->
         <div style="margin-top: 0">
 	<div style="min-width: 450px">
 	<h1 class="mb-2 d-flex align-items-center" style="font-size: 150%; max-width: 450px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
-    <strong style="display: inline-block; max-width: calc(100% - 100px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ doctor.name }}</strong>
-    <span class="badge d-inline-flex align-items-center text-dark border bg-transparent fw-semibold" style="padding: 0.4em 0.6em; margin-left: 5px; text-align: left;">
-		<strong style="margin-right: 5px; margin-left: 5px">{{ doctor.specialisations.all.0.name }}</strong>
-	</span>
 </h1>
 		<span class="fw-semibold d-flex align-items-center">
 		<!-- 5 звезд -->
@@ -248,9 +249,9 @@
 
 	<!-- Дополнительная информация -->
 	<div class="mt-3">
-		<p class="mb-2"><strong>Speaks:</strong> {% for language in doctor.languages.all %} {{language}}, {% endfor %}</p>
+		<p class="mb-3"><strong>Speaks:</strong> {% for language in doctor.languages.all %} {{language}}, {% endfor %}</p>
 
-		{% if doctor.gender %}<p class="mb-2"><strong>Gender:</strong> {{doctor.gender}} </p>{% endif %}
+		{% if doctor.gender %}<p class="mb-3"><strong>Gender:</strong> {{doctor.gender}} </p>{% endif %}
 		{% if doctor.city %}<p style="margin-bottom: 23px;"><i class="fa-solid fa-location-dot me-1 text-danger"></i><strong>  {{doctor.city}} </strong></p>{% endif %}
 		<span class="text-end d-flex align-items-left ml-0" style="margin-left: 0;">
 			<i data-feather="check-circle" class="me-2 text-success"></i>
@@ -325,7 +326,7 @@
     </div>
 			<hr class="mt-0">
 				<div class="d-flex align-items-center gap-4 flex-wrap" style="justify-content: flex-start;">
-					<span class="d-inline-flex align-items-center me-4 mb-2" style="font-size: 110%; margin-right: 30px; margin-left: 30px;">
+					<span class="d-inline-flex align-items-center me-4 mb-2" style="font-size: 110%; margin-right: 30px; margin-left: 20px;">
 						<span class="d-inline-flex justify-content-center align-items-center bg-light border me-3" style="width: 50px; height: 50px; border-radius: 12px; margin-right: 10px">
 							<i class="fa-solid fa-calendar-check text-primary" style="font-size: 20px;"></i>
 						</span>
@@ -396,12 +397,9 @@
 							<div class="card" style="margin-bottom: 0">
 								<div class="card-body">
 									<div class="mb-4">
-										<h2 class="font-weight-semibold mb-1">
-											{{doctor.name}}
-										</h2>
-										<h4 class="font-weight-semibold mb-1">
+										<h1 class="font-weight-semibold mb-1">
 											<a href="#" class="text-body">Bio</a>
-										</h4>
+										</h1>
 
 
 										<div class="mb-3">
@@ -433,9 +431,12 @@
 
 
 
-										<div class="card-body">
-											<h1>Work Experience</h1>
-											<div class="list-feed">
+
+											<div class="card-header">
+												<h1>Work Experience</h1>
+											</div>
+											<hr class="mt-0">
+											<div class="list-feed" style="padding-left: 15px; padding-bottom: 15px">
 												{% for work_experience in doctor.work_experience.all %}
 												<div class="list-feed-item border-warning">
 													<div class="text-muted font-size-sm mb-1">{{work_experience.year}}</div>
@@ -443,7 +444,7 @@
 												</div>
 												{% endfor %}
 											</div>
-										</div>
+
 										</div>
 										{% if has_awards %}
 										<div class="card">
@@ -465,14 +466,14 @@
 									</div>
 
 						<div class="col-lg-6" style="padding: 0">
-							<div class="card card-body" style="overflow: hidden;">
+							<div class="card card-body" style="overflow: hidden; padding: 0">
 								<div class="card-header">
 									<h1 class="card-title">
 										<i class="icon-statistics mr-2"></i>
 										Specialisations
 									</h1>
 								</div>
-
+								<hr class="mt-0">
 								<div class="card-body">
 
 									<ul class="list list-unstyled mb-0">
@@ -488,10 +489,16 @@
 
 
 							</div>
-							<div class="card card-body" style="margin-top: 10px">
-								<h1>Clinics</h1>
+							<div class="card card-body" style="margin-top: 10px; padding: 0">
+								<div class="card-header">
+									<h1 class="card-title">
+										<i class="icon-statistics mr-2"></i>
+										Clinics
+									</h1>
+								</div>
+								<hr class="mt-0">
 								{% for clinic in doctor.clinic.all %}
-								<div class="media flex-column flex-sm-row">
+								<div class="media flex-column flex-sm-row" style="margin-left: 20px; margin-bottom: 10px">
 		        					<div class="mr-sm-3 mb-2 mb-sm-0">
 										<div class="card-img-actions">
 											<a href="#">
@@ -758,11 +765,12 @@
 								<!-- Navigation -->
 								<div class="card contacts" style="margin-left: 10px; margin-top: 10px;">
 									<div class="card-header bg-transparent">
-										<span class="card-title font-weight-semibold">Contacts</span>
+										<h1 class="card-title font-weight-semibold">Contacts</h1>
 									</div>
 
-
+									<hr class="mt-0">
 								<div class="card-body border-top-0">
+
 
 									<div class="d-sm-flex flex-sm-wrap mb-3">
 										<div class="font-weight-semibold"><i class="fa-solid fa-phone"></i> Phone:</div>

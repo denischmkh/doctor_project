@@ -511,10 +511,19 @@
 					<div class="page-header-content d-lg-flex border-top">
 						<div class="d-flex">
 							<div class="breadcrumb py-2">
-								<a href="{% url 'index' %}" class="breadcrumb-item"><i class="ph-house"></i></a>
-								{% block breadcrumb %}
-
-								{% endblock breadcrumb %}
+								<a href="{% url 'index' %}" class="breadcrumb-item px-2"><i class="ph-house me-2"></i> Home</a>
+								{% if selected_category %}
+									{% if name %}
+										<a href="{% url 'get_doctors_by_specialisation' specialization_slug=selected_category page=1 %}" class="breadcrumb-item py-2">
+											{{ selected_category_name }}
+										</a>
+									{% else %}
+										<span class="breadcrumb-item active py-2">{{selected_category_name}}</span>
+									{% endif %}
+										{% endif %}
+										{% if name %}
+                                    <span class="breadcrumb-item active py-2">{{name}}</span>
+										{% endif %}
 							</div>
 
 							<a href="#breadcrumb_elements" class="btn btn-light align-self-center collapsed d-lg-none border-transparent rounded-pill p-0 ms-auto" data-bs-toggle="collapse">
