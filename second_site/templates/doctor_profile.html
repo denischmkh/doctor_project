@@ -781,6 +781,30 @@
 										<div class="font-weight-semibold"><i class="fa-solid fa-envelope"></i> Email:</div>
 										<div class="ml-sm-auto mt-2 mt-sm-0"><strong>{% if doctor.email %} {{doctor.email}} {% else %} Unknown {% endif %}</strong></div>
 									</div>
+									<style>
+    .info-line {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .info-label {
+        font-weight: 600;
+        white-space: nowrap;
+        margin-right: 1rem;
+    }
+
+    .info-value {
+        margin-left: auto;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-weight: bold;
+        text-align: right;
+    }
+</style>
 
 									<ul class="list-inline list-inline-condensed mt-3 mb-0" style="background-color: white; padding: 10px 20px; display: flex; justify-content: flex-start; gap: 10px; overflow-x: auto; white-space: nowrap; max-width: 100%;">
 										{% if doctor.youtube %}
