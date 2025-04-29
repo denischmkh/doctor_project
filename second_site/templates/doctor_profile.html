@@ -771,83 +771,64 @@
 									<hr class="mt-0">
 								<div class="card-body border-top-0">
 
+    <div class="mb-3">
+        <div class="font-weight-semibold mb-1">
+            <i class="fa-solid fa-phone"></i> Phone:
+        </div>
+        <div>
+            <strong>{% if doctor.phone %}{{ doctor.phone }}{% else %}Unknown{% endif %}</strong>
+        </div>
+    </div>
 
-									<div class="d-sm-flex flex-sm-wrap mb-3">
-										<div class="font-weight-semibold"><i class="fa-solid fa-phone"></i> Phone:</div>
-										<div class="ml-sm-auto mt-2 mt-sm-0"><strong>{% if doctor.phone %} {{doctor.phone}} {% else %} Unknown {% endif %}</strong></div>
-									</div>
+    <div class="mb-3">
+        <div class="font-weight-semibold mb-1">
+            <i class="fa-solid fa-envelope"></i> Email:
+        </div>
+        <div>
+            <strong>{% if doctor.email %}{{ doctor.email }}{% else %}Unknown{% endif %}</strong>
+        </div>
+    </div>
 
-									<div class="d-sm-flex flex-sm-wrap mb-3">
-										<div class="font-weight-semibold"><i class="fa-solid fa-envelope"></i> Email:</div>
-										<div class="ml-sm-auto mt-2 mt-sm-0"><strong>{% if doctor.email %} {{doctor.email}} {% else %} Unknown {% endif %}</strong></div>
-									</div>
-									<style>
-    .info-line {
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
+    <ul class="list-inline list-inline-condensed mt-3 mb-0" style="background-color: white; padding: 10px 20px; display: flex; justify-content: flex-start; gap: 10px; overflow-x: auto; white-space: nowrap; max-width: 100%;">
+        {% if doctor.youtube %}
+        <li class="list-inline-item">
+            <a href="{{ doctor.youtube }}" class="btn btn-outline-white btn-icon border-2 rounded-pill" target="_blank">
+                <i class="fab fa-youtube" style="color: black;"></i>
+            </a>
+        </li>
+        {% endif %}
+        {% if doctor.twitter %}
+        <li class="list-inline-item">
+            <a href="{{ doctor.twitter }}" class="btn btn-outline-white btn-icon border-2 rounded-pill" target="_blank">
+                <i class="fab fa-twitter" style="color: black;"></i>
+            </a>
+        </li>
+        {% endif %}
+        {% if doctor.linkedin %}
+        <li class="list-inline-item">
+            <a href="{{ doctor.linkedin }}" class="btn btn-outline-white btn-icon border-2 rounded-pill" target="_blank">
+                <i class="fab fa-linkedin" style="color: black;"></i>
+            </a>
+        </li>
+        {% endif %}
+        {% if doctor.instagram %}
+        <li class="list-inline-item">
+            <a href="{{ doctor.instagram }}" class="btn btn-outline-white btn-icon border-2 rounded-pill" target="_blank">
+                <i class="fab fa-instagram" style="color: black;"></i>
+            </a>
+        </li>
+        {% endif %}
+        {% if doctor.facebook %}
+        <li class="list-inline-item">
+            <a href="{{ doctor.facebook }}" class="btn btn-outline-white btn-icon border-2 rounded-pill" target="_blank">
+                <i class="fab fa-facebook" style="color: black;"></i>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
 
-    .info-label {
-        font-weight: 600;
-        white-space: nowrap;
-        margin-right: 1rem;
-    }
+</div>
 
-    .info-value {
-        margin-left: auto;
-        min-width: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        font-weight: bold;
-        text-align: right;
-    }
-</style>
-
-									<ul class="list-inline list-inline-condensed mt-3 mb-0" style="background-color: white; padding: 10px 20px; display: flex; justify-content: flex-start; gap: 10px; overflow-x: auto; white-space: nowrap; max-width: 100%;">
-										{% if doctor.youtube %}
-										<li class="list-inline-item">
-											<a href="{{ doctor.youtube }}" class="btn btn-outline-white btn-icon border-2 rounded-pill" target="_blank">
-												<i class="fab fa-youtube" style="color: black;"></i>
-											</a>
-										</li>
-										{% endif %}
-
-										{% if doctor.twitter %}
-										<li class="list-inline-item">
-											<a href="{{ doctor.twitter }}" class="btn btn-outline-white btn-icon border-2 rounded-pill" target="_blank">
-												<i class="fab fa-twitter" style="color: black;"></i>
-											</a>
-										</li>
-										{% endif %}
-
-										{% if doctor.linkedin %}
-										<li class="list-inline-item">
-											<a href="{{ doctor.linkedin }}" class="btn btn-outline-white btn-icon border-2 rounded-pill" target="_blank">
-												<i class="fab fa-linkedin" style="color: black;"></i>
-											</a>
-										</li>
-										{% endif %}
-
-										{% if doctor.instagram %}
-										<li class="list-inline-item">
-											<a href="{{ doctor.instagram }}" class="btn btn-outline-white btn-icon border-2 rounded-pill" target="_blank">
-												<i class="fab fa-instagram" style="color: black;"></i>
-											</a>
-										</li>
-										{% endif %}
-
-										{% if doctor.facebook %}
-										<li class="list-inline-item">
-											<a href="{{ doctor.facebook }}" class="btn btn-outline-white btn-icon border-2 rounded-pill" target="_blank">
-												<i class="fab fa-facebook" style="color: black;"></i>
-											</a>
-										</li>
-										{% endif %}
-									</ul>
-								</div>
 								</div>
 								<!-- /navigation -->
 
