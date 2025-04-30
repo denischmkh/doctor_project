@@ -136,7 +136,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Папка для соб�
 
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Папка для собранной статики
+STATIC_ROOT = '/var/www/doctor_project/static' # Папка для собранной статики
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = [os.path.join(BASE_DIR, 'media')
