@@ -12,3 +12,7 @@
 .content {
     padding: 0;
 }
+
+.card-header {
+    border-bottom: none !important;
+}
