@@ -16,3 +16,9 @@
 .card-header {
     border-bottom: none !important;
 }
+
+.doctor-name{
+    display: flex;
+    flex-wrap: nowrap; /* чтобы не переносились */
+    gap: 10px; /* отступ между элементами */
+}

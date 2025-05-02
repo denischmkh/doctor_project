@@ -212,7 +212,17 @@
 				<!-- Cover area -->
 
 				<div class="card">
+					<div class="doctor-name">
 					<h1 style="margin-top: 15px; margin-left: 20px;">{{ doctor.name }}</h1>
+					<span class="ms-auto d-flex gap-2" style="margin-top: 15px;">
+						<a href="#" class="d-inline-flex justify-content-center align-items-center rounded-circle border" style="width: 38px; height: 38px; border-color: rgba(0,0,0,0.2);  margin-right: 8px;" title="Like">
+							<i data-feather="heart"></i>
+						</a>
+						<a href="#" class="d-inline-flex justify-content-center align-items-center rounded-circle border" style="width: 38px; height: 38px; border-color: rgba(0,0,0,0.2);  margin-right: 8px;" title="Share">
+							<i data-feather="share-2"></i>
+						</a>
+					</span>
+					</div>
 					<hr class="mt-0" style="margin-bottom: 0">
     <div class="sidebar-section-body d-flex align-items-start flex-wrap pb-0 pl-3 pr-3 pt-3" style="font-size: 120%; padding-bottom: 0">
 
@@ -268,17 +278,7 @@
 			</span>
 			<strong>Full Time, Online Therapy Available</strong>
 		</span>
-		<span class="ms-4 text-end d-flex gap-2">
-			<a href="#" class="d-inline-flex justify-content-center align-items-center rounded-circle border" style="width: 38px; height: 38px; border-color: rgba(0,0,0,0.2);  margin-right: 8px;" title="Like">
-				<i data-feather="heart"></i>
-			</a>
-			<a href="#" class="d-inline-flex justify-content-center align-items-center rounded-circle border" style="width: 38px; height: 38px; border-color: rgba(0,0,0,0.2);  margin-right: 8px;" title="Share">
-				<i data-feather="share-2"></i>
-			</a>
-			<a href="#" class="d-inline-flex justify-content-center align-items-center rounded-circle border" style="width: 38px; height: 38px; border-color: rgba(0,0,0,0.2);  margin-right: 8px;" title="Copy Link">
-				<i data-feather="link"></i>
-			</a>
-		</span>
+
 
 	</li>
 	<li class="d-flex justify-content-between align-items-start mb-4">
@@ -395,18 +395,20 @@
 				<!-- Content area -->
 
 							<div class="card" style="margin-bottom: 0">
-								<div class="card-body">
-									<div class="mb-4">
-										<h1 class="font-weight-semibold mb-1">
-											<a href="#" class="text-body">Bio</a>
-										</h1>
+								<div class="card-body p-0">
+
+										<div class="card-header p-0">
+												<h2 style="margin-top: 15px; margin-left: 20px;">Bio</h2>
+
+											</div>
+											<hr class="m-0">
 
 
-										<div class="mb-3">
+										<div class=" p-3" >
 											<p>{{doctor.description}}</p>
 										</div>
 
-									</div>
+
 									</div>
 							</div>
 
@@ -433,7 +435,7 @@
 
 
 											<div class="card-header p-0">
-												<h1 style="margin-top: 15px; margin-left: 20px;">Work Experience</h1>
+												<h2 style="margin-top: 15px; margin-left: 20px;">Work Experience</h2>
 
 											</div>
 											<hr class="mt-0">
@@ -450,7 +452,10 @@
 										{% if has_awards %}
 										<div class="card">
 											<div class="card-body">
-											<h1>Awards</h1>
+											<div class="card-header p-0">
+												<h2 style="margin-top: 15px; margin-left: 20px;">Work Experience</h2>
+
+											</div>
 											<div class="list-feed">
 
 													{% for award in doctor.awards.all %}
@@ -469,10 +474,10 @@
 						<div class="col-lg-6" style="padding: 0">
 							<div class="card card-body" style="overflow: hidden; padding: 0">
 								<div class="card-header p-0">
-									<h1 style="margin-top: 15px; margin-left: 20px;">
+									<h2 style="margin-top: 15px; margin-left: 20px;">
 										<i class="icon-statistics mr-2"></i>
 										Specialisations
-									</h1>
+									</h2>
 								</div>
 								<hr class="mt-0">
 								<div class="card-body">
@@ -492,10 +497,10 @@
 							</div>
 							<div class="card card-body" style="margin-top: 10px; padding: 0">
 								<div class="card-header p-0">
-									<h1 style="margin-top: 15px; margin-left: 20px;">
+									<h2 style="margin-top: 15px; margin-left: 20px;">
 										<i class="icon-statistics mr-2"></i>
 										Clinics
-									</h1>
+									</h2>
 								</div>
 								<hr class="mt-0">
 								{% for clinic in doctor.clinic.all %}
@@ -766,7 +771,7 @@
 								<!-- Navigation -->
 								<div class="card contacts" style="margin-left: 10px; margin-top: 10px;">
 									<div class="card-header bg-transparent p-0">
-										<h1 class="card-title font-weight-semibold" style="margin-top: 15px; margin-left: 20px;">Contacts</h1>
+										<h2 class="card-title font-weight-semibold" style="margin-top: 15px; margin-left: 20px;">Contacts</h2>
 									</div>
 
 								<hr class="mt-0">
