@@ -213,12 +213,12 @@
 
 				<div class="card">
 					<h1 style="margin-top: 15px; margin-left: 20px;">{{ doctor.name }}</h1>
-					<hr class="mt-0">
-    <div class="sidebar-section-body d-flex align-items-start flex-wrap gap-4 pb-0 pl-3 pr-3 pt-3" style="font-size: 120%; padding-bottom: 0">
+					<hr class="mt-0" style="margin-bottom: 0">
+    <div class="sidebar-section-body d-flex align-items-start flex-wrap pb-0 pl-3 pr-3 pt-3" style="font-size: 120%; padding-bottom: 0">
 
         <!-- Блок с фото, выровненным по центру по вертикали -->
-        <div class="card-img-actions d-inline-block mb-3 me-3"
-     style="width: 260px; height: 250px; overflow: hidden; margin-left: 20px;">
+        <div class="card-img-actions d-inline-block me-3"
+     style="width: 260px; height: 250px; overflow: hidden; margin-left: 20px; margin-bottom: 0">
 
   <img src="{{ doctor.photo_url|default:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' }}"
        alt="{{ doctor.name }}"
@@ -259,7 +259,7 @@
 		</span>
 	</div>
 </div>
-		<div class="card-body border-top-0 ml-1 pt-0">
+		<div class="card-body border-top-0 ml-1 pt-0 pb-0">
 			<ul class="list-unstyled">
 	<li class="d-flex justify-content-between align-items-start mb-4">
 		<span class="fw-semibold d-flex align-items-center">
@@ -432,8 +432,9 @@
 
 
 
-											<div class="card-header">
-												<h1>Work Experience</h1>
+											<div class="card-header p-0">
+												<h1 style="margin-top: 15px; margin-left: 20px;">Work Experience</h1>
+
 											</div>
 											<hr class="mt-0">
 											<div class="list-feed" style="padding-left: 15px; padding-bottom: 15px; padding-right: 10px">
@@ -467,8 +468,8 @@
 
 						<div class="col-lg-6" style="padding: 0">
 							<div class="card card-body" style="overflow: hidden; padding: 0">
-								<div class="card-header">
-									<h1 class="card-title">
+								<div class="card-header p-0">
+									<h1 style="margin-top: 15px; margin-left: 20px;">
 										<i class="icon-statistics mr-2"></i>
 										Specialisations
 									</h1>
@@ -490,8 +491,8 @@
 
 							</div>
 							<div class="card card-body" style="margin-top: 10px; padding: 0">
-								<div class="card-header">
-									<h1 class="card-title">
+								<div class="card-header p-0">
+									<h1 style="margin-top: 15px; margin-left: 20px;">
 										<i class="icon-statistics mr-2"></i>
 										Clinics
 									</h1>
@@ -764,8 +765,8 @@
 
 								<!-- Navigation -->
 								<div class="card contacts" style="margin-left: 10px; margin-top: 10px;">
-									<div class="card-header bg-transparent">
-										<h1 class="card-title font-weight-semibold">Contacts</h1>
+									<div class="card-header bg-transparent p-0">
+										<h1 class="card-title font-weight-semibold" style="margin-top: 15px; margin-left: 20px;">Contacts</h1>
 									</div>
 
 									<hr class="mt-0">
