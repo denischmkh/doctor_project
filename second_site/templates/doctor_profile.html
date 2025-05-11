@@ -267,6 +267,11 @@
 			<i data-feather="check-circle" class="me-2 text-success"></i>
 			<span class="fw-semibold"><strong>Accepting New Patients</strong></span>
 		</span>
+
+		<span class="text-end d-flex align-items-left ml-0" style="margin-left: 0; margin-top: 20px;">
+			<i class="fa-solid fa-briefcase-medical me-2 text-success" style="font-size: 20px;"></i>
+			<span class="fw-semibold"><strong>In Practice from {{working_from}} year</strong></span>
+		</span>
 	</div>
 </div>
 		<div class="card-body ml-1 pt-0 pb-0">
@@ -324,35 +329,7 @@
 <script>feather.replace()</script>
 		</div>
     </div>
-			<hr class="mt-0">
-				<div class="d-flex align-items-center gap-4 flex-wrap" style="justify-content: flex-start;">
-					<span class="d-inline-flex align-items-center me-4 mb-3" style="font-size: 110%; margin-right: 30px; margin-left: 20px;">
-						<span class="d-inline-flex justify-content-center align-items-center bg-light border me-3" style="width: 50px; height: 50px; border-radius: 12px; margin-right: 10px">
-							<i class="fa-solid fa-calendar-check text-primary" style="font-size: 20px;"></i>
-						</span>
-						<strong>Nearly 200+ Appointment Booked</strong>
-					</span>
 
-					<span class="d-inline-flex align-items-center me-4 mb-3" style="font-size: 110%; margin-right: 30px; margin-left: 30px;">
-						<span class="d-inline-flex justify-content-center align-items-center bg-light border me-3" style="width: 50px; height: 50px; border-radius: 12px; margin-right: 10px">
-							<i class="fa-solid fa-briefcase-medical text-success" style="font-size: 20px;"></i>
-						</span>
-						<strong>In Practice for from {{working_from}} year</strong>
-					</span>
-
-					<span class="d-inline-flex align-items-center mb-3" style="font-size: 110%; margin-right: 30px; margin-left: 30px;">
-						<span class="d-inline-flex justify-content-center align-items-center bg-light border me-3" style="width: 50px; height: 50px; border-radius: 12px; margin-right: 10px">
-							<i class="fa-solid fa-trophy text-warning" style="font-size: 20px;"></i>
-						</span>
-						<strong>{{awards_count}} Awards</strong>
-					</span>
-					<span class="d-inline-flex align-items-center mb-3" style="font-size: 110%; margin-right: 30px; margin-left: 30px;">
-						<strong>Price : $100 - $200</strong> for a Session
-						<a href="#" class="btn btn-primary" style="font-size: 16px; padding: 10px 20px; border-radius: 25px; text-decoration: none; color: white; margin-left: 10px;">
-							Book Appointment
-						</a>
-					</span>
-				</div>
 
 
 
@@ -480,7 +457,7 @@
 									</h2>
 								</div>
 								<hr class="mt-0">
-								<div class="card-body">
+								<div class="card-body" style="padding-top: 0">
 
 									<ul class="list list-unstyled mb-0">
 										{% for specialisation in doctor.specialisations.all %}
@@ -775,37 +752,113 @@
 									</div>
 
 								<hr class="mt-0">
-								<div class="card-body">
+								<div class="card-body" style="padding-top: 0; padding-bottom: 0">
+								<div class="mb-3 d-flex justify-content-between align-items-center">
+									<div class="font-weight-semibold">
+										<i class="fa-solid fa-phone"></i> Phone:
+									</div>
+									{% if doctor.phone %}
+									<div class="text-success bg-success bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
+										Yes
+									</div>
+									{% else %}
+									<div class="text-danger bg-danger bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
+										No
+									</div>
+									{% endif %}
+								</div>
 
-    <div class="mb-3 d-flex justify-content-between align-items-center">
-		<div class="font-weight-semibold">
-			<i class="fa-solid fa-phone"></i> Phone:
-		</div>
-		{% if doctor.phone %}
-		<div class="text-success bg-success bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
-			Yes
-		</div>
-		{% else %}
-		<div class="text-danger bg-danger bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
-			No
-		</div>
-		{% endif %}
-	</div>
+								<div class="mb-3 d-flex justify-content-between align-items-center">
+									<div class="font-weight-semibold">
+										<i class="fa-solid fa-envelope"></i> Email:
+									</div>
+									{% if doctor.email %}
+									<div class="text-success bg-success bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
+										Yes
+									</div>
+									{% else %}
+									<div class="text-danger bg-danger bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
+										No
+									</div>
+									{% endif %}
+								</div>
 
-	<div class="mb-3 d-flex justify-content-between align-items-center">
-		<div class="font-weight-semibold">
-			<i class="fa-solid fa-envelope"></i> Email:
-		</div>
-		{% if doctor.email %}
-		<div class="text-success bg-success bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
-			Yes
-		</div>
-		{% else %}
-		<div class="text-danger bg-danger bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
-			No
-		</div>
-		{% endif %}
-	</div>
+								<div class="mb-3 d-flex justify-content-between align-items-center">
+									<div class="font-weight-semibold">
+										<i class="fab fa-youtube fa-lg" style="color: #FF0000;"></i> YouTube:
+									</div>
+									{% if doctor.youtube %}
+									<div class="text-success bg-success bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
+										Yes
+									</div>
+									{% else %}
+									<div class="text-danger bg-danger bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
+										No
+									</div>
+									{% endif %}
+								</div>
+
+								<div class="mb-3 d-flex justify-content-between align-items-center">
+									<div class="font-weight-semibold">
+										<i class="fab fa-twitter fa-lg" style="color: #1DA1F2;"></i> Twitter:
+									</div>
+									{% if doctor.twitter %}
+									<div class="text-success bg-success bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
+										Yes
+									</div>
+									{% else %}
+									<div class="text-danger bg-danger bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
+										No
+									</div>
+									{% endif %}
+								</div>
+
+								<div class="mb-3 d-flex justify-content-between align-items-center">
+									<div class="font-weight-semibold">
+										<i class="fab fa-linkedin fa-lg" style="color: #0077B5;"></i> LinkedIN:
+									</div>
+									{% if doctor.linkedin %}
+									<div class="text-success bg-success bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
+										Yes
+									</div>
+									{% else %}
+									<div class="text-danger bg-danger bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
+										No
+									</div>
+									{% endif %}
+								</div>
+
+								<div class="mb-3 d-flex justify-content-between align-items-center">
+									<div class="font-weight-semibold">
+										<i class="fab fa-instagram fa-lg" style="color: #C13584;"></i> Instagram:
+									</div>
+									{% if doctor.instagram %}
+									<div class="text-success bg-success bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
+										Yes
+									</div>
+									{% else %}
+									<div class="text-danger bg-danger bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
+										No
+									</div>
+									{% endif %}
+								</div>
+
+								<div class="mb-3 d-flex justify-content-between align-items-center">
+									<div class="font-weight-semibold">
+										<i class="fab fa-facebook fa-lg" style="color: #1877F2;"></i> Facebook:
+									</div>
+									{% if doctor.facebook %}
+									<div class="text-success bg-success bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
+										Yes
+									</div>
+									{% else %}
+									<div class="text-danger bg-danger bg-opacity-25 px-2 py-1 rounded text-center" style="width: 60px;">
+										No
+									</div>
+									{% endif %}
+								</div>
+
+
 
     <ul class="list-inline list-inline-condensed mt-3 mb-0" style="background-color: white; padding: 10px 20px; display: flex; justify-content: flex-start; gap: 10px; overflow-x: auto; white-space: nowrap; max-width: 100%;">
         {% if doctor.youtube %}
